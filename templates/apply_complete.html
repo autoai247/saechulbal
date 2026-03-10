@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}신청 완료{% endblock %}
+
+{% block body %}
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+        </div>
+        <h1 class="text-2xl font-bold mb-3">상담 신청이 완료되었습니다!</h1>
+        <p class="text-gray-600 mb-6">
+            {{ application.name }}님의 <strong>{{ application.debt_type_label }}</strong> 상담 신청이 접수되었습니다.<br>
+            곧 전문 업체에서 연락드릴 예정입니다.
+        </p>
+        <div class="bg-blue-50 rounded-lg p-4 text-sm text-left mb-6">
+            <p class="font-medium text-primary mb-2">신청 정보</p>
+            <p>상담유형: {{ application.debt_type_label }}</p>
+            <p>지역: {{ application.region }}</p>
+            <p>채무금액: {{ application.debt_amount }}</p>
+        </div>
+        <a href="/" class="inline-block bg-primary hover:bg-secondary text-white font-medium py-3 px-6 rounded-lg transition">
+            홈으로 돌아가기
+        </a>
+    </div>
+</div>
+{% endblock %}

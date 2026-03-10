@@ -53,7 +53,7 @@
         <!-- 업체 카드 그리드 -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="company-grid">
             {% for company in companies[:12] %}
-            <div class="company-card bg-white rounded-xl shadow hover:shadow-lg transition p-5" data-types="{{ company.filters.debt_types | join(',') }}">
+            <a href="/companies/{{ company.id }}" class="company-card block bg-white rounded-xl shadow hover:shadow-lg transition p-5 cursor-pointer" data-types="{{ company.filters.debt_types | join(',') }}">
                 <div class="flex justify-between items-start mb-2">
                     <h3 class="font-bold text-gray-900">{{ company.name }}</h3>
                     <div class="flex items-center text-sm shrink-0 ml-2">
@@ -80,7 +80,7 @@
                         {% if company.success_count %}<span>성공 {{ company.success_count }}건</span>{% endif %}
                     </div>
                 </div>
-            </div>
+            </a>
             {% endfor %}
         </div>
 

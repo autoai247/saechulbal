@@ -236,6 +236,54 @@ async def apply(
     })
 
 
+@app.post("/apply/direct", response_class=HTMLResponse)
+async def apply_direct(
+    request: Request,
+    company_id: str = Form(...),
+    name: str = Form(...),
+    phone: str = Form(...),
+    debt_type: str = Form(...),
+    region: str = Form(...),
+    debt_amount: str = Form(...),
+    description: str = Form(""),
+):
+    """특정 업체에 직접 상담 신청"""
+    target_company = next((c for c in companies_db if c["id"] == company_id and c["status"] == "active"), None)
+    if not target_company:
+        return RedirectResponse("/companies")
+
+    application = {
+        "id": str(uuid.uuid4()),
+        "name": name,
+        "phone": phone,
+        "debt_type": debt_type,
+        "debt_type_label": DEBT_TYPES.get(debt_type, debt_type),
+        "region": region,
+        "debt_amount": debt_amount,
+        "max_companies": 1,
+        "description": description,
+        "direct_company_id": company_id,
+        "status": "distributed",
+        "created_at": datetime.now().isoformat(),
+    }
+    applications_db.append(application)
+
+    # 해당 업체에만 직접 배분
+    distribution = {
+        "id": str(uuid.uuid4()),
+        "application_id": application["id"],
+        "company_id": company_id,
+        "status": "notified",
+        "created_at": datetime.now().isoformat(),
+    }
+    distributions_db.append(distribution)
+
+    return templates.TemplateResponse("apply_complete.html", {
+        "request": request,
+        "application": application,
+    })
+
+
 def _distribute_to_companies(application: dict):
     """신청건을 필터 매칭되는 업체들에게 자동 배분"""
     for company in companies_db:

@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}전문 업체 찾기{% endblock %}
+
+{% block body %}
+<!-- 네비게이션 -->
+<nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-primary">새출발</a>
+        <div class="space-x-4 text-sm">
+            <a href="/companies" class="text-primary font-medium">업체 찾기</a>
+            <a href="/#apply" class="text-gray-600 hover:text-primary">상담 신청</a>
+            <a href="/company/login" class="text-gray-600 hover:text-primary">업체 로그인</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 헤더 -->
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-10">
+    <div class="max-w-6xl mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">회생/파산 전문 업체</h1>
+        <p class="text-blue-200">검증된 전문 업체를 비교하고 나에게 맞는 곳을 찾으세요</p>
+    </div>
+</section>
+
+<!-- 필터 -->
+<section class="bg-white border-b sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+        <form method="GET" action="/companies" class="flex flex-wrap gap-3 items-center">
+            <!-- 지역 필터 -->
+            <select name="region" onchange="this.form.submit()"
+                class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                <option value="">전체 지역</option>
+                {% for r in regions %}
+                <option value="{{ r }}" {% if selected_region == r %}selected{% endif %}>{{ r }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- 채무유형 필터 -->
+            <select name="debt_type" onchange="this.form.submit()"
+                class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                <option value="">전체 유형</option>
+                {% for key, label in debt_types.items() %}
+                <option value="{{ key }}" {% if selected_debt_type == key %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- 정렬 -->
+            <select name="sort" onchange="this.form.submit()"
+                class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                <option value="rating" {% if selected_sort == 'rating' %}selected{% endif %}>평점순</option>
+                <option value="review" {% if selected_sort == 'review' %}selected{% endif %}>리뷰 많은순</option>
+                <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>최근 등록순</option>
+            </select>
+
+            <span class="text-sm text-gray-500 ml-auto">총 <strong class="text-primary">{{ total_count }}</strong>개 업체</span>
+        </form>
+    </div>
+</section>
+
+<!-- 업체 리스트 -->
+<section class="max-w-6xl mx-auto px-4 py-8">
+    {% if companies %}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {% for company in companies %}
+        <a href="/companies/{{ company.id }}" class="block bg-white rounded-xl shadow hover:shadow-lg transition group">
+            <div class="p-6">
+                <!-- 업체명 & 평점 -->
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">{{ company.name }}</h3>
+                    <div class="flex items-center text-sm">
+                        <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <span class="font-medium">{{ "%.1f"|format(company.rating) }}</span>
+                        <span class="text-gray-400 ml-1">({{ company.review_count }})</span>
+                    </div>
+                </div>
+
+                <!-- 전문 분야 태그 -->
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                    {% for dt in company.filters.get('debt_types', []) %}
+                    {% if dt in debt_types %}
+                    <span class="bg-blue-50 text-blue-600 text-xs font-medium px-2 py-0.5 rounded">{{ debt_types[dt] }}</span>
+                    {% endif %}
+                    {% endfor %}
+                    {% if not company.filters.get('debt_types') %}
+                    <span class="bg-blue-50 text-blue-600 text-xs font-medium px-2 py-0.5 rounded">전체 분야</span>
+                    {% endif %}
+                </div>
+
+                <!-- 업체 소개 -->
+                <p class="text-sm text-gray-500 mb-4 line-clamp-2">
+                    {{ company.description or "전문적인 회생/파산 상담 서비스를 제공합니다." }}
+                </p>
+
+                <!-- 하단 정보 -->
+                <div class="flex items-center justify-between text-xs text-gray-400 border-t pt-3">
+                    <div class="flex items-center space-x-3">
+                        {% if company.filters.get('regions') %}
+                        <span>{{ company.filters.regions | join(', ') }}</span>
+                        {% else %}
+                        <span>전국</span>
+                        {% endif %}
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        {% if company.experience_years %}
+                        <span>경력 {{ company.experience_years }}년</span>
+                        {% endif %}
+                        {% if company.success_count %}
+                        <span>성공 {{ company.success_count }}건</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="bg-white rounded-xl shadow p-16 text-center">
+        <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+        </div>
+        <p class="text-gray-400 text-lg mb-2">조건에 맞는 업체가 없습니다</p>
+        <p class="text-gray-300 text-sm">필터를 변경하거나, 직접 상담 신청을 해보세요</p>
+        <a href="/#apply" class="inline-block mt-4 bg-primary hover:bg-secondary text-white font-medium py-2 px-6 rounded-lg text-sm transition">
+            무료 상담 신청
+        </a>
+    </div>
+    {% endif %}
+</section>
+
+<!-- CTA -->
+<section class="bg-blue-50 py-10">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-xl font-bold mb-2">어떤 업체를 선택해야 할지 모르겠다면?</h2>
+        <p class="text-gray-600 mb-4">한번 신청으로 여러 업체에서 직접 연락드립니다. 비교 후 선택하세요!</p>
+        <a href="/#apply" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition">
+            무료 상담 신청하기
+        </a>
+    </div>
+</section>
+
+<!-- 푸터 -->
+<footer class="bg-gray-800 text-gray-400 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+        <p class="mb-2">새출발 | 회생/파산 전문 상담 중개 서비스</p>
+        <p>Copyright 2026. All rights reserved.</p>
+    </div>
+</footer>
+{% endblock %}

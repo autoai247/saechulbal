@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}{{ company.name }}{% endblock %}
+
+{% block body %}
+<!-- 네비게이션 -->
+<nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-primary">새출발</a>
+        <div class="space-x-4 text-sm">
+            <a href="/companies" class="text-gray-600 hover:text-primary">업체 찾기</a>
+            <a href="/#apply" class="text-gray-600 hover:text-primary">상담 신청</a>
+        </div>
+    </div>
+</nav>
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- 뒤로가기 -->
+    <a href="/companies" class="text-sm text-gray-400 hover:text-gray-600 mb-4 inline-block">&larr; 업체 목록</a>
+
+    <!-- 업체 프로필 카드 -->
+    <div class="bg-white rounded-2xl shadow-lg p-8 mb-6">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <h1 class="text-2xl font-bold mb-1">{{ company.name }}</h1>
+                <div class="flex items-center text-sm text-gray-500 space-x-3">
+                    {% if company.filters.get('regions') %}
+                    <span>{{ company.filters.regions | join(', ') }}</span>
+                    {% else %}
+                    <span>전국</span>
+                    {% endif %}
+                    {% if company.experience_years %}
+                    <span>|</span>
+                    <span>경력 {{ company.experience_years }}년</span>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- 평점 -->
+            <div class="text-center">
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <span class="text-2xl font-bold ml-1">{{ "%.1f"|format(company.rating) }}</span>
+                </div>
+                <span class="text-xs text-gray-400">리뷰 {{ company.review_count }}개</span>
+            </div>
+        </div>
+
+        <!-- 전문 분야 -->
+        <div class="flex flex-wrap gap-2 mb-4">
+            {% for label in specialty_labels %}
+            <span class="bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full">{{ label }}</span>
+            {% endfor %}
+            {% if not specialty_labels %}
+            <span class="bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full">전체 분야</span>
+            {% endif %}
+        </div>
+
+        <!-- 통계 -->
+        <div class="grid grid-cols-3 gap-4 bg-gray-50 rounded-xl p-4 mb-6">
+            <div class="text-center">
+                <p class="text-2xl font-bold text-primary">{{ company.success_count or '-' }}</p>
+                <p class="text-xs text-gray-500">성공 사례</p>
+            </div>
+            <div class="text-center">
+                <p class="text-2xl font-bold text-primary">{{ company.experience_years or '-' }}</p>
+                <p class="text-xs text-gray-500">경력(년)</p>
+            </div>
+            <div class="text-center">
+                <p class="text-2xl font-bold text-primary">{{ company.min_fee or '상담 후 결정' }}</p>
+                <p class="text-xs text-gray-500">최소 수임료</p>
+            </div>
+        </div>
+
+        <!-- 업체 소개 -->
+        <div class="mb-6">
+            <h2 class="font-bold text-lg mb-2">업체 소개</h2>
+            <p class="text-gray-600 leading-relaxed">
+                {{ company.description or "전문적인 회생/파산 상담 서비스를 제공합니다. 자세한 내용은 상담을 통해 안내드립니다." }}
+            </p>
+        </div>
+
+        <!-- 상담 신청 CTA -->
+        <div class="bg-blue-50 rounded-xl p-6 text-center">
+            <h3 class="font-bold text-lg mb-2">이 업체에 상담 신청하기</h3>
+            <p class="text-sm text-gray-600 mb-4">무료로 상담 받아보세요. 다른 업체와 비교도 가능합니다.</p>
+            <a href="/#apply" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition">
+                무료 상담 신청
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 푸터 -->
+<footer class="bg-gray-800 text-gray-400 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+        <p class="mb-2">새출발 | 회생/파산 전문 상담 중개 서비스</p>
+        <p>Copyright 2026. All rights reserved.</p>
+    </div>
+</footer>
+{% endblock %}

@@ -118,9 +118,13 @@ async def apply(
     debt_type: str = Form(...),
     region: str = Form(...),
     debt_amount: str = Form(...),
+    max_companies: int = Form(3),
     description: str = Form(""),
 ):
     """상담 신청 접수"""
+    if max_companies not in (3, 5, 7):
+        max_companies = 3
+
     application = {
         "id": str(uuid.uuid4()),
         "name": name,
@@ -129,6 +133,7 @@ async def apply(
         "debt_type_label": DEBT_TYPES.get(debt_type, debt_type),
         "region": region,
         "debt_amount": debt_amount,
+        "max_companies": max_companies,
         "description": description,
         "status": "pending",  # pending → distributed → contacted → completed
         "created_at": datetime.now().isoformat(),
@@ -167,6 +172,69 @@ def _distribute_to_companies(application: dict):
         distributions_db.append(distribution)
 
     application["status"] = "distributed"
+
+
+# ============================================================
+# 업체 리스트 (공개 - 신청인이 업체 탐색)
+# ============================================================
+@app.get("/companies", response_class=HTMLResponse)
+async def company_list(
+    request: Request,
+    region: str = None,
+    debt_type: str = None,
+    sort: str = "rating",  # rating, review, recent
+):
+    """업체 리스트 (필터링 + 정렬)"""
+    filtered = [c for c in companies_db if c["status"] == "active"]
+
+    # 지역 필터
+    if region:
+        filtered = [c for c in filtered if not c["filters"].get("regions") or region in c["filters"]["regions"]]
+
+    # 채무유형 필터
+    if debt_type:
+        filtered = [c for c in filtered if not c["filters"].get("debt_types") or debt_type in c["filters"]["debt_types"]]
+
+    # 정렬
+    if sort == "rating":
+        filtered.sort(key=lambda c: c.get("rating", 0), reverse=True)
+    elif sort == "review":
+        filtered.sort(key=lambda c: c.get("review_count", 0), reverse=True)
+    elif sort == "recent":
+        filtered.sort(key=lambda c: c.get("created_at", ""), reverse=True)
+
+    return templates.TemplateResponse("company_list.html", {
+        "request": request,
+        "companies": filtered,
+        "debt_types": DEBT_TYPES,
+        "regions": REGIONS,
+        "selected_region": region,
+        "selected_debt_type": debt_type,
+        "selected_sort": sort,
+        "total_count": len(filtered),
+    })
+
+
+@app.get("/companies/{company_id}", response_class=HTMLResponse)
+async def company_detail(request: Request, company_id: str):
+    """업체 상세 페이지"""
+    company = next((c for c in companies_db if c["id"] == company_id and c["status"] == "active"), None)
+    if not company:
+        return RedirectResponse("/companies")
+
+    # 이 업체의 전문 분야 라벨
+    specialty_labels = [DEBT_TYPES[dt] for dt in company["filters"].get("debt_types", []) if dt in DEBT_TYPES]
+    region_labels = company["filters"].get("regions", [])
+
+    return templates.TemplateResponse("company_detail.html", {
+        "request": request,
+        "company": company,
+        "specialty_labels": specialty_labels,
+        "region_labels": region_labels,
+        "debt_types": DEBT_TYPES,
+        "regions": REGIONS,
+        "debt_ranges": DEBT_RANGES,
+    })
 
 
 # ============================================================
@@ -233,6 +301,12 @@ async def company_register(
             "debt_types": debt_types if debt_types else [],
             "regions": regions if regions else [],
         },
+        "description": "",  # 업체 소개 (프로필에서 수정)
+        "min_fee": "",       # 최소 수임료
+        "experience_years": "",  # 경력 연수
+        "success_count": 0,  # 성공 사례 수
+        "rating": 0.0,       # 평점
+        "review_count": 0,   # 리뷰 수
         "balance": 0,  # 충전 잔액 (원)
         "created_at": datetime.now().isoformat(),
     }
@@ -271,10 +345,14 @@ async def company_dashboard(request: Request):
             purchased = any(
                 p["distribution_id"] == dist["id"] for p in purchases_db
             )
+            current_purchases = sum(1 for p in purchases_db if p["application_id"] == app_data["id"])
+            max_companies = app_data.get("max_companies", 3)
+            sold_out = current_purchases >= max_companies
             leads.append({
                 **app_data,
                 "distribution_id": dist["id"],
                 "purchased": purchased,
+                "sold_out": sold_out,
                 "dist_status": dist["status"],
             })
 
@@ -302,6 +380,13 @@ async def purchase_lead(request: Request, distribution_id: str):
     if any(p["distribution_id"] == distribution_id for p in purchases_db):
         return JSONResponse({"error": "이미 구매한 건입니다."}, status_code=400)
 
+    # 선착순 제한: 신청자가 선택한 업체 수만큼만 판매
+    app_data = next((a for a in applications_db if a["id"] == dist["application_id"]), None)
+    max_companies = app_data.get("max_companies", 3) if app_data else 3
+    current_purchases = sum(1 for p in purchases_db if p["application_id"] == dist["application_id"])
+    if current_purchases >= max_companies:
+        return JSONResponse({"error": "이 건은 마감되었습니다. (최대 열람 수 초과)"}, status_code=400)
+
     # 잔액 확인
     if company["balance"] < LEAD_PRICE:
         return JSONResponse({"error": f"잔액이 부족합니다. (현재: {company['balance']:,}원, 필요: {LEAD_PRICE:,}원)"}, status_code=400)
@@ -319,8 +404,7 @@ async def purchase_lead(request: Request, distribution_id: str):
     purchases_db.append(purchase)
     dist["status"] = "purchased"
 
-    # 신청인 정보 반환
-    app_data = next((a for a in applications_db if a["id"] == dist["application_id"]), None)
+    # 신청인 정보 반환 (app_data는 위에서 이미 조회됨)
     return JSONResponse({
         "success": True,
         "name": app_data["name"],

@@ -60,6 +60,13 @@
                     <td class="px-4 py-3 text-center">
                         <span class="text-xs text-green-600 font-medium">열람완료</span>
                     </td>
+                    {% elif lead.sold_out %}
+                    <!-- 마감: 선착순 종료 -->
+                    <td class="px-4 py-3 text-sm text-gray-300">{{ lead.name[0] }}**</td>
+                    <td class="px-4 py-3 text-sm text-gray-300">010-****-****</td>
+                    <td class="px-4 py-3 text-center">
+                        <span class="text-xs text-red-400 font-medium">마감</span>
+                    </td>
                     {% else %}
                     <!-- 미구매: 정보 블러 처리 -->
                     <td class="px-4 py-3 text-sm text-gray-400">{{ lead.name[0] }}**</td>

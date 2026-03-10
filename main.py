@@ -37,6 +37,14 @@ DEBT_TYPES = {
     "corporate_bankruptcy": "기업파산",
 }
 
+# 업체 등급 시스템
+COMPANY_TIERS = {
+    "free": {"label": "무료", "monthly_fee": 0, "badge": "", "lead_price": 5000, "sort_priority": 0},
+    "premium": {"label": "프리미엄", "monthly_fee": 30000, "badge": "PREMIUM", "lead_price": 4000, "sort_priority": 1},
+    "vip": {"label": "VIP", "monthly_fee": 50000, "badge": "VIP", "lead_price": 3000, "sort_priority": 2},
+    "diamond": {"label": "다이아몬드", "monthly_fee": 100000, "badge": "DIAMOND", "lead_price": 2000, "sort_priority": 3},
+}
+
 REGIONS = [
     "서울", "경기", "인천", "부산", "대구", "대전", "광주",
     "울산", "세종", "강원", "충북", "충남", "전북", "전남",
@@ -119,6 +127,16 @@ for i in range(100):
     _review_count = random.randint(0, 300)
     _exp = random.randint(1, 25)
     _success = random.randint(10, 2000)
+    # 등급 분배: diamond 5%, vip 10%, premium 25%, free 60%
+    _tier_roll = random.random()
+    if _tier_roll < 0.05:
+        _tier = "diamond"
+    elif _tier_roll < 0.15:
+        _tier = "vip"
+    elif _tier_roll < 0.40:
+        _tier = "premium"
+    else:
+        _tier = "free"
 
     companies_db.append({
         "id": str(uuid.uuid4()),
@@ -127,6 +145,7 @@ for i in range(100):
         "contact_name": f"담당자{i+1}",
         "contact_phone": f"010-{random.randint(1000,9999)}-{random.randint(1000,9999)}",
         "status": "active",
+        "tier": _tier,
         "filters": {
             "debt_types": _selected_dts,
             "regions": _selected_regions,
@@ -179,10 +198,10 @@ def get_company_user(request: Request) -> dict | None:
 # ============================================================
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    # 평점순 상위 12개 업체
+    # 등급 우선 → 평점순 정렬, 상위 12개
     top_companies = sorted(
         [c for c in companies_db if c["status"] == "active"],
-        key=lambda c: (c.get("rating", 0), c.get("review_count", 0)),
+        key=lambda c: (COMPANY_TIERS.get(c.get("tier", "free"), {}).get("sort_priority", 0), c.get("rating", 0), c.get("review_count", 0)),
         reverse=True,
     )[:12]
     return templates.TemplateResponse("home.html", {
@@ -191,6 +210,7 @@ async def home(request: Request):
         "regions": REGIONS,
         "debt_ranges": DEBT_RANGES,
         "companies": top_companies,
+        "tiers": COMPANY_TIERS,
     })
 
 
@@ -330,19 +350,21 @@ async def company_list(
     if debt_type:
         filtered = [c for c in filtered if not c["filters"].get("debt_types") or debt_type in c["filters"]["debt_types"]]
 
-    # 정렬
-    if sort == "rating":
-        filtered.sort(key=lambda c: c.get("rating", 0), reverse=True)
-    elif sort == "review":
-        filtered.sort(key=lambda c: c.get("review_count", 0), reverse=True)
-    elif sort == "recent":
-        filtered.sort(key=lambda c: c.get("created_at", ""), reverse=True)
+    # 정렬 (등급 우선, 그 다음 선택한 정렬 기준)
+    sort_key_map = {
+        "rating": lambda c: c.get("rating", 0),
+        "review": lambda c: c.get("review_count", 0),
+        "recent": lambda c: c.get("created_at", ""),
+    }
+    sub_sort = sort_key_map.get(sort, sort_key_map["rating"])
+    filtered.sort(key=lambda c: (COMPANY_TIERS.get(c.get("tier", "free"), {}).get("sort_priority", 0), sub_sort(c)), reverse=True)
 
     return templates.TemplateResponse("company_list.html", {
         "request": request,
         "companies": filtered,
         "debt_types": DEBT_TYPES,
         "regions": REGIONS,
+        "tiers": COMPANY_TIERS,
         "selected_region": region,
         "selected_debt_type": debt_type,
         "selected_sort": sort,
@@ -361,9 +383,11 @@ async def company_detail(request: Request, company_id: str):
     specialty_labels = [DEBT_TYPES[dt] for dt in company["filters"].get("debt_types", []) if dt in DEBT_TYPES]
     region_labels = company["filters"].get("regions", [])
 
+    tier = COMPANY_TIERS.get(company.get("tier", "free"), COMPANY_TIERS["free"])
     return templates.TemplateResponse("company_detail.html", {
         "request": request,
         "company": company,
+        "tier": tier,
         "specialty_labels": specialty_labels,
         "region_labels": region_labels,
         "debt_types": DEBT_TYPES,

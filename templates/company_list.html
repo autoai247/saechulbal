@@ -62,8 +62,25 @@
     {% if companies %}
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {% for company in companies %}
-        <a href="/companies/{{ company.id }}" class="block bg-white rounded-xl shadow hover:shadow-lg transition group">
-            <div class="p-6">
+        {% set tier = tiers.get(company.get('tier', 'free'), tiers.free) %}
+        <a href="/companies/{{ company.id }}" class="block rounded-xl shadow hover:shadow-lg transition group relative
+            {% if company.tier == 'diamond' %}bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-amber-300 hover:border-amber-400
+            {% elif company.tier == 'vip' %}bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-300 hover:border-purple-400
+            {% elif company.tier == 'premium' %}bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300 hover:border-blue-400
+            {% else %}bg-white{% endif %}">
+            {% if tier.badge %}
+            <div class="absolute top-0 left-0 right-0 text-center">
+                <span class="inline-block text-xs font-bold px-3 py-0.5 rounded-b-lg
+                    {% if company.tier == 'diamond' %}bg-amber-400 text-white
+                    {% elif company.tier == 'vip' %}bg-purple-500 text-white
+                    {% elif company.tier == 'premium' %}bg-blue-500 text-white{% endif %}">
+                    {% if company.tier == 'diamond' %}인증된 최우수 업체
+                    {% elif company.tier == 'vip' %}검증된 우수 업체
+                    {% elif company.tier == 'premium' %}인증 업체{% endif %}
+                </span>
+            </div>
+            {% endif %}
+            <div class="p-6 {% if tier.badge %}pt-8{% endif %}">
                 <!-- 업체명 & 평점 -->
                 <div class="flex justify-between items-start mb-3">
                     <h3 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">{{ company.name }}</h3>

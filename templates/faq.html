@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}자주 묻는 질문 (Q&A){% endblock %}
+
+{% block body %}
+<!-- 네비게이션 -->
+<nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-primary">새출발</a>
+        <div class="space-x-4 text-sm">
+            <a href="/companies" class="text-gray-600 hover:text-primary">업체 찾기</a>
+            <a href="/faq" class="text-primary font-medium">Q&A</a>
+            <a href="/#apply" class="text-gray-600 hover:text-primary">상담 신청</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 헤더 -->
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-3xl font-bold mb-3">회생/파산 자주 묻는 질문</h1>
+        <p class="text-blue-200 text-lg">궁금한 점을 찾아보세요. 더 자세한 내용은 무료 상담을 통해 확인하실 수 있습니다.</p>
+    </div>
+</section>
+
+<!-- 카테고리 탭 -->
+<section class="bg-white border-b sticky top-0 z-10">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex overflow-x-auto gap-1 py-3" id="categoryTabs">
+            {% for cat in faq_data %}
+            <button onclick="scrollToCategory('cat-{{ loop.index0 }}')"
+                class="shrink-0 px-4 py-2 rounded-full text-sm font-medium transition
+                {% if loop.first %}bg-primary text-white{% else %}bg-gray-100 text-gray-600 hover:bg-gray-200{% endif %}">
+                {{ cat.category }}
+            </button>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- FAQ 내용 -->
+<section class="max-w-4xl mx-auto px-4 py-8 space-y-10">
+    {% for cat in faq_data %}
+    <div id="cat-{{ loop.index0 }}">
+        <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+            <span class="w-1.5 h-6 bg-primary rounded-full mr-3"></span>
+            {{ cat.category }}
+        </h2>
+        <div class="space-y-3">
+            {% for item in cat.items %}
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition">
+                    <span class="font-medium text-gray-800 pr-4">{{ item.q }}</span>
+                    <svg class="w-5 h-5 text-gray-400 shrink-0 transition-transform faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-5">
+                    <div class="border-t pt-4">
+                        <p class="text-gray-600 leading-relaxed whitespace-pre-line">{{ item.a }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- CTA -->
+<section class="bg-blue-50 py-10">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-xl font-bold mb-2">더 궁금한 점이 있으신가요?</h2>
+        <p class="text-gray-600 mb-4">전문 업체에 무료 상담을 신청하고 정확한 답변을 받으세요</p>
+        <a href="/#apply" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition">
+            무료 상담 신청하기
+        </a>
+    </div>
+</section>
+
+<!-- 푸터 -->
+<footer class="bg-gray-800 text-gray-400 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+        <p class="mb-2">새출발 | 회생/파산 전문 상담 중개 서비스</p>
+        <p>Copyright 2026. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const arrow = btn.querySelector('.faq-arrow');
+    answer.classList.toggle('hidden');
+    arrow.classList.toggle('rotate-180');
+}
+
+function scrollToCategory(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 탭 스타일 변경
+    document.querySelectorAll('#categoryTabs button').forEach(btn => {
+        btn.className = btn.className.replace('bg-primary text-white', 'bg-gray-100 text-gray-600 hover:bg-gray-200');
+    });
+    event.target.className = event.target.className.replace('bg-gray-100 text-gray-600 hover:bg-gray-200', 'bg-primary text-white');
+}
+</script>
+{% endblock %}

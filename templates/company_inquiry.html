@@ -15,367 +15,469 @@
 </nav>
 
 <!-- 헤더 -->
-<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-14">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-3xl font-bold mb-3">업체 입점 안내</h1>
-        <p class="text-blue-200 text-lg">네이버 광고보다 효율적인 상담 DB를 확보하세요</p>
+        <h1 class="text-3xl md:text-4xl font-bold mb-3">업체 입점 안내</h1>
+        <p class="text-blue-200 text-lg">네이버 광고 대비 <span class="text-white font-bold">93~97% 비용 절감</span></p>
         <p class="text-blue-300 text-sm mt-2">신청인이 직접 선택한 업체에만 DB를 제공합니다</p>
     </div>
 </section>
 
-<!-- 서비스 흐름 설명 -->
-<section class="max-w-4xl mx-auto px-4 py-10">
-    <h2 class="text-2xl font-bold text-center mb-2">서비스 이용 흐름</h2>
-    <p class="text-center text-gray-500 text-sm mb-8">신청인 주도형 매칭으로 높은 전환율을 보장합니다</p>
+<!-- 서비스 흐름 -->
+<section class="max-w-5xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold text-center mb-2">이용 흐름</h2>
+    <p class="text-center text-gray-500 text-sm mb-10">신청인이 귀사를 직접 선택 &rarr; 그때만 DB가 제공됩니다</p>
 
-    <div class="grid md:grid-cols-4 gap-4 mb-12">
-        <div class="bg-white rounded-xl shadow p-5 text-center relative">
-            <div class="w-10 h-10 bg-blue-100 text-primary font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-lg">1</div>
-            <h3 class="font-bold text-sm mb-1">상담 신청</h3>
-            <p class="text-xs text-gray-500">채무자가 이름, 연락처, 채무유형, 지역, 금액을 입력하고 상담을 신청합니다</p>
-            <div class="hidden md:block absolute top-1/2 -right-2 text-gray-300 text-xl">&rarr;</div>
+    <div class="flex flex-col md:flex-row items-stretch gap-0 mb-16">
+        <div class="flex-1 bg-white rounded-l-xl md:rounded-l-xl md:rounded-r-none shadow p-6 text-center border-b-4 border-blue-400">
+            <div class="w-12 h-12 bg-blue-100 text-primary font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-xl">1</div>
+            <h3 class="font-bold mb-1">상담 신청</h3>
+            <p class="text-sm text-gray-500">채무자가 이름, 연락처,<br>채무유형, 지역을 입력</p>
         </div>
-        <div class="bg-white rounded-xl shadow p-5 text-center relative">
-            <div class="w-10 h-10 bg-blue-100 text-primary font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-lg">2</div>
-            <h3 class="font-bold text-sm mb-1">업체 직접 선택</h3>
-            <p class="text-xs text-gray-500">신청인이 등록된 업체 목록에서 상담받고 싶은 업체를 <strong>1~5곳 직접 선택</strong>합니다</p>
-            <div class="hidden md:block absolute top-1/2 -right-2 text-gray-300 text-xl">&rarr;</div>
+        <div class="hidden md:flex items-center text-gray-300 text-2xl px-1">&rarr;</div>
+        <div class="flex-1 bg-white shadow p-6 text-center border-b-4 border-blue-500">
+            <div class="w-12 h-12 bg-blue-100 text-primary font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-xl">2</div>
+            <h3 class="font-bold mb-1">업체 직접 선택</h3>
+            <p class="text-sm text-gray-500">신청인이 업체 목록에서<br><strong class="text-primary">1~5곳을 직접 선택</strong></p>
         </div>
-        <div class="bg-white rounded-xl shadow p-5 text-center relative">
-            <div class="w-10 h-10 bg-green-100 text-green-600 font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-lg">3</div>
-            <h3 class="font-bold text-sm mb-1">DB 열람</h3>
-            <p class="text-xs text-gray-500">선택된 업체의 대시보드에 신청건이 표시되고, <strong>열람 시 1건 차감</strong>되며 연락처가 공개됩니다</p>
-            <div class="hidden md:block absolute top-1/2 -right-2 text-gray-300 text-xl">&rarr;</div>
+        <div class="hidden md:flex items-center text-gray-300 text-2xl px-1">&rarr;</div>
+        <div class="flex-1 bg-white shadow p-6 text-center border-b-4 border-blue-600">
+            <div class="w-12 h-12 bg-blue-100 text-primary font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-xl">3</div>
+            <h3 class="font-bold mb-1">DB 열람</h3>
+            <p class="text-sm text-gray-500">대시보드에서 열람 클릭 시<br><strong class="text-primary">1건 차감</strong>, 연락처 공개</p>
         </div>
-        <div class="bg-white rounded-xl shadow p-5 text-center">
-            <div class="w-10 h-10 bg-accent/20 text-accent font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-lg">4</div>
-            <h3 class="font-bold text-sm mb-1">상담 & 수임</h3>
-            <p class="text-xs text-gray-500">업체가 직접 연락하여 상담을 진행합니다. <strong>신청인이 선택한 업체</strong>이므로 전환율이 높습니다</p>
+        <div class="hidden md:flex items-center text-gray-300 text-2xl px-1">&rarr;</div>
+        <div class="flex-1 bg-white rounded-r-xl md:rounded-r-xl md:rounded-l-none shadow p-6 text-center border-b-4 border-primary">
+            <div class="w-12 h-12 bg-primary/10 text-primary font-bold rounded-full flex items-center justify-center mx-auto mb-3 text-xl">4</div>
+            <h3 class="font-bold mb-1">상담 & 수임</h3>
+            <p class="text-sm text-gray-500">직접 연락하여 상담 진행<br><strong class="text-primary">높은 수임 전환율</strong></p>
         </div>
     </div>
 
-    <!-- 핵심 차별점 -->
-    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6 mb-12">
-        <h3 class="font-bold text-blue-800 text-lg mb-4 text-center">왜 "신청인 선택형"이 중요한가?</h3>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div>
-                <p class="font-bold text-sm text-gray-700 mb-2">기존 DB 업체 (일방적 배분)</p>
-                <ul class="text-sm text-gray-600 space-y-1.5">
-                    <li class="flex items-start"><span class="text-red-500 mr-2 mt-0.5">&#10005;</span>업체가 신청인을 선택 → 신청인 입장에서 원치 않는 연락</li>
-                    <li class="flex items-start"><span class="text-red-500 mr-2 mt-0.5">&#10005;</span>같은 DB를 여러 업체에 무차별 배분</li>
-                    <li class="flex items-start"><span class="text-red-500 mr-2 mt-0.5">&#10005;</span>전환율 낮음 → 업체 불만 → 환불 요청 증가</li>
-                </ul>
+    <!-- 왜 신청인 선택형인가 -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
+        <div class="bg-primary text-white px-6 py-4">
+            <h3 class="font-bold text-lg">왜 "신청인 선택형"이 더 좋은가?</h3>
+        </div>
+        <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x">
+            <div class="p-6">
+                <p class="font-bold text-gray-400 text-sm mb-3 uppercase tracking-wider">기존 DB 업체</p>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-red-100 text-red-500 rounded-full flex items-center justify-center shrink-0 text-sm font-bold mt-0.5">X</span>
+                        <p class="text-sm text-gray-600">업체가 일방적으로 DB를 받음<br><span class="text-gray-400">→ 신청인은 원치 않는 연락을 받음</span></p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-red-100 text-red-500 rounded-full flex items-center justify-center shrink-0 text-sm font-bold mt-0.5">X</span>
+                        <p class="text-sm text-gray-600">같은 DB를 5~10곳에 무차별 배분<br><span class="text-gray-400">→ 과당 경쟁, 낮은 전환율</span></p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-red-100 text-red-500 rounded-full flex items-center justify-center shrink-0 text-sm font-bold mt-0.5">X</span>
+                        <p class="text-sm text-gray-600">결과: 환불 요청 빈발, 업체 불만</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p class="font-bold text-sm text-primary mb-2">새출발 (신청인 선택형)</p>
-                <ul class="text-sm text-gray-600 space-y-1.5">
-                    <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">&#10003;</span><strong>신청인이 직접 귀사를 선택</strong> → 상담 의향이 이미 확보된 상태</li>
-                    <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">&#10003;</span>최대 5곳만 선택 → 경쟁 제한, DB 품질 보장</li>
-                    <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">&#10003;</span>열람 전까지 비용 0원 → 열람 시에만 1건 차감</li>
-                </ul>
+            <div class="p-6 bg-blue-50/50">
+                <p class="font-bold text-primary text-sm mb-3 uppercase tracking-wider">새출발</p>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-blue-100 text-primary rounded-full flex items-center justify-center shrink-0 text-sm font-bold mt-0.5">O</span>
+                        <p class="text-sm text-gray-700"><strong>신청인이 직접 귀사를 선택</strong><br><span class="text-gray-500">→ 상담 의향이 확보된 상태에서 시작</span></p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-blue-100 text-primary rounded-full flex items-center justify-center shrink-0 text-sm font-bold mt-0.5">O</span>
+                        <p class="text-sm text-gray-700"><strong>최대 5곳만 선택</strong> 가능<br><span class="text-gray-500">→ 경쟁 제한, DB 품질 보장</span></p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-blue-100 text-primary rounded-full flex items-center justify-center shrink-0 text-sm font-bold mt-0.5">O</span>
+                        <p class="text-sm text-gray-700"><strong>열람 전까지 비용 0원</strong><br><span class="text-gray-500">→ 열람 버튼을 눌러야 1건 차감</span></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 네이버 광고 vs 새출발 상세 비교 -->
-    <h2 class="text-2xl font-bold text-center mb-2">네이버 키워드 광고 vs 새출발</h2>
-    <p class="text-center text-gray-500 text-sm mb-6">다중 검증된 업계 데이터 기반 비교</p>
+    <!-- 광고 비교: 번호 체계 -->
+    <h2 class="text-2xl font-bold text-center mb-2">광고 비용 비교</h2>
+    <p class="text-center text-gray-500 text-sm mb-8">각 항목에 번호를 매겨 ROI 계산의 근거로 사용합니다</p>
 
-    <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <!-- 네이버 광고 -->
-        <div class="bg-white rounded-xl shadow border-2 border-red-100 p-6">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                    <span class="text-red-600 font-bold text-lg">N</span>
-                </div>
-                <div>
-                    <h3 class="font-bold text-gray-800">네이버 키워드 광고</h3>
-                    <p class="text-xs text-gray-400">클릭 과금형 (CPC)</p>
-                </div>
-            </div>
-            <div class="space-y-3 text-sm">
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">대표 키워드 CPC</span>
-                    <span class="font-bold text-red-600">7~10만원/클릭</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">롱테일 키워드 CPC</span>
-                    <span class="font-bold">1~5만원/클릭</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">클릭 &rarr; 상담 전환율</span>
-                    <span class="font-bold">8~13%</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">상담 1건 확보 비용</span>
-                    <span class="font-bold text-red-600">약 50~70만원</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">상담 &rarr; 수임 전환율</span>
-                    <span class="font-bold">25~35%</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">수임 1건 확보 비용</span>
-                    <span class="font-bold text-red-600">약 150~280만원</span>
-                </div>
-                <div class="flex justify-between py-2">
-                    <span class="text-gray-600">월 평균 광고비</span>
-                    <span class="font-bold">1,500~3,500만원</span>
-                </div>
-            </div>
-            <div class="mt-4 bg-red-50 rounded-lg p-3 text-xs text-red-700">
-                <p class="font-medium mb-1">데이터 출처</p>
-                <p>CPC: 네이버 광고 시스템 실측, 법률신문/서울경제 보도</p>
-                <p>전환율: LocaliQ 2024, Practice Proof 2025, WordStream 2024</p>
-            </div>
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+        <div class="overflow-x-auto">
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th class="py-4 px-4 text-left bg-gray-50 text-gray-500 text-sm font-medium w-12">#</th>
+                    <th class="py-4 px-4 text-left bg-gray-50 text-gray-500 text-sm font-medium">항목</th>
+                    <th class="py-4 px-5 text-center bg-emerald-50 text-sm font-bold" style="color:#03C75A;">네이버 키워드 광고</th>
+                    <th class="py-4 px-5 text-center bg-blue-50 text-sm font-bold text-primary">새출발</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y">
+                <tr>
+                    <td class="py-4 px-4"><span class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-xs font-bold text-gray-500">1</span></td>
+                    <td class="py-4 px-4 font-medium text-sm">클릭당 비용 (CPC)</td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-lg" style="color:#03C75A;">7~10만원</span><br><span class="text-xs text-gray-400">"개인회생" 기준</span></td>
+                    <td class="py-4 px-5 text-center text-gray-400 text-sm">해당 없음</td>
+                </tr>
+                <tr>
+                    <td class="py-4 px-4"><span class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-xs font-bold text-gray-500">2</span></td>
+                    <td class="py-4 px-4 font-medium text-sm">클릭 &rarr; 상담 전환율</td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-lg" style="color:#03C75A;">8~13%</span></td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-lg text-primary">100%</span><br><span class="text-xs text-blue-400">이미 상담 신청 완료</span></td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="py-4 px-4"><span class="w-7 h-7 bg-gray-200 rounded-full flex items-center justify-center text-xs font-bold text-gray-600">3</span></td>
+                    <td class="py-4 px-4 font-bold text-sm">상담 DB 1건 확보 비용</td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-xl" style="color:#03C75A;">50~70만원</span><br><span class="text-xs text-gray-400">#1 &divide; #2 = CPC &divide; 전환율</span></td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-xl text-primary">1.9~3만원</span><br><span class="text-xs text-blue-400">건당 단가 그대로</span></td>
+                </tr>
+                <tr>
+                    <td class="py-4 px-4"><span class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-xs font-bold text-gray-500">4</span></td>
+                    <td class="py-4 px-4 font-medium text-sm">상담 &rarr; 수임 전환율</td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-lg">25~35%</span></td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-lg">25~35%</span><br><span class="text-xs text-blue-400">동일 (업계 평균)</span></td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="py-4 px-4"><span class="w-7 h-7 bg-gray-200 rounded-full flex items-center justify-center text-xs font-bold text-gray-600">5</span></td>
+                    <td class="py-4 px-4 font-bold text-sm">수임 1건 확보 비용</td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-xl" style="color:#03C75A;">150~280만원</span><br><span class="text-xs text-gray-400">#3 &divide; #4</span></td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-xl text-primary">5~12만원</span><br><span class="text-xs text-blue-400">#3 &divide; #4</span></td>
+                </tr>
+                <tr>
+                    <td class="py-4 px-4"><span class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-xs font-bold text-gray-500">6</span></td>
+                    <td class="py-4 px-4 font-medium text-sm">수임료 (개인회생 평균)</td>
+                    <td class="py-4 px-5 text-center" colspan="2"><span class="font-bold text-lg">200~300만원</span></td>
+                </tr>
+                <tr class="bg-amber-50">
+                    <td class="py-4 px-4"><span class="w-7 h-7 bg-amber-200 rounded-full flex items-center justify-center text-xs font-bold text-amber-700">7</span></td>
+                    <td class="py-4 px-4 font-bold">수임 1건당 순이익</td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-lg text-gray-500">-80만 ~ +150만원</span><br><span class="text-xs text-gray-400">#6 - #5 (적자 가능)</span></td>
+                    <td class="py-4 px-5 text-center"><span class="font-bold text-lg text-primary">+188~295만원</span><br><span class="text-xs text-blue-400">#6 - #5</span></td>
+                </tr>
+            </tbody>
+        </table>
         </div>
+    </div>
 
-        <!-- 새출발 -->
-        <div class="bg-white rounded-xl shadow border-2 border-green-200 p-6">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <span class="text-green-600 font-bold text-lg">S</span>
+    <!-- 비용 절감 비주얼 -->
+    <div class="grid md:grid-cols-2 gap-6 mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <p class="text-sm text-gray-500 mb-2">상담 DB 1건 확보 비용 <span class="text-xs text-gray-400">(#3)</span></p>
+            <div class="flex items-end justify-center gap-8 mb-4" style="height:120px;">
+                <div class="flex flex-col items-center">
+                    <span class="text-xs text-gray-400 mb-1">네이버</span>
+                    <div class="w-16 rounded-t-lg flex items-end justify-center" style="height:100px; background:#03C75A;">
+                        <span class="text-white font-bold text-xs pb-2">50~70만</span>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-bold text-gray-800">새출발 패키지</h3>
-                    <p class="text-xs text-gray-400">건당 과금형 (신청인 선택 DB)</p>
-                </div>
-            </div>
-            <div class="space-y-3 text-sm">
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">DB 건당 단가</span>
-                    <span class="font-bold text-green-600">1.9~3만원</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">DB 품질</span>
-                    <span class="font-bold text-green-600">상담 신청 + 업체 선택 완료</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">클릭 &rarr; 상담 전환</span>
-                    <span class="font-bold text-green-600">이미 완료 (100%)</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">상담 1건 확보 비용</span>
-                    <span class="font-bold text-green-600">1.9~3만원 (=건당 단가)</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">상담 &rarr; 수임 전환율</span>
-                    <span class="font-bold">25~35%</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">수임 1건 확보 비용</span>
-                    <span class="font-bold text-green-600">약 5.4~12만원</span>
-                </div>
-                <div class="flex justify-between py-2">
-                    <span class="text-gray-600">네이버 대비 절감</span>
-                    <span class="font-bold text-green-600">93~97%</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-xs text-gray-400 mb-1">새출발</span>
+                    <div class="w-16 bg-primary rounded-t-lg flex items-end justify-center" style="height:6px;">
+                    </div>
+                    <span class="text-primary font-bold text-xs mt-1">2~3만</span>
                 </div>
             </div>
-            <div class="mt-4 bg-green-50 rounded-lg p-3 text-xs text-green-700">
-                <p class="font-medium mb-1">핵심 차이</p>
-                <p>네이버는 "클릭 &rarr; 상담 전환"에 비용이 집중됩니다.<br>
-                새출발은 <strong>이미 상담을 신청한 사람</strong>의 DB이므로 이 단계를 건너뜁니다.<br>
-                업체는 상담 &rarr; 수임 전환에만 집중하면 됩니다.</p>
+            <p class="text-2xl font-bold text-primary">최대 97% 절감</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <p class="text-sm text-gray-500 mb-2">수임 1건당 순이익 <span class="text-xs text-gray-400">(#7)</span></p>
+            <div class="flex items-center justify-center gap-8 my-6">
+                <div class="text-center">
+                    <span class="text-xs text-gray-400 block mb-2">네이버</span>
+                    <span class="text-3xl font-bold text-gray-400">&#177;0</span>
+                    <p class="text-xs text-gray-400 mt-1">본전~소폭 이익</p>
+                </div>
+                <div class="text-4xl text-gray-300">vs</div>
+                <div class="text-center">
+                    <span class="text-xs text-gray-400 block mb-2">새출발</span>
+                    <span class="text-3xl font-bold text-primary">+290만</span>
+                    <p class="text-xs text-blue-400 mt-1">수임료 거의 그대로 이익</p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- ROI 시뮬레이션 -->
-    <div class="bg-white rounded-xl shadow p-6 mb-8">
-        <h3 class="font-bold text-lg mb-4 text-center">ROI 시뮬레이션 (보수적 기준)</h3>
-        <p class="text-center text-xs text-gray-400 mb-6">수임료 평균 200~300만원 / 수임 전환율 25~35% 기준</p>
-        <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-            <thead>
-                <tr class="border-b-2 bg-gray-50">
-                    <th class="py-3 px-3 text-left"></th>
-                    <th class="py-3 px-3 text-center text-red-600">네이버 직접 광고</th>
-                    <th class="py-3 px-3 text-center text-green-600">새출발 (기본 패키지)</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y">
-                <tr>
-                    <td class="py-3 px-3 font-medium">투자 비용</td>
-                    <td class="py-3 px-3 text-center">2,000만원/월</td>
-                    <td class="py-3 px-3 text-center">50만원 (20건)</td>
-                </tr>
-                <tr>
-                    <td class="py-3 px-3 font-medium">확보 상담 DB</td>
-                    <td class="py-3 px-3 text-center">약 20~30건</td>
-                    <td class="py-3 px-3 text-center">20건</td>
-                </tr>
-                <tr>
-                    <td class="py-3 px-3 font-medium">예상 수임 건수</td>
-                    <td class="py-3 px-3 text-center">5~8건</td>
-                    <td class="py-3 px-3 text-center">5~7건</td>
-                </tr>
-                <tr>
-                    <td class="py-3 px-3 font-medium">예상 수임 매출</td>
-                    <td class="py-3 px-3 text-center">1,000~2,400만원</td>
-                    <td class="py-3 px-3 text-center">1,000~2,100만원</td>
-                </tr>
-                <tr class="bg-yellow-50">
-                    <td class="py-3 px-3 font-bold">ROI</td>
-                    <td class="py-3 px-3 text-center font-bold text-red-600">0.5~1.2배</td>
-                    <td class="py-3 px-3 text-center font-bold text-green-600">20~42배</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-5">
+            <h3 class="font-bold text-xl">ROI 시뮬레이션</h3>
+            <p class="text-blue-200 text-sm mt-1">ROI (Return on Investment) = 투자 대비 수익 배율. 1배 = 본전, 2배 = 투자금의 2배 회수</p>
         </div>
-        <p class="text-xs text-gray-400 mt-4 text-center">* 수임료: 개인회생 200~300만원 기준 (대한법률구조공단/법률신문 참고)<br>
-        * 네이버 광고 전환율: LocaliQ 2024 Legal Services 데이터 (클릭→상담 10%, 상담→수임 30%)<br>
-        * 새출발 DB는 이미 상담 신청 완료 상태이므로 상담→수임 전환율만 적용</p>
-    </div>
-
-    <!-- 전환율 퍼널 상세 근거 -->
-    <div class="bg-white rounded-xl shadow p-6 mb-8">
-        <h3 class="font-bold text-lg mb-4">전환율 데이터 근거 (다중 검증)</h3>
-        <div class="space-y-4">
-            <div class="border-l-4 border-blue-400 pl-4">
-                <p class="font-bold text-sm text-gray-700">클릭 &rarr; 상담문의 전환율: 8~13.56%</p>
-                <ul class="text-xs text-gray-500 mt-1 space-y-0.5">
-                    <li>LocaliQ 2024 Legal Services: <strong>13.56%</strong> (Google Ads)</li>
-                    <li>WordStream 2024 Legal: <strong>7.0%</strong> (전체 법률 평균)</li>
-                    <li>Practice Proof 2025 Legal: <strong>8.56%</strong></li>
-                    <li>First Page Sage 2025: <strong>7.1%</strong></li>
-                    <li class="text-gray-700 font-medium">보수적 채택: 10%</li>
-                </ul>
+        <div class="p-6">
+            <p class="text-sm text-gray-500 mb-4">위 비교표의 번호(#)를 근거로 계산합니다.</p>
+            <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b-2">
+                        <th class="py-3 px-4 text-left text-gray-500">항목</th>
+                        <th class="py-3 px-4 text-center" style="color:#03C75A;">네이버 광고</th>
+                        <th class="py-3 px-4 text-center text-primary">새출발 (기본 패키지)</th>
+                        <th class="py-3 px-4 text-left text-gray-400 text-xs">근거</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    <tr>
+                        <td class="py-3 px-4 font-medium">투자 비용</td>
+                        <td class="py-3 px-4 text-center font-bold">2,000만원/월</td>
+                        <td class="py-3 px-4 text-center font-bold">50만원</td>
+                        <td class="py-3 px-4 text-xs text-gray-400">패키지 가격</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4 font-medium">확보 상담 DB</td>
+                        <td class="py-3 px-4 text-center">20~30건</td>
+                        <td class="py-3 px-4 text-center">20건</td>
+                        <td class="py-3 px-4 text-xs text-gray-400">#1, #2 적용</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4 font-medium">예상 수임</td>
+                        <td class="py-3 px-4 text-center">5~8건</td>
+                        <td class="py-3 px-4 text-center">5~7건</td>
+                        <td class="py-3 px-4 text-xs text-gray-400">#4 적용 (25~35%)</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4 font-medium">예상 매출</td>
+                        <td class="py-3 px-4 text-center">1,000~2,400만원</td>
+                        <td class="py-3 px-4 text-center">1,000~2,100만원</td>
+                        <td class="py-3 px-4 text-xs text-gray-400">#6 적용 (200~300만)</td>
+                    </tr>
+                    <tr class="bg-blue-50">
+                        <td class="py-4 px-4 font-bold text-lg">ROI</td>
+                        <td class="py-4 px-4 text-center">
+                            <span class="text-2xl font-bold" style="color:#03C75A;">0.5~1.2배</span>
+                            <p class="text-xs text-gray-400 mt-1">본전~소폭 이익</p>
+                        </td>
+                        <td class="py-4 px-4 text-center">
+                            <span class="text-2xl font-bold text-primary">20~42배</span>
+                            <p class="text-xs text-blue-400 mt-1">투자금 대비 압도적 수익</p>
+                        </td>
+                        <td class="py-4 px-4 text-xs text-gray-400">매출 &divide; 투자비용</td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
-            <div class="border-l-4 border-green-400 pl-4">
-                <p class="font-bold text-sm text-gray-700">상담문의 &rarr; 상담진행: 60~80%</p>
-                <ul class="text-xs text-gray-500 mt-1 space-y-0.5">
-                    <li>Rocket Clicks Legal Campaign 사례: 60~80%</li>
-                    <li>No-show율: 약 15%</li>
-                    <li class="text-gray-700 font-medium">보수적 채택: 70%</li>
-                </ul>
-            </div>
-            <div class="border-l-4 border-purple-400 pl-4">
-                <p class="font-bold text-sm text-gray-700">상담 &rarr; 수임계약: 25~50%</p>
-                <ul class="text-xs text-gray-500 mt-1 space-y-0.5">
-                    <li>National Law Review: 30~50% (유료 상담 기준)</li>
-                    <li>한국 변호사중개센터: 3~5% (무료 상담 한정, 극히 낮음)</li>
-                    <li>회생/파산 특화: 상위 (긴급성 높아 결정 빠름)</li>
-                    <li class="text-gray-700 font-medium">보수적 채택: 25~35%</li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3">
-            <p class="text-xs text-amber-800 font-medium">새출발 DB의 특성</p>
-            <p class="text-xs text-amber-700 mt-1">새출발의 DB는 <strong>상담 신청이 완료된 상태</strong>입니다. 일반 광고의 "클릭 &rarr; 상담문의" 전환 단계가 이미 완료되었으므로, 업체는 <strong>상담진행 &rarr; 수임계약</strong> 단계에만 집중하면 됩니다. 또한, 신청인이 귀사를 직접 선택했기 때문에 일반 DB 대비 상담 의향이 더 높습니다.</p>
         </div>
     </div>
 
-    <!-- 네이버 CPC 키워드 참고 -->
-    <div class="bg-white rounded-xl shadow p-6 mb-8">
-        <h3 class="font-bold text-lg mb-4">주요 키워드별 클릭당 단가 (CPC) 참고</h3>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div>
-                <p class="font-bold text-sm text-gray-700 mb-2">대표 키워드 (CPC 5~10만원)</p>
-                <div class="space-y-1">
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">개인회생</span><span class="font-bold text-red-600">7~10만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">개인파산</span><span class="font-bold text-red-600">5~8만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">개인회생 신청</span><span class="font-bold text-red-600">6~10만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">개인회생 변호사</span><span class="font-bold text-red-600">7~10만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5"><span class="text-gray-600">개인회생 법무사</span><span class="font-bold text-red-600">5~8만원</span></div>
-                </div>
+    <!-- 전환율 근거 (카드형) -->
+    <h2 class="text-2xl font-bold text-center mb-2">데이터 근거</h2>
+    <p class="text-center text-gray-500 text-sm mb-8">위 비교표에 사용된 수치의 출처입니다</p>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <!-- 근거 1: CPC -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div class="px-5 py-4" style="background: linear-gradient(135deg, #03C75A 0%, #02b351 100%);">
+                <p class="text-white text-xs font-medium opacity-80">비교표 #1</p>
+                <p class="text-white font-bold text-lg">클릭당 비용 (CPC)</p>
             </div>
-            <div>
-                <p class="font-bold text-sm text-gray-700 mb-2">롱테일 키워드 (CPC 1~5만원)</p>
-                <div class="space-y-1">
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">개인회생 비용</span><span class="font-bold">3~6만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">개인회생 수임료</span><span class="font-bold">4~7만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">개인회생 자격조건</span><span class="font-bold">3~5만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5 border-b"><span class="text-gray-600">빚 탕감</span><span class="font-bold">2~4만원</span></div>
-                    <div class="flex justify-between text-sm py-1.5"><span class="text-gray-600">급여 압류 해제</span><span class="font-bold">2~4만원</span></div>
+            <div class="p-5">
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-sm py-1 border-b"><span class="text-gray-600">개인회생</span><span class="font-bold">7~10만원</span></div>
+                    <div class="flex justify-between text-sm py-1 border-b"><span class="text-gray-600">개인파산</span><span class="font-bold">5~8만원</span></div>
+                    <div class="flex justify-between text-sm py-1 border-b"><span class="text-gray-600">개인회생 변호사</span><span class="font-bold">7~10만원</span></div>
+                    <div class="flex justify-between text-sm py-1 border-b"><span class="text-gray-600">개인회생 비용</span><span class="font-bold">3~6만원</span></div>
+                    <div class="flex justify-between text-sm py-1"><span class="text-gray-600">빚 탕감</span><span class="font-bold">2~4만원</span></div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-3">
+                    <p class="text-xs text-gray-500"><strong>출처:</strong> 네이버 광고 시스템 실측,<br>법률신문/서울경제 보도</p>
                 </div>
             </div>
         </div>
-        <p class="text-xs text-gray-400 mt-4">출처: 네이버 광고 시스템 실측 데이터, 법률신문 및 서울경제 보도 참고</p>
+
+        <!-- 근거 2: 클릭→상담 전환율 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-5 py-4">
+                <p class="text-white text-xs font-medium opacity-80">비교표 #2</p>
+                <p class="text-white font-bold text-lg">클릭 &rarr; 상담 전환율</p>
+            </div>
+            <div class="p-5">
+                <div class="space-y-3 mb-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">LocaliQ 2024</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2"><div class="bg-indigo-500 rounded-full h-2" style="width:100%"></div></div>
+                            <span class="font-bold text-sm">13.56%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">Practice Proof '25</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2"><div class="bg-indigo-500 rounded-full h-2" style="width:63%"></div></div>
+                            <span class="font-bold text-sm">8.56%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">WordStream '24</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2"><div class="bg-indigo-500 rounded-full h-2" style="width:52%"></div></div>
+                            <span class="font-bold text-sm">7.0%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">First Page Sage '25</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2"><div class="bg-indigo-500 rounded-full h-2" style="width:52%"></div></div>
+                            <span class="font-bold text-sm">7.1%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-indigo-50 rounded-lg p-3 text-center">
+                    <p class="text-xs text-indigo-600">보수적 채택</p>
+                    <p class="text-xl font-bold text-indigo-700">10%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 근거 3: 상담→수임 전환율 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-4">
+                <p class="text-white text-xs font-medium opacity-80">비교표 #4</p>
+                <p class="text-white font-bold text-lg">상담 &rarr; 수임 전환율</p>
+            </div>
+            <div class="p-5">
+                <div class="space-y-3 mb-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">National Law Review</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2"><div class="bg-amber-500 rounded-full h-2" style="width:100%"></div></div>
+                            <span class="font-bold text-sm">30~50%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">Rocket Clicks 사례</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2"><div class="bg-amber-500 rounded-full h-2" style="width:70%"></div></div>
+                            <span class="font-bold text-sm">25~35%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600 line-through">변호사중개센터</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2"><div class="bg-gray-400 rounded-full h-2" style="width:10%"></div></div>
+                            <span class="font-bold text-sm text-gray-400">3~5%</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-400 mb-3">* 변호사중개센터는 무료상담 한정으로 극히 낮음 (제외)</p>
+                <div class="bg-amber-50 rounded-lg p-3 text-center">
+                    <p class="text-xs text-amber-600">보수적 채택</p>
+                    <p class="text-xl font-bold text-amber-700">25~35%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 핵심 포인트 배너 -->
+    <div class="bg-gradient-to-r from-primary to-blue-700 rounded-2xl p-8 text-white text-center mb-16">
+        <p class="text-blue-200 text-sm mb-2">새출발 DB의 핵심</p>
+        <p class="text-2xl md:text-3xl font-bold mb-3">클릭 &rarr; 상담 전환 단계를 건너뜁니다</p>
+        <p class="text-blue-200 max-w-2xl mx-auto">네이버 광고는 "클릭 &rarr; 상담"에 비용의 대부분이 소모됩니다.<br>새출발은 <strong class="text-white">이미 상담을 신청한 사람</strong>의 DB이므로,<br>업체는 <strong class="text-white">상담 &rarr; 수임</strong>에만 집중하면 됩니다.</p>
     </div>
 
     <!-- 패키지 요금 -->
-    <div class="bg-white rounded-xl shadow p-8 mb-8">
-        <h2 class="text-xl font-bold mb-2 text-center">패키지 요금</h2>
-        <p class="text-center text-sm text-gray-500 mb-6">건수만큼 사용하는 단순한 구조. 기간 제한 없음.</p>
+    <h2 class="text-2xl font-bold text-center mb-2">패키지 요금</h2>
+    <p class="text-center text-gray-500 text-sm mb-8">건수만큼 사용. 기간 제한 없음.</p>
+
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
         <div class="overflow-x-auto">
-        <table class="w-full text-sm mb-6">
+        <table class="w-full text-sm">
             <thead>
                 <tr class="border-b-2">
-                    <th class="py-3 px-3 text-left"></th>
-                    <th class="py-3 px-3 text-center">스타터</th>
-                    <th class="py-3 px-3 text-center">기본</th>
-                    <th class="py-3 px-3 text-center bg-blue-50 text-blue-700">성장</th>
-                    <th class="py-3 px-3 text-center">프로</th>
-                    <th class="py-3 px-3 text-center">엔터프라이즈</th>
+                    <th class="py-4 px-4 text-left bg-gray-50"></th>
+                    <th class="py-4 px-4 text-center bg-gray-50">스타터</th>
+                    <th class="py-4 px-4 text-center bg-gray-50">기본</th>
+                    <th class="py-4 px-4 text-center bg-blue-50 text-primary font-bold">성장 <span class="text-xs bg-primary text-white px-2 py-0.5 rounded-full ml-1">인기</span></th>
+                    <th class="py-4 px-4 text-center bg-gray-50">프로</th>
+                    <th class="py-4 px-4 text-center bg-gray-50">엔터프라이즈</th>
                 </tr>
             </thead>
             <tbody class="divide-y">
                 <tr>
-                    <td class="py-3 px-3 font-medium">금액</td>
-                    <td class="py-3 px-3 text-center">30만원</td>
-                    <td class="py-3 px-3 text-center">50만원</td>
-                    <td class="py-3 px-3 text-center bg-blue-50 font-bold text-primary">90만원</td>
-                    <td class="py-3 px-3 text-center">150만원</td>
-                    <td class="py-3 px-3 text-center">250만원</td>
+                    <td class="py-3 px-4 font-medium">금액</td>
+                    <td class="py-3 px-4 text-center font-bold">30만원</td>
+                    <td class="py-3 px-4 text-center font-bold">50만원</td>
+                    <td class="py-3 px-4 text-center bg-blue-50 font-bold text-primary text-lg">90만원</td>
+                    <td class="py-3 px-4 text-center font-bold">150만원</td>
+                    <td class="py-3 px-4 text-center font-bold">250만원</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-3 font-medium">제공 건수</td>
-                    <td class="py-3 px-3 text-center">10건</td>
-                    <td class="py-3 px-3 text-center">20건</td>
-                    <td class="py-3 px-3 text-center bg-blue-50 font-bold">40건</td>
-                    <td class="py-3 px-3 text-center">70건</td>
-                    <td class="py-3 px-3 text-center">130건</td>
+                    <td class="py-3 px-4 font-medium">제공 건수</td>
+                    <td class="py-3 px-4 text-center">10건</td>
+                    <td class="py-3 px-4 text-center">20건</td>
+                    <td class="py-3 px-4 text-center bg-blue-50 font-bold text-lg">40건</td>
+                    <td class="py-3 px-4 text-center">70건</td>
+                    <td class="py-3 px-4 text-center">130건</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-3 font-medium">건당 단가</td>
-                    <td class="py-3 px-3 text-center text-primary font-bold">30,000원</td>
-                    <td class="py-3 px-3 text-center text-primary font-bold">25,000원</td>
-                    <td class="py-3 px-3 text-center bg-blue-50 text-primary font-bold">22,500원</td>
-                    <td class="py-3 px-3 text-center text-primary font-bold">21,429원</td>
-                    <td class="py-3 px-3 text-center text-primary font-bold">19,231원</td>
+                    <td class="py-3 px-4 font-medium">건당 단가</td>
+                    <td class="py-3 px-4 text-center text-primary font-bold">30,000원</td>
+                    <td class="py-3 px-4 text-center text-primary font-bold">25,000원</td>
+                    <td class="py-3 px-4 text-center bg-blue-50 text-primary font-bold">22,500원</td>
+                    <td class="py-3 px-4 text-center text-primary font-bold">21,429원</td>
+                    <td class="py-3 px-4 text-center text-primary font-bold">19,231원</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-3 font-medium">예상 수임 건수</td>
-                    <td class="py-3 px-3 text-center text-gray-500">2~3건</td>
-                    <td class="py-3 px-3 text-center text-gray-500">5~7건</td>
-                    <td class="py-3 px-3 text-center bg-blue-50 text-gray-700 font-medium">10~14건</td>
-                    <td class="py-3 px-3 text-center text-gray-500">17~24건</td>
-                    <td class="py-3 px-3 text-center text-gray-500">32~45건</td>
+                    <td class="py-3 px-4 font-medium">예상 수임</td>
+                    <td class="py-3 px-4 text-center text-gray-500">2~3건</td>
+                    <td class="py-3 px-4 text-center text-gray-500">5~7건</td>
+                    <td class="py-3 px-4 text-center bg-blue-50 font-medium">10~14건</td>
+                    <td class="py-3 px-4 text-center text-gray-500">17~24건</td>
+                    <td class="py-3 px-4 text-center text-gray-500">32~45건</td>
                 </tr>
-                <tr class="bg-green-50">
-                    <td class="py-3 px-3 font-medium text-green-700">예상 수임 매출</td>
-                    <td class="py-3 px-3 text-center text-green-700 font-bold">400~900만원</td>
-                    <td class="py-3 px-3 text-center text-green-700 font-bold">1,000~2,100만원</td>
-                    <td class="py-3 px-3 text-center text-green-700 font-bold">2,000~4,200만원</td>
-                    <td class="py-3 px-3 text-center text-green-700 font-bold">3,400~7,200만원</td>
-                    <td class="py-3 px-3 text-center text-green-700 font-bold">6,400~1.3억원</td>
+                <tr class="bg-blue-50/50">
+                    <td class="py-3 px-4 font-bold text-primary">예상 매출</td>
+                    <td class="py-3 px-4 text-center font-bold text-primary">400~900만</td>
+                    <td class="py-3 px-4 text-center font-bold text-primary">1,000~2,100만</td>
+                    <td class="py-3 px-4 text-center bg-blue-50 font-bold text-primary text-lg">2,000~4,200만</td>
+                    <td class="py-3 px-4 text-center font-bold text-primary">3,400~7,200만</td>
+                    <td class="py-3 px-4 text-center font-bold text-primary">6,400만~1.3억</td>
                 </tr>
             </tbody>
         </table>
         </div>
-        <p class="text-xs text-gray-400 text-center">* 수임 전환율 25~35%, 수임료 평균 200~300만원 기준 보수적 추정<br>* 기간 제한 없음 - 건수를 다 쓸 때까지 유효</p>
+        <div class="px-6 py-3 bg-gray-50 text-xs text-gray-400">
+            * 수임 전환율 25~35% (#4), 수임료 200~300만원 (#6) 기준 &nbsp;|&nbsp; 기간 제한 없음
+        </div>
     </div>
 
     <!-- 환불 정책 -->
-    <div class="bg-white rounded-xl shadow p-6 mb-12">
-        <h3 class="font-bold text-lg mb-4">환불 정책</h3>
-        <div class="grid md:grid-cols-2 gap-6 text-sm">
-            <div>
-                <p class="font-medium text-green-700 mb-2">환불 가능 사유</p>
-                <ul class="space-y-1.5 text-gray-600">
-                    <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span>연락 불가 (48시간 내 3회 시도)</li>
-                    <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span>중복 신청 (7일 내 동일인)</li>
-                    <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span>허위 정보 (이름/번호 불일치)</li>
-                </ul>
-                <p class="text-xs text-gray-400 mt-2">승인 시 1건이 복원됩니다</p>
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
+        <div class="bg-gray-800 text-white px-6 py-4">
+            <h3 class="font-bold text-lg">환불 정책</h3>
+        </div>
+        <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x">
+            <div class="p-6">
+                <p class="font-bold text-primary mb-3">환불 가능 (1건 복원)</p>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-blue-100 text-primary rounded-full flex items-center justify-center shrink-0 text-sm font-bold">O</span>
+                        <div><p class="text-sm font-medium">연락 불가</p><p class="text-xs text-gray-400">48시간 내 3회 시도 후에도 연결 안 됨</p></div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-blue-100 text-primary rounded-full flex items-center justify-center shrink-0 text-sm font-bold">O</span>
+                        <div><p class="text-sm font-medium">중복 신청</p><p class="text-xs text-gray-400">7일 내 동일인 중복</p></div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-blue-100 text-primary rounded-full flex items-center justify-center shrink-0 text-sm font-bold">O</span>
+                        <div><p class="text-sm font-medium">허위 정보</p><p class="text-xs text-gray-400">이름/번호 불일치</p></div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p class="font-medium text-red-600 mb-2">환불 불가 사유</p>
-                <ul class="space-y-1.5 text-gray-600">
-                    <li class="flex items-start"><span class="text-red-400 mr-2">&#10005;</span>통화 연결 후 수임 실패</li>
-                    <li class="flex items-start"><span class="text-red-400 mr-2">&#10005;</span>타 업체에서 수임 완료</li>
-                    <li class="flex items-start"><span class="text-red-400 mr-2">&#10005;</span>열람 후 7일 경과</li>
-                </ul>
+            <div class="p-6">
+                <p class="font-bold text-red-500 mb-3">환불 불가</p>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-red-100 text-red-500 rounded-full flex items-center justify-center shrink-0 text-sm font-bold">X</span>
+                        <div><p class="text-sm font-medium">통화 후 수임 실패</p><p class="text-xs text-gray-400">연결은 됐지만 계약 불성사</p></div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-red-100 text-red-500 rounded-full flex items-center justify-center shrink-0 text-sm font-bold">X</span>
+                        <div><p class="text-sm font-medium">타 업체 수임 완료</p><p class="text-xs text-gray-400">다른 업체에서 먼저 계약</p></div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 bg-red-100 text-red-500 rounded-full flex items-center justify-center shrink-0 text-sm font-bold">X</span>
+                        <div><p class="text-sm font-medium">열람 후 7일 경과</p><p class="text-xs text-gray-400">환불 신청 기간 초과</p></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -386,12 +488,12 @@
             <h2 class="text-xl font-bold text-center mb-6">입점 문의하기</h2>
 
             {% if success %}
-            <div class="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                <svg class="w-12 h-12 text-green-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+                <svg class="w-12 h-12 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                <p class="font-bold text-green-800 mb-1">문의가 접수되었습니다</p>
-                <p class="text-sm text-green-600">담당자가 확인 후 빠르게 연락드리겠습니다.</p>
+                <p class="font-bold text-primary mb-1">문의가 접수되었습니다</p>
+                <p class="text-sm text-blue-600">담당자가 확인 후 빠르게 연락드리겠습니다.</p>
             </div>
             {% else %}
 

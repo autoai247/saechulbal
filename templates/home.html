@@ -24,9 +24,9 @@
                 <p class="text-blue-200 text-sm">신청 후 원하는 업체를 직접 선택하세요. 선택한 업체에서만 연락드립니다.</p>
             </div>
             <div class="flex gap-3 mt-4 md:mt-0">
-                <a href="#apply" class="bg-accent hover:bg-emerald-600 text-white font-bold py-2.5 px-6 rounded-lg text-sm transition">
+                <button onclick="openApplyPanel()" class="bg-accent hover:bg-emerald-600 text-white font-bold py-2.5 px-6 rounded-lg text-sm transition">
                     무료 상담 신청
-                </a>
+                </button>
                 <a href="/companies" class="bg-white/20 hover:bg-white/30 text-white font-medium py-2.5 px-6 rounded-lg text-sm transition">
                     업체 찾기
                 </a>
@@ -35,215 +35,270 @@
         <!-- 실시간 현황 -->
         <div class="grid grid-cols-4 gap-3">
             <div class="bg-white/10 rounded-lg p-3 text-center">
-                <p class="text-xl md:text-2xl font-bold">{{ stats.total_companies | default(0) }}</p>
+                <p class="text-xl md:text-2xl font-bold">{{ stats.total_companies|default(0)|comma }}</p>
                 <p class="text-xs text-blue-200">등록 업체</p>
             </div>
             <div class="bg-white/10 rounded-lg p-3 text-center">
-                <p class="text-xl md:text-2xl font-bold">{{ stats.total_apps | default(0) }}</p>
+                <p class="text-xl md:text-2xl font-bold">{{ stats.total_apps|default(0)|comma }}</p>
                 <p class="text-xs text-blue-200">상담 신청</p>
             </div>
             <div class="bg-white/10 rounded-lg p-3 text-center">
-                <p class="text-xl md:text-2xl font-bold">{{ stats.total_purchases | default(0) }}</p>
+                <p class="text-xl md:text-2xl font-bold">{{ stats.total_purchases|default(0)|comma }}</p>
                 <p class="text-xs text-blue-200">상담 연결</p>
             </div>
             <div class="bg-white/10 rounded-lg p-3 text-center">
-                <p class="text-xl md:text-2xl font-bold">{{ stats.total_success | default(0) }}</p>
+                <p class="text-xl md:text-2xl font-bold">{{ stats.total_success|default(0)|comma }}</p>
                 <p class="text-xs text-blue-200">성공 완료</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 업체 리스트 미리보기 -->
+<!-- 메인 콘텐츠: 업체 리스트 + 우측 신청 배너 -->
 <section class="py-12">
     <div class="max-w-6xl mx-auto px-4">
-        <div class="flex justify-between items-center mb-6">
-            <div>
-                <h2 class="text-2xl font-bold">전문 업체 둘러보기</h2>
-                <p class="text-gray-500 text-sm mt-1">검증된 {{ companies|length }}개 업체가 등록되어 있습니다</p>
-            </div>
-            <a href="/companies" class="text-primary font-medium text-sm hover:underline">전체보기 &rarr;</a>
-        </div>
-
-        <!-- 간단 필터 -->
-        <div class="flex flex-wrap gap-2 mb-5">
-            <button onclick="filterCompanies('all')" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 bg-primary text-white" data-filter="all">전체</button>
-            {% for key, label in debt_types.items() %}
-            <button onclick="filterCompanies('{{ key }}')" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition" data-filter="{{ key }}">{{ label }}</button>
-            {% endfor %}
-        </div>
-
-        <!-- 업체 카드 그리드 -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="company-grid">
-            {% for company in companies[:12] %}
-            <a href="/companies/{{ company.id }}" class="company-card block rounded-xl shadow hover:shadow-lg transition cursor-pointer overflow-hidden
-                {% if company.package_name == '프로' or company.package_name == '엔터프라이즈' %}bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300
-                {% elif company.package_name == '성장' %}bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300
-                {% else %}bg-white{% endif %}" data-types="{{ company.filters.debt_types | join(',') }}">
-                <!-- 썸네일 -->
-                <div class="h-24 flex items-center justify-center px-4
-                    {% if company.package_name == '프로' or company.package_name == '엔터프라이즈' %}bg-gradient-to-r from-blue-100 to-cyan-50
-                    {% elif company.package_name == '성장' %}bg-gradient-to-r from-green-100 to-emerald-50
-                    {% else %}bg-gradient-to-r from-slate-100 to-gray-50{% endif %}">
-                    <span class="text-lg font-bold text-center leading-tight
-                        {% if company.package_name == '프로' or company.package_name == '엔터프라이즈' %}text-blue-700
-                        {% elif company.package_name == '성장' %}text-green-700
-                        {% else %}text-gray-500{% endif %}"
-                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all;">
-                        {{ company.name }}
-                    </span>
-                </div>
-                <div class="p-4">
-                <div class="flex justify-between items-start mb-1">
-                    <div class="flex items-center gap-1.5 min-w-0">
-                        <h3 class="font-bold text-gray-900 truncate">{{ company.name }}</h3>
-                        {% if company.package_name and company.package_name in ['성장', '프로', '엔터프라이즈'] %}
-                        <svg class="w-4 h-4 shrink-0 {% if company.package_name == '엔터프라이즈' %}text-purple-500{% elif company.package_name == '프로' %}text-blue-500{% elif company.package_name == '성장' %}text-green-500{% endif %}" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        {% endif %}
+        <div class="flex gap-6">
+            <!-- 좌측: 업체 리스트 -->
+            <div class="flex-1 min-w-0">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold">전문 업체 둘러보기</h2>
+                        <p class="text-gray-500 text-sm mt-1">검증된 {{ companies|length|comma }}개 업체가 등록되어 있습니다</p>
                     </div>
-                    <div class="flex items-center text-sm shrink-0 ml-2">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                        <span class="font-medium ml-0.5">{{ "%.1f"|format(company.rating) }}</span>
-                        <span class="text-gray-400 ml-1">({{ company.review_count }})</span>
-                    </div>
+                    <a href="/companies" class="text-primary font-medium text-sm hover:underline">전체보기 &rarr;</a>
                 </div>
-                <!-- 전문 분야 태그 -->
-                <div class="flex flex-wrap gap-1 mb-2">
-                    {% for dt in company.filters.get('debt_types', []) %}
-                    {% if dt in debt_types %}
-                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">{{ debt_types[dt] }}</span>
-                    {% endif %}
+
+                <!-- 간단 필터 -->
+                <div class="flex flex-wrap gap-2 mb-5">
+                    <button onclick="filterCompanies('all')" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 bg-primary text-white" data-filter="all">전체</button>
+                    {% for key, label in debt_types.items() %}
+                    <button onclick="filterCompanies('{{ key }}')" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition" data-filter="{{ key }}">{{ label }}</button>
                     {% endfor %}
                 </div>
-                <p class="text-sm text-gray-500 line-clamp-1 mb-3">{{ company.description }}</p>
-                <div class="flex justify-between items-center text-xs text-gray-400">
-                    <span>{% if company.filters.get('regions') %}{{ company.filters.regions[:2] | join(', ') }}{% if company.filters.regions|length > 2 %} 외{% endif %}{% else %}전국{% endif %}</span>
-                    <div class="flex space-x-2">
-                        {% if company.experience_years %}<span>경력 {{ company.experience_years }}년</span>{% endif %}
-                        {% if company.success_count %}<span>성공 {{ company.success_count }}건</span>{% endif %}
-                    </div>
-                </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
 
-        <!-- 더보기 -->
-        <div class="text-center mt-6">
-            <a href="/companies" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-2.5 px-8 rounded-lg transition">
-                {{ stats.total_companies }}개 업체 전체보기
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- 신청 폼 -->
-<section id="apply" class="py-12 bg-gray-50">
-    <div class="max-w-lg mx-auto px-4">
-        <div class="bg-white rounded-2xl shadow-lg p-8">
-            <h2 class="text-2xl font-bold text-center mb-2">무료 상담 신청</h2>
-            <p class="text-center text-sm text-gray-500 mb-6">신청 후 상담받을 업체를 직접 선택할 수 있습니다</p>
-
-            <form action="/apply" method="POST" class="space-y-5">
-                <!-- 이름 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">이름 <span class="text-red-500">*</span></label>
-                    <input type="text" name="name" required placeholder="홍길동"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
-                </div>
-
-                <!-- 연락처 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">연락처 <span class="text-red-500">*</span></label>
-                    <input type="tel" name="phone" required placeholder="010-0000-0000"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
-                </div>
-
-                <!-- 채무 유형 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">상담 유형 <span class="text-red-500">*</span></label>
-                    <div class="grid grid-cols-2 gap-3">
-                        {% for key, label in debt_types.items() %}
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-blue-50 transition">
-                            <input type="radio" name="debt_type" value="{{ key }}" required class="mr-2 text-primary">
-                            <span class="text-sm font-medium">{{ label }}</span>
-                        </label>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <!-- 지역 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">거주 지역 <span class="text-red-500">*</span></label>
-                    <select name="region" required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
-                        <option value="">선택하세요</option>
-                        {% for region in regions %}
-                        <option value="{{ region }}">{{ region }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <!-- 채무 금액 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">총 채무 금액 <span class="text-red-500">*</span></label>
-                    <select name="debt_amount" required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
-                        <option value="">선택하세요</option>
-                        {% for range in debt_ranges %}
-                        <option value="{{ range }}">{{ range }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <!-- 상세 설명 (선택) -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">추가 설명 <span class="text-gray-400">(선택)</span></label>
-                    <textarea name="description" rows="3" placeholder="현재 상황을 간단히 알려주세요"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none"></textarea>
-                </div>
-
-                <!-- 개인정보 동의 -->
-                <div class="space-y-3 bg-gray-50 rounded-lg p-4">
-                    <p class="text-sm font-medium text-gray-700">개인정보 동의</p>
-
-                    <!-- 개인정보 수집/이용 동의 (필수) -->
-                    <div class="flex items-start">
-                        <input type="checkbox" name="agree_privacy" required class="mt-1 mr-2 shrink-0">
-                        <div class="text-sm text-gray-600">
-                            <button type="button" onclick="toggleDetail('privacy-detail')" class="text-primary underline font-medium">[필수] 개인정보 수집 이용 동의</button>
-                            <div id="privacy-detail" class="hidden mt-2 bg-white border border-gray-200 rounded p-3 text-xs text-gray-500 max-h-40 overflow-y-auto">
-                                <p class="font-medium text-gray-700 mb-1">개인정보 수집 및 이용 동의</p>
-                                <table class="w-full border-collapse text-xs mb-2">
-                                    <tr class="border-b"><td class="py-1 font-medium w-24">수집 항목</td><td>이름, 연락처, 지역, 채무유형, 채무규모</td></tr>
-                                    <tr class="border-b"><td class="py-1 font-medium">수집 목적</td><td>회생 파산 상담 업체 매칭</td></tr>
-                                    <tr class="border-b"><td class="py-1 font-medium">보유 기간</td><td>상담 완료 후 1년 (동의 철회 시 즉시 삭제)</td></tr>
-                                </table>
-                                <p>귀하는 위 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 상담 신청 서비스를 이용할 수 없습니다.</p>
+                <!-- 업체 카드 그리드 -->
+                <div class="grid md:grid-cols-2 gap-4" id="company-grid">
+                    {% for company in companies[:12] %}
+                    <a href="/companies/{{ company.id }}" class="company-card block rounded-xl shadow hover:shadow-lg transition cursor-pointer overflow-hidden
+                        {% if company.package_name == '프로' or company.package_name == '엔터프라이즈' %}bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300
+                        {% elif company.package_name == '성장' %}bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300
+                        {% else %}bg-white{% endif %}" data-types="{{ company.filters.debt_types | join(',') }}">
+                        <div class="h-24 flex items-center justify-center px-4
+                            {% if company.package_name == '프로' or company.package_name == '엔터프라이즈' %}bg-gradient-to-r from-blue-100 to-cyan-50
+                            {% elif company.package_name == '성장' %}bg-gradient-to-r from-green-100 to-emerald-50
+                            {% else %}bg-gradient-to-r from-slate-100 to-gray-50{% endif %}">
+                            <span class="text-lg font-bold text-center leading-tight
+                                {% if company.package_name == '프로' or company.package_name == '엔터프라이즈' %}text-blue-700
+                                {% elif company.package_name == '성장' %}text-green-700
+                                {% else %}text-gray-500{% endif %}"
+                                style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all;">
+                                {{ company.name }}
+                            </span>
+                        </div>
+                        <div class="p-4">
+                        <div class="flex justify-between items-start mb-1">
+                            <div class="flex items-center gap-1.5 min-w-0">
+                                <h3 class="font-bold text-gray-900 truncate">{{ company.name }}</h3>
+                                {% if company.package_name and company.package_name in ['성장', '프로', '엔터프라이즈'] %}
+                                <svg class="w-4 h-4 shrink-0 {% if company.package_name == '엔터프라이즈' %}text-purple-500{% elif company.package_name == '프로' %}text-blue-500{% elif company.package_name == '성장' %}text-green-500{% endif %}" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                {% endif %}
+                            </div>
+                            <div class="flex items-center text-sm shrink-0 ml-2">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <span class="font-medium ml-0.5">{{ "%.1f"|format(company.rating) }}</span>
+                                <span class="text-gray-400 ml-1">({{ company.review_count|comma }})</span>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- 마케팅 수신 동의 (선택) -->
-                    <div class="flex items-start">
-                        <input type="checkbox" name="agree_marketing" class="mt-1 mr-2 shrink-0">
-                        <div class="text-sm text-gray-600">
-                            <span class="text-gray-400">[선택]</span> 마케팅 정보 수신 동의 (SMS, 전화)
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            {% for dt in company.filters.get('debt_types', []) %}
+                            {% if dt in debt_types %}
+                            <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">{{ debt_types[dt] }}</span>
+                            {% endif %}
+                            {% endfor %}
                         </div>
-                    </div>
+                        <p class="text-sm text-gray-500 line-clamp-1 mb-3">{{ company.description }}</p>
+                        <div class="flex justify-between items-center text-xs text-gray-400">
+                            <span>{% if company.filters.get('regions') %}{{ company.filters.regions[:2] | join(', ') }}{% if company.filters.regions|length > 2 %} 외{% endif %}{% else %}전국{% endif %}</span>
+                            <div class="flex space-x-2">
+                                {% if company.experience_years %}<span>경력 {{ company.experience_years }}년</span>{% endif %}
+                                {% if company.success_count %}<span>성공 {{ company.success_count|comma }}건</span>{% endif %}
+                            </div>
+                        </div>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
 
-                <button type="submit"
-                    class="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-lg text-lg transition">
-                    다음: 상담 업체 선택하기
-                </button>
-                <p class="text-xs text-gray-400 text-center">신청 후 상담받을 업체를 직접 선택하는 단계로 이동합니다</p>
-            </form>
+                <!-- 더보기 -->
+                <div class="text-center mt-6">
+                    <a href="/companies" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-2.5 px-8 rounded-lg transition">
+                        {{ stats.total_companies|comma }}개 업체 전체보기
+                    </a>
+                </div>
+            </div>
+
+            <!-- 우측: 상담 신청 배너 (데스크톱에서 sticky) -->
+            <div class="hidden lg:block w-80 shrink-0">
+                <div class="sticky top-4">
+                    <div class="bg-white rounded-2xl shadow-lg border-2 border-primary/20 overflow-hidden">
+                        <div class="bg-gradient-to-r from-primary to-blue-700 text-white p-5 text-center">
+                            <p class="text-lg font-bold mb-1">무료 상담 신청</p>
+                            <p class="text-xs text-blue-200">신청 후 업체를 직접 선택합니다</p>
+                        </div>
+                        <form action="/apply" method="POST" class="p-5 space-y-4">
+                            <div>
+                                <input type="text" name="name" required placeholder="이름 *"
+                                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <input type="tel" name="phone" required placeholder="연락처 * (010-0000-0000)"
+                                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <select name="debt_type" required
+                                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-gray-500">
+                                    <option value="">상담 유형 *</option>
+                                    {% for key, label in debt_types.items() %}
+                                    <option value="{{ key }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div>
+                                <select name="region" required
+                                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-gray-500">
+                                    <option value="">거주 지역 *</option>
+                                    {% for region in regions %}
+                                    <option value="{{ region }}">{{ region }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div>
+                                <select name="debt_amount" required
+                                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-gray-500">
+                                    <option value="">총 채무 금액 *</option>
+                                    {% for range in debt_ranges %}
+                                    <option value="{{ range }}">{{ range }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <!-- 개인정보 동의 -->
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <input type="checkbox" name="agree_privacy" required class="mt-0.5 mr-2 shrink-0">
+                                    <div class="text-xs text-gray-600">
+                                        <button type="button" onclick="toggleDetail('privacy-detail-side')" class="text-primary underline font-medium">[필수] 개인정보 수집 이용 동의</button>
+                                        <div id="privacy-detail-side" class="hidden mt-1 bg-gray-50 border border-gray-200 rounded p-2 text-xs text-gray-500 max-h-32 overflow-y-auto">
+                                            <table class="w-full border-collapse text-xs mb-1">
+                                                <tr class="border-b"><td class="py-1 font-medium w-16">수집 항목</td><td>이름, 연락처, 지역, 채무유형, 채무규모</td></tr>
+                                                <tr class="border-b"><td class="py-1 font-medium">수집 목적</td><td>회생 파산 상담 업체 매칭</td></tr>
+                                                <tr class="border-b"><td class="py-1 font-medium">보유 기간</td><td>상담 완료 후 1년</td></tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" name="agree_marketing" class="mt-0.5 mr-2 shrink-0">
+                                    <span class="text-xs text-gray-500"><span class="text-gray-400">[선택]</span> 마케팅 수신 동의</span>
+                                </div>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 rounded-lg transition">
+                                다음: 업체 선택하기
+                            </button>
+                            <p class="text-xs text-gray-400 text-center">선택한 업체에서만 연락드립니다</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<!-- 모바일 하단 고정 CTA -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-3 z-50">
+    <button onclick="openApplyPanel()" class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 rounded-lg transition">
+        무료 상담 신청하기
+    </button>
+</div>
+
+<!-- 모바일 신청 패널 (슬라이드업) -->
+<div id="mobile-apply-panel" class="lg:hidden fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/50" onclick="closeApplyPanel()"></div>
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-[90vh] overflow-y-auto transform transition-transform">
+        <div class="sticky top-0 bg-white border-b px-4 py-3 flex justify-between items-center">
+            <h3 class="font-bold text-lg">무료 상담 신청</h3>
+            <button onclick="closeApplyPanel()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+        </div>
+        <form action="/apply" method="POST" class="p-5 space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">이름 <span class="text-red-500">*</span></label>
+                <input type="text" name="name" required placeholder="홍길동"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">연락처 <span class="text-red-500">*</span></label>
+                <input type="tel" name="phone" required placeholder="010-0000-0000"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">상담 유형 <span class="text-red-500">*</span></label>
+                <select name="debt_type" required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                    <option value="">선택하세요</option>
+                    {% for key, label in debt_types.items() %}
+                    <option value="{{ key }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">거주 지역 <span class="text-red-500">*</span></label>
+                <select name="region" required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                    <option value="">선택하세요</option>
+                    {% for region in regions %}
+                    <option value="{{ region }}">{{ region }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">총 채무 금액 <span class="text-red-500">*</span></label>
+                <select name="debt_amount" required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                    <option value="">선택하세요</option>
+                    {% for range in debt_ranges %}
+                    <option value="{{ range }}">{{ range }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="space-y-2 bg-gray-50 rounded-lg p-3">
+                <div class="flex items-start">
+                    <input type="checkbox" name="agree_privacy" required class="mt-0.5 mr-2 shrink-0">
+                    <div class="text-xs text-gray-600">
+                        <button type="button" onclick="toggleDetail('privacy-detail-mobile')" class="text-primary underline font-medium">[필수] 개인정보 수집 이용 동의</button>
+                        <div id="privacy-detail-mobile" class="hidden mt-1 bg-white border border-gray-200 rounded p-2 text-xs text-gray-500 max-h-32 overflow-y-auto">
+                            <table class="w-full border-collapse text-xs mb-1">
+                                <tr class="border-b"><td class="py-1 font-medium w-20">수집 항목</td><td>이름, 연락처, 지역, 채무유형, 채무규모</td></tr>
+                                <tr class="border-b"><td class="py-1 font-medium">수집 목적</td><td>회생 파산 상담 업체 매칭</td></tr>
+                                <tr class="border-b"><td class="py-1 font-medium">보유 기간</td><td>상담 완료 후 1년</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <input type="checkbox" name="agree_marketing" class="mt-0.5 mr-2 shrink-0">
+                    <span class="text-xs text-gray-500"><span class="text-gray-400">[선택]</span> 마케팅 수신 동의</span>
+                </div>
+            </div>
+            <button type="submit"
+                class="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-lg text-lg transition">
+                다음: 업체 선택하기
+            </button>
+            <p class="text-xs text-gray-400 text-center mb-4">선택한 업체에서만 연락드립니다</p>
+        </form>
+    </div>
+</div>
 
 <script>
 function toggleDetail(id) {
@@ -269,13 +324,25 @@ function filterCompanies(type) {
         }
     });
 }
+
+function openApplyPanel() {
+    document.getElementById('mobile-apply-panel').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeApplyPanel() {
+    document.getElementById('mobile-apply-panel').classList.add('hidden');
+    document.body.style.overflow = '';
+}
 </script>
 
 <!-- 푸터 -->
-<footer class="bg-gray-800 text-gray-400 py-8 mt-12">
+<footer class="bg-gray-800 text-gray-400 py-8 mt-12 {% if not request.headers.get('user-agent', '').startswith('') %}mb-16 lg:mb-0{% endif %}">
     <div class="max-w-6xl mx-auto px-4 text-center text-sm">
         <p class="mb-2">새출발 | 회생/파산 전문 상담 중개 서비스</p>
         <p>Copyright 2026. All rights reserved.</p>
     </div>
 </footer>
+<!-- 모바일 하단 CTA 높이만큼 여백 -->
+<div class="lg:hidden h-16"></div>
 {% endblock %}

@@ -36,6 +36,7 @@ app = FastAPI(title="새출발", description="회생/파산 상담 중개 플랫
 # Static & Templates
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+templates.env.filters["comma"] = lambda v: "{:,}".format(int(v)) if v else "0"
 
 # ============================================================
 # Config
@@ -50,11 +51,11 @@ ADMIN_PW = os.getenv("ADMIN_PW", "admin")
 # 업체가 패키지를 구매하면 N건의 DB 열람권을 받음
 # 네이버 키워드 광고 대비 87~97% 비용 절감 (근거 데이터 하단 참조)
 PACKAGES = {
-    "starter":    {"label": "스타터",       "price": 300000,  "leads": 10,  "per_lead": 30000, "validity_days": 60},
-    "basic":      {"label": "기본",         "price": 500000,  "leads": 20,  "per_lead": 25000, "validity_days": 90},
-    "growth":     {"label": "성장",         "price": 900000,  "leads": 40,  "per_lead": 22500, "validity_days": 180},
-    "pro":        {"label": "프로",         "price": 1500000, "leads": 70,  "per_lead": 21429, "validity_days": 365},
-    "enterprise": {"label": "엔터프라이즈",  "price": 2500000, "leads": 130, "per_lead": 19231, "validity_days": 365},
+    "starter":    {"label": "스타터",       "price": 300000,  "leads": 10,  "per_lead": 30000},
+    "basic":      {"label": "기본",         "price": 500000,  "leads": 20,  "per_lead": 25000},
+    "growth":     {"label": "성장",         "price": 900000,  "leads": 40,  "per_lead": 22500},
+    "pro":        {"label": "프로",         "price": 1500000, "leads": 70,  "per_lead": 21429},
+    "enterprise": {"label": "엔터프라이즈",  "price": 2500000, "leads": 130, "per_lead": 19231},
 }
 
 # ============================================================
@@ -720,7 +721,7 @@ async def company_register(
         "package": "none",              # none, starter, basic, growth, pro, enterprise
         "package_name": None,           # 패키지 표시명
         "remaining_leads": 0,           # 잔여 열람 건수
-        "package_expires_at": None,     # 패키지 만료일 ISO string
+             # 패키지 만료일 ISO string
         "total_leads_used": 0,          # 누적 사용 건수
         "filters": {
             "debt_types": debt_types if debt_types else [],
@@ -768,15 +769,6 @@ async def company_dashboard(request: Request):
     package_info = PACKAGES.get(package) if package != "none" else None
     badge = _get_package_badge(package)
 
-    # 패키지 만료 확인
-    package_expired = False
-    if company.get("package_expires_at"):
-        try:
-            expires = datetime.fromisoformat(company["package_expires_at"])
-            package_expired = datetime.now() > expires
-        except (ValueError, TypeError):
-            package_expired = False
-
     # 이 업체에 배분된 신청건 목록
     my_distributions = [d for d in distributions_db if d["company_id"] == company["id"]]
     leads = []
@@ -811,7 +803,6 @@ async def company_dashboard(request: Request):
         "company": company,
         "package_info": package_info,
         "badge": badge,
-        "package_expired": package_expired,
         "leads": leads,
         "recent_transactions": recent_transactions,
         "pending_package": pending_package,
@@ -841,15 +832,6 @@ async def purchase_lead(request: Request, distribution_id: str):
     app_data = next((a for a in applications_db if a["id"] == dist["application_id"]), None)
     if not app_data:
         return JSONResponse({"error": "신청 정보를 찾을 수 없습니다."}, status_code=404)
-
-    # 패키지 만료 확인
-    if company.get("package_expires_at"):
-        try:
-            expires = datetime.fromisoformat(company["package_expires_at"])
-            if datetime.now() > expires:
-                return JSONResponse({"error": "패키지가 만료되었습니다. 새 패키지를 구매해주세요."}, status_code=400)
-        except (ValueError, TypeError):
-            pass
 
     # 잔여 건수 확인
     if company.get("remaining_leads", 0) <= 0:
@@ -928,15 +910,6 @@ async def company_package_page(request: Request):
     package_info = PACKAGES.get(package) if package != "none" else None
     badge = _get_package_badge(package)
 
-    # 패키지 만료 확인
-    package_expired = False
-    if company.get("package_expires_at"):
-        try:
-            expires = datetime.fromisoformat(company["package_expires_at"])
-            package_expired = datetime.now() > expires
-        except (ValueError, TypeError):
-            package_expired = False
-
     # 이 업체의 거래 내역
     my_transactions = sorted(
         [t for t in transactions_db if t["company_id"] == company["id"]],
@@ -962,7 +935,6 @@ async def company_package_page(request: Request):
         "company": company,
         "package_info": package_info,
         "badge": badge,
-        "package_expired": package_expired,
         "packages": PACKAGES,
         "transactions": my_transactions[:50],
         "package_requests": my_requests[:10],
@@ -1004,7 +976,6 @@ async def company_package_request(
         "package_label": pkg["label"],
         "price": pkg["price"],
         "leads": pkg["leads"],
-        "validity_days": pkg["validity_days"],
         "depositor_name": depositor_name,
         "status": "pending",  # pending → approved → rejected
         "created_at": datetime.now().isoformat(),
@@ -1299,7 +1270,6 @@ async def admin_approve_package(request: Request, package_id: str):
     company["package"] = pkg_type
     company["package_name"] = pkg["label"]
     company["remaining_leads"] = company.get("remaining_leads", 0) + pkg_req["leads"]
-    company["package_expires_at"] = (datetime.now() + timedelta(days=pkg_req["validity_days"])).isoformat()
 
     pkg_req["status"] = "approved"
     pkg_req["processed_at"] = datetime.now().isoformat()
@@ -1313,7 +1283,7 @@ async def admin_approve_package(request: Request, package_id: str):
 
     return JSONResponse({
         "success": True,
-        "message": f"{pkg_req['package_label']} 패키지 승인 완료 ({pkg_req['leads']}건 추가, 만료: {company['package_expires_at'][:10]})",
+        "message": f"{pkg_req['package_label']} 패키지 승인 완료 ({pkg_req['leads']}건 추가)",
     })
 
 

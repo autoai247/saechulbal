@@ -23,15 +23,15 @@
     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
         <div class="bg-white rounded-xl shadow p-5">
             <p class="text-sm text-gray-500">총 신청</p>
-            <p class="text-3xl font-bold text-primary">{{ stats.total_apps }}</p>
+            <p class="text-3xl font-bold text-primary">{{ stats.total_apps|comma }}</p>
         </div>
         <div class="bg-white rounded-xl shadow p-5">
             <p class="text-sm text-gray-500">등록 업체</p>
-            <p class="text-3xl font-bold text-primary">{{ stats.total_companies }}</p>
+            <p class="text-3xl font-bold text-primary">{{ stats.total_companies|comma }}</p>
         </div>
         <div class="bg-white rounded-xl shadow p-5">
             <p class="text-sm text-gray-500">총 열람 건수</p>
-            <p class="text-3xl font-bold text-accent">{{ stats.total_purchases }}</p>
+            <p class="text-3xl font-bold text-accent">{{ stats.total_purchases|comma }}</p>
         </div>
         <div class="bg-white rounded-xl shadow p-5">
             <p class="text-sm text-gray-500">총 매출</p>
@@ -39,7 +39,7 @@
         </div>
         <a href="/admin/crawl" class="bg-white rounded-xl shadow p-5 hover:shadow-md transition">
             <p class="text-sm text-gray-500">크롤링 업체</p>
-            <p class="text-3xl font-bold text-blue-500">{{ stats.crawled_count }}</p>
+            <p class="text-3xl font-bold text-blue-500">{{ stats.crawled_count|comma }}</p>
             <p class="text-xs mt-1
                 {% if crawl_state.status == 'running' %}text-yellow-600
                 {% elif crawl_state.status == 'completed' %}text-green-600
@@ -196,7 +196,7 @@
                         </td>
                         <td class="px-3 py-2">
                             {% if company.remaining_leads is defined and company.remaining_leads is not none %}
-                            <span class="font-medium {% if company.remaining_leads > 0 %}text-primary{% else %}text-red-500{% endif %}">{{ company.remaining_leads }}건</span>
+                            <span class="font-medium {% if company.remaining_leads > 0 %}text-primary{% else %}text-red-500{% endif %}">{{ company.remaining_leads|comma }}건</span>
                             {% else %}
                             <span class="text-gray-400">-</span>
                             {% endif %}
@@ -220,7 +220,7 @@
                 </tbody>
             </table>
             {% else %}
-            <p class="p-6 text-center text-gray-400">직접 등록한 업체가 없습니다. (크롤링 업체 {{ stats.crawled_count }}개는 <a href="/admin/crawl" class="text-primary underline">크롤링 관리</a>에서 확인)</p>
+            <p class="p-6 text-center text-gray-400">직접 등록한 업체가 없습니다. (크롤링 업체 {{ stats.crawled_count|comma }}개는 <a href="/admin/crawl" class="text-primary underline">크롤링 관리</a>에서 확인)</p>
             {% endif %}
         </div>
     </div>

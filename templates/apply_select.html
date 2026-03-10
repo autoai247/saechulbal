@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% block title %}상담 업체 선택{% endblock %}
+
+{% block head %}
+<style>
+    .company-select-card {
+        transition: all 0.2s;
+    }
+    .company-select-card.selected {
+        border-color: #2563EB;
+        background: #EFF6FF;
+        box-shadow: 0 0 0 2px #2563EB;
+    }
+    .company-select-card .check-icon {
+        display: none;
+    }
+    .company-select-card.selected .check-icon {
+        display: flex;
+    }
+    .sticky-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- 네비게이션 -->
+<nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-primary">새출발</a>
+        <div class="space-x-4 text-sm">
+            <a href="/companies" class="text-gray-600 hover:text-primary">업체 찾기</a>
+            <a href="/faq" class="text-gray-600 hover:text-primary">Q&A</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 헤더 -->
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-2xl md:text-3xl font-bold mb-2">상담받을 업체를 선택해주세요</h1>
+        <p class="text-blue-200">선택하신 업체에만 연락처가 전달됩니다. 최대 5곳까지 선택 가능합니다.</p>
+    </div>
+</section>
+
+<!-- 안내 박스 -->
+<div class="max-w-4xl mx-auto px-4 mt-6">
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex items-start gap-3">
+        <svg class="w-6 h-6 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <div class="text-sm text-blue-800">
+            <p class="font-medium mb-1">더 많은 업체를 선택하면 비교 상담이 가능합니다</p>
+            <p class="text-blue-600">원하시는 업체를 클릭하여 선택해주세요. 선택한 업체에서만 상담 연락을 드립니다.</p>
+        </div>
+    </div>
+
+    <!-- 신청 정보 요약 -->
+    <div class="mt-4 bg-gray-50 rounded-xl p-4 text-sm text-gray-600">
+        <span class="font-medium text-gray-800">{{ application.name }}</span>님의 신청 정보:
+        <span class="ml-2 inline-block bg-blue-100 text-blue-700 text-xs font-medium px-2 py-0.5 rounded">{{ application.debt_type_label }}</span>
+        <span class="ml-1 text-gray-400">|</span>
+        <span class="ml-1">{{ application.region }}</span>
+        <span class="ml-1 text-gray-400">|</span>
+        <span class="ml-1">{{ application.debt_amount }}</span>
+    </div>
+</div>
+
+<!-- 업체 카드 그리드 -->
+<section class="max-w-4xl mx-auto px-4 py-6 pb-28">
+    {% if companies %}
+    <p class="text-sm text-gray-500 mb-4">조건에 맞는 <strong class="text-primary">{{ companies|length }}개</strong> 업체가 있습니다</p>
+    <div class="grid md:grid-cols-2 gap-4" id="company-grid">
+        {% for company in companies %}
+        {% set tier = tiers.get(company.get('tier', 'free'), tiers.free) %}
+        <div class="company-select-card relative bg-white rounded-xl shadow hover:shadow-md border-2 border-transparent cursor-pointer p-5 transition"
+             data-company-id="{{ company.id }}"
+             onclick="toggleCompany(this, '{{ company.id }}')">
+
+            <!-- 선택 체크 아이콘 -->
+            <div class="check-icon absolute top-3 right-3 w-7 h-7 bg-primary rounded-full items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+
+            <!-- 미선택 체크박스 -->
+            <div class="uncheck-icon absolute top-3 right-3 w-7 h-7 border-2 border-gray-300 rounded-full"></div>
+
+            <!-- 업체 정보 -->
+            <div class="pr-10">
+                <div class="flex items-center gap-2 mb-2">
+                    <h3 class="font-bold text-lg text-gray-900">{{ company.name }}</h3>
+                    {% if tier.badge %}
+                    <span class="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full
+                        {% if company.tier == 'diamond' %}bg-amber-100 text-amber-700
+                        {% elif company.tier == 'vip' %}bg-purple-100 text-purple-700
+                        {% elif company.tier == 'premium' %}bg-blue-100 text-blue-700{% endif %}">
+                        {% if company.tier == 'diamond' %}최우수 업체
+                        {% elif company.tier == 'vip' %}우수 업체
+                        {% elif company.tier == 'premium' %}인증 업체{% endif %}
+                    </span>
+                    {% endif %}
+                </div>
+
+                <!-- 평점 & 리뷰 -->
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <span class="font-medium text-sm ml-0.5">{{ "%.1f"|format(company.rating) }}</span>
+                        <span class="text-gray-400 text-sm ml-1">({{ company.review_count }}개)</span>
+                    </div>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-xs text-gray-500">
+                        {% if company.filters.get('regions') %}{{ company.filters.regions | join(', ') }}{% else %}전국{% endif %}
+                    </span>
+                </div>
+
+                <!-- 전문 분야 태그 -->
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                    {% for dt in company.filters.get('debt_types', []) %}
+                    {% if dt in debt_types %}
+                    <span class="bg-blue-50 text-blue-600 text-xs font-medium px-2 py-0.5 rounded">{{ debt_types[dt] }}</span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <!-- 경력/성공 -->
+                <div class="flex items-center gap-3 text-xs text-gray-500 mb-2">
+                    {% if company.experience_years %}
+                    <span>경력 {{ company.experience_years }}년</span>
+                    {% endif %}
+                    {% if company.success_count %}
+                    <span>성공 {{ company.success_count }}건</span>
+                    {% endif %}
+                </div>
+
+                <!-- 업체 소개 -->
+                <p class="text-sm text-gray-500 line-clamp-2">{{ company.description or "전문적인 회생/파산 상담 서비스를 제공합니다." }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="bg-white rounded-xl shadow p-12 text-center text-gray-400">
+        <p class="text-lg mb-2">조건에 맞는 업체가 없습니다</p>
+        <p class="text-sm">관리자가 확인 후 적합한 업체를 배정해드리겠습니다.</p>
+    </div>
+    {% endif %}
+</section>
+
+<!-- 하단 고정 바 -->
+<div class="sticky-bar bg-white border-t shadow-lg">
+    <div class="max-w-4xl mx-auto px-4 py-4">
+        <!-- 제3자 제공 동의 -->
+        <div class="flex items-start mb-3" id="third-party-consent-area">
+            <input type="checkbox" id="agree_third_party" class="mt-1 mr-2 shrink-0">
+            <div class="text-sm text-gray-600">
+                <button type="button" onclick="toggleDetail('third-party-detail')" class="text-primary underline font-medium">[필수] 개인정보 제3자 제공 동의</button>
+                <span class="text-xs text-gray-400 ml-1">선택한 업체에 연락처가 전달됩니다</span>
+                <div id="third-party-detail" class="hidden mt-2 bg-gray-50 border border-gray-200 rounded p-3 text-xs text-gray-500 max-h-32 overflow-y-auto">
+                    <p class="font-medium text-gray-700 mb-1">개인정보 제3자 제공 동의</p>
+                    <table class="w-full border-collapse text-xs mb-2">
+                        <tr class="border-b"><td class="py-1 font-medium w-24">제공받는 자</td><td>신청자가 선택한 회생/파산 상담 업체</td></tr>
+                        <tr class="border-b"><td class="py-1 font-medium">제공 목적</td><td>회생/파산 상담 서비스 제공 및 연락</td></tr>
+                        <tr class="border-b"><td class="py-1 font-medium">제공 항목</td><td>이름, 연락처, 거주 지역, 채무 유형, 채무 금액, 추가 설명</td></tr>
+                        <tr class="border-b"><td class="py-1 font-medium">보유 기간</td><td>제공일로부터 6개월 (목적 달성 후 즉시 파기)</td></tr>
+                    </table>
+                    <p>귀하의 개인정보는 선택하신 업체에만 제공됩니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-between">
+            <div class="text-sm">
+                <span id="selected-count" class="font-bold text-primary text-lg">0</span><span class="text-gray-600">곳 선택됨</span>
+                <span class="text-gray-400 ml-1">(최대 5곳)</span>
+            </div>
+            <button id="submit-btn" onclick="submitSelection()" disabled
+                class="bg-gray-300 text-white font-bold py-3 px-8 rounded-lg text-sm transition cursor-not-allowed">
+                선택 완료
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+const selectedCompanies = new Set();
+const MAX_SELECT = 5;
+const appId = '{{ application.id }}';
+
+function toggleDetail(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('hidden');
+}
+
+function toggleCompany(card, companyId) {
+    if (selectedCompanies.has(companyId)) {
+        selectedCompanies.delete(companyId);
+        card.classList.remove('selected');
+        card.querySelector('.uncheck-icon').style.display = '';
+    } else {
+        if (selectedCompanies.size >= MAX_SELECT) {
+            alert('최대 5곳까지만 선택할 수 있습니다.');
+            return;
+        }
+        selectedCompanies.add(companyId);
+        card.classList.add('selected');
+        card.querySelector('.uncheck-icon').style.display = 'none';
+    }
+    updateUI();
+}
+
+function updateUI() {
+    const count = selectedCompanies.size;
+    document.getElementById('selected-count').textContent = count;
+
+    const btn = document.getElementById('submit-btn');
+    if (count > 0) {
+        btn.disabled = false;
+        btn.className = 'bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg text-sm transition cursor-pointer';
+    } else {
+        btn.disabled = true;
+        btn.className = 'bg-gray-300 text-white font-bold py-3 px-8 rounded-lg text-sm transition cursor-not-allowed';
+    }
+}
+
+async function submitSelection() {
+    if (selectedCompanies.size === 0) {
+        alert('최소 1곳 이상 선택해주세요.');
+        return;
+    }
+
+    const agreeCheckbox = document.getElementById('agree_third_party');
+    if (!agreeCheckbox.checked) {
+        alert('개인정보 제3자 제공에 동의해주세요.');
+        agreeCheckbox.focus();
+        return;
+    }
+
+    const companyIds = Array.from(selectedCompanies);
+    if (!confirm(`${companyIds.length}곳의 업체를 선택하시겠습니까?\n선택한 업체에서 곧 연락드릴 예정입니다.`)) return;
+
+    try {
+        const res = await fetch(`/apply/${appId}/select`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ company_ids: companyIds })
+        });
+        const data = await res.json();
+        if (data.success) {
+            window.location.href = data.redirect || `/apply/${appId}/complete`;
+        } else {
+            alert(data.error || '오류가 발생했습니다.');
+        }
+    } catch (e) {
+        alert('네트워크 오류가 발생했습니다.');
+    }
+}
+</script>
+{% endblock %}

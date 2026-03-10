@@ -131,7 +131,8 @@
         <div class="md:col-span-1">
             <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-4">
                 <h3 class="font-bold text-lg text-center mb-1">{{ company.name }}</h3>
-                <p class="text-center text-sm text-gray-500 mb-4">이 업체에 무료 상담 신청</p>
+                <p class="text-center text-sm text-gray-500 mb-1">이 업체에 무료 상담 신청</p>
+                <p class="text-center text-xs text-blue-600 mb-4">1곳 직접 선택 신청</p>
 
                 <form action="/apply/direct" method="POST" class="space-y-3">
                     <input type="hidden" name="company_id" value="{{ company.id }}">
@@ -179,12 +180,23 @@
                     <!-- 동의 -->
                     <div class="space-y-2 text-xs">
                         <label class="flex items-start">
-                            <input type="checkbox" required class="mt-0.5 mr-1.5 shrink-0">
-                            <span class="text-gray-600"><span class="text-primary">[필수]</span> 개인정보 수집/이용 동의</span>
+                            <input type="checkbox" name="agree_privacy" required class="mt-0.5 mr-1.5 shrink-0">
+                            <div class="text-gray-600">
+                                <button type="button" onclick="toggleDetail('privacy-detail')" class="text-primary underline font-medium">[필수] 개인정보 수집·이용 동의</button>
+                                <div id="privacy-detail" class="hidden mt-1 bg-gray-50 border border-gray-200 rounded p-2 text-xs text-gray-500">
+                                    <p>수집항목: 이름, 연락처, 지역, 채무유형, 채무규모</p>
+                                    <p>목적: 회생·파산 상담 업체 매칭</p>
+                                    <p>보유기간: 상담 완료 후 1년 (동의 철회 시 즉시 삭제)</p>
+                                </div>
+                            </div>
                         </label>
                         <label class="flex items-start">
-                            <input type="checkbox" required class="mt-0.5 mr-1.5 shrink-0">
-                            <span class="text-gray-600"><span class="text-primary">[필수]</span> 개인정보 제3자 제공 동의</span>
+                            <input type="checkbox" name="agree_third_party" required class="mt-0.5 mr-1.5 shrink-0">
+                            <span class="text-gray-600"><span class="text-primary">[필수]</span> 개인정보 제3자 제공 동의 ({{ company.name }})</span>
+                        </label>
+                        <label class="flex items-start">
+                            <input type="checkbox" name="agree_marketing" class="mt-0.5 mr-1.5 shrink-0">
+                            <span class="text-gray-600"><span class="text-gray-400">[선택]</span> 마케팅 정보 수신 동의</span>
                         </label>
                     </div>
 
@@ -195,13 +207,20 @@
                 </form>
 
                 <div class="mt-4 pt-4 border-t text-center">
-                    <p class="text-xs text-gray-400 mb-2">여러 업체에 한번에 신청하고 싶다면?</p>
+                    <p class="text-xs text-gray-400 mb-2">여러 업체를 비교하고 싶다면?</p>
                     <a href="/#apply" class="text-primary text-sm font-medium hover:underline">비교 상담 신청하기 &rarr;</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function toggleDetail(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('hidden');
+}
+</script>
 
 <!-- 푸터 -->
 <footer class="bg-gray-800 text-gray-400 py-8 mt-8">

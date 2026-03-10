@@ -50,6 +50,7 @@
                 class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
                 <option value="rating" {% if selected_sort == 'rating' %}selected{% endif %}>평점순</option>
                 <option value="review" {% if selected_sort == 'review' %}selected{% endif %}>리뷰 많은순</option>
+                <option value="response" {% if selected_sort == 'response' %}selected{% endif %}>응답률순</option>
                 <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>최근 등록순</option>
             </select>
 
@@ -121,6 +122,9 @@
                         {% endif %}
                     </div>
                     <div class="flex items-center space-x-3">
+                        {% if company.response_rate is defined and company.response_rate is not none %}
+                        <span class="text-accent font-medium">응답률 {{ company.response_rate }}%</span>
+                        {% endif %}
                         {% if company.experience_years %}
                         <span>경력 {{ company.experience_years }}년</span>
                         {% endif %}
@@ -153,7 +157,7 @@
 <section class="bg-blue-50 py-10">
     <div class="max-w-4xl mx-auto px-4 text-center">
         <h2 class="text-xl font-bold mb-2">어떤 업체를 선택해야 할지 모르겠다면?</h2>
-        <p class="text-gray-600 mb-4">한번 신청으로 여러 업체에서 직접 연락드립니다. 비교 후 선택하세요!</p>
+        <p class="text-gray-600 mb-4">먼저 신청하고, 매칭된 업체 중에서 원하는 곳을 직접 선택하세요!</p>
         <a href="/#apply" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition">
             무료 상담 신청하기
         </a>

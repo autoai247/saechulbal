@@ -21,7 +21,7 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
             <div>
                 <h1 class="text-2xl md:text-3xl font-bold mb-1">빚, 혼자 고민하지 마세요</h1>
-                <p class="text-blue-200 text-sm">한번 신청으로 여러 전문 업체에서 무료 상담을 받아보세요</p>
+                <p class="text-blue-200 text-sm">신청 후 원하는 업체를 직접 선택하세요. 선택한 업체에서만 연락드립니다.</p>
             </div>
             <div class="flex gap-3 mt-4 md:mt-0">
                 <a href="#apply" class="bg-accent hover:bg-emerald-600 text-white font-bold py-2.5 px-6 rounded-lg text-sm transition">
@@ -147,7 +147,8 @@
 <section id="apply" class="py-12 bg-gray-50">
     <div class="max-w-lg mx-auto px-4">
         <div class="bg-white rounded-2xl shadow-lg p-8">
-            <h2 class="text-2xl font-bold text-center mb-6">무료 상담 신청</h2>
+            <h2 class="text-2xl font-bold text-center mb-2">무료 상담 신청</h2>
+            <p class="text-center text-sm text-gray-500 mb-6">신청 후 상담받을 업체를 직접 선택할 수 있습니다</p>
 
             <form action="/apply" method="POST" class="space-y-5">
                 <!-- 이름 -->
@@ -201,41 +202,6 @@
                     </select>
                 </div>
 
-                <!-- 비교 업체 수 선택 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">몇 곳에서 상담 받으시겠습니까? <span class="text-red-500">*</span></label>
-                    <div class="grid grid-cols-3 gap-3 mb-2">
-                        <label class="relative flex flex-col items-center p-4 border-2 border-gray-300 rounded-xl cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-blue-50 transition">
-                            <input type="radio" name="max_companies" value="3" required checked class="absolute top-2 right-2 text-primary">
-                            <span class="text-2xl font-bold text-primary">3곳</span>
-                            <span class="text-xs text-gray-500 mt-1">추천</span>
-                        </label>
-                        <label class="relative flex flex-col items-center p-4 border-2 border-gray-300 rounded-xl cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-blue-50 transition">
-                            <input type="radio" name="max_companies" value="5" class="absolute top-2 right-2 text-primary">
-                            <span class="text-2xl font-bold text-primary">5곳</span>
-                            <span class="text-xs text-gray-500 mt-1">꼼꼼 비교</span>
-                        </label>
-                        <label class="relative flex flex-col items-center p-4 border-2 border-gray-300 rounded-xl cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-blue-50 transition">
-                            <input type="radio" name="max_companies" value="7" class="absolute top-2 right-2 text-primary">
-                            <span class="text-2xl font-bold text-primary">7곳</span>
-                            <span class="text-xs text-gray-500 mt-1">많이 비교</span>
-                        </label>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <label class="relative flex flex-col items-center p-3 border-2 border-gray-300 rounded-xl cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-blue-50 transition">
-                            <input type="radio" name="max_companies" value="10" class="absolute top-2 right-2 text-primary">
-                            <span class="text-2xl font-bold text-primary">10곳</span>
-                            <span class="text-xs text-gray-500 mt-1">최대 비교</span>
-                        </label>
-                        <label class="relative flex flex-col items-center p-3 border-2 border-gray-300 rounded-xl cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-blue-50 transition">
-                            <input type="radio" name="max_companies" value="0" class="absolute top-2 right-2 text-primary">
-                            <span class="text-2xl font-bold text-primary">제한없음</span>
-                            <span class="text-xs text-gray-500 mt-1">최대한 많이</span>
-                        </label>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-2">선택하신 수만큼의 전문 업체에서 상담 전화를 드립니다.</p>
-                </div>
-
                 <!-- 상세 설명 (선택) -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">추가 설명 <span class="text-gray-400">(선택)</span></label>
@@ -243,41 +209,23 @@
                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none"></textarea>
                 </div>
 
-                <!-- 법적 동의 -->
+                <!-- 개인정보 동의 -->
                 <div class="space-y-3 bg-gray-50 rounded-lg p-4">
-                    <p class="text-sm font-medium text-gray-700">필수 동의사항</p>
+                    <p class="text-sm font-medium text-gray-700">개인정보 동의</p>
 
-                    <!-- 개인정보 수집/이용 동의 -->
+                    <!-- 개인정보 수집/이용 동의 (필수) -->
                     <div class="flex items-start">
                         <input type="checkbox" name="agree_privacy" required class="mt-1 mr-2 shrink-0">
                         <div class="text-sm text-gray-600">
-                            <button type="button" onclick="toggleDetail('privacy-detail')" class="text-primary underline font-medium">[필수] 개인정보 수집 및 이용 동의</button>
+                            <button type="button" onclick="toggleDetail('privacy-detail')" class="text-primary underline font-medium">[필수] 개인정보 수집·이용 동의</button>
                             <div id="privacy-detail" class="hidden mt-2 bg-white border border-gray-200 rounded p-3 text-xs text-gray-500 max-h-40 overflow-y-auto">
                                 <p class="font-medium text-gray-700 mb-1">개인정보 수집 및 이용 동의</p>
                                 <table class="w-full border-collapse text-xs mb-2">
-                                    <tr class="border-b"><td class="py-1 font-medium w-24">수집 목적</td><td>회생/파산 상담 중개 서비스 제공, 상담 업체 연결</td></tr>
-                                    <tr class="border-b"><td class="py-1 font-medium">수집 항목</td><td>이름, 연락처(휴대전화번호), 거주 지역, 채무 유형, 채무 금액, 추가 설명</td></tr>
-                                    <tr class="border-b"><td class="py-1 font-medium">보유 기간</td><td>수집일로부터 1년 (목적 달성 후 즉시 파기, 관련 법령에 따른 보존 기간이 있는 경우 해당 기간)</td></tr>
+                                    <tr class="border-b"><td class="py-1 font-medium w-24">수집 항목</td><td>이름, 연락처, 지역, 채무유형, 채무규모</td></tr>
+                                    <tr class="border-b"><td class="py-1 font-medium">수집 목적</td><td>회생·파산 상담 업체 매칭</td></tr>
+                                    <tr class="border-b"><td class="py-1 font-medium">보유 기간</td><td>상담 완료 후 1년 (동의 철회 시 즉시 삭제)</td></tr>
                                 </table>
                                 <p>귀하는 위 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 상담 신청 서비스를 이용할 수 없습니다.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 제3자 제공 동의 -->
-                    <div class="flex items-start">
-                        <input type="checkbox" name="agree_third_party" required class="mt-1 mr-2 shrink-0">
-                        <div class="text-sm text-gray-600">
-                            <button type="button" onclick="toggleDetail('third-party-detail')" class="text-primary underline font-medium">[필수] 개인정보 제3자 제공 동의</button>
-                            <div id="third-party-detail" class="hidden mt-2 bg-white border border-gray-200 rounded p-3 text-xs text-gray-500 max-h-40 overflow-y-auto">
-                                <p class="font-medium text-gray-700 mb-1">개인정보 제3자 제공 동의</p>
-                                <table class="w-full border-collapse text-xs mb-2">
-                                    <tr class="border-b"><td class="py-1 font-medium w-24">제공받는 자</td><td>새출발 제휴 법무법인, 법률사무소, 회생/파산 전문 상담 업체</td></tr>
-                                    <tr class="border-b"><td class="py-1 font-medium">제공 목적</td><td>회생/파산 상담 서비스 제공 및 연락</td></tr>
-                                    <tr class="border-b"><td class="py-1 font-medium">제공 항목</td><td>이름, 연락처, 거주 지역, 채무 유형, 채무 금액, 추가 설명</td></tr>
-                                    <tr class="border-b"><td class="py-1 font-medium">보유 기간</td><td>제공일로부터 6개월 (목적 달성 후 즉시 파기)</td></tr>
-                                </table>
-                                <p>귀하의 개인정보는 상담 서비스 제공을 위해 복수의 제휴 업체에 동시에 제공될 수 있습니다. 귀하는 제3자 제공에 대한 동의를 거부할 권리가 있으며, 동의를 거부할 경우 상담 신청 서비스를 이용할 수 없습니다.</p>
                             </div>
                         </div>
                     </div>
@@ -293,8 +241,9 @@
 
                 <button type="submit"
                     class="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-lg text-lg transition">
-                    무료 상담 신청하기
+                    다음: 상담 업체 선택하기
                 </button>
+                <p class="text-xs text-gray-400 text-center">신청 후 상담받을 업체를 직접 선택하는 단계로 이동합니다</p>
             </form>
         </div>
     </div>

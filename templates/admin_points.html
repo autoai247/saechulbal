@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}예치금 관리{% endblock %}
+{% block title %}포인트 관리{% endblock %}
 
 {% block body %}
 <nav class="bg-gray-800 text-white">
@@ -7,7 +7,7 @@
         <span class="text-lg font-bold">새출발 관리자</span>
         <div class="space-x-4 text-sm">
             <a href="/admin/dashboard" class="text-gray-300 hover:text-white">대시보드</a>
-            <a href="/admin/deposits" class="text-white font-medium">예치금 관리</a>
+            <a href="/admin/points" class="text-white font-medium">포인트 관리</a>
             <a href="/admin/crawl" class="text-gray-300 hover:text-white">크롤링 관리</a>
             <form action="/admin/logout" method="POST" class="inline">
                 <button class="text-gray-300 hover:text-white">로그아웃</button>
@@ -17,7 +17,7 @@
 </nav>
 
 <div class="max-w-6xl mx-auto px-4 py-8">
-    <h1 class="text-2xl font-bold mb-6">예치금 입금 요청 관리</h1>
+    <h1 class="text-2xl font-bold mb-6">포인트 충전 요청 관리</h1>
 
     <!-- 대기 중인 요청 -->
     <div class="mb-8">
@@ -57,7 +57,7 @@
                 </tbody>
             </table>
             {% else %}
-            <p class="p-6 text-center text-gray-400">대기 중인 입금 요청이 없습니다.</p>
+            <p class="p-6 text-center text-gray-400">대기 중인 충전 요청이 없습니다.</p>
             {% endif %}
         </div>
     </div>
@@ -103,7 +103,7 @@
 
 <script>
 async function approveDeposit(id) {
-    if (!confirm('이 입금 요청을 승인하시겠습니까? (잔액에 반영됩니다)')) return;
+    if (!confirm('이 충전 요청을 승인하시겠습니까? (포인트에 반영됩니다)')) return;
     const res = await fetch(`/admin/deposit/${id}/approve`, { method: 'POST' });
     const data = await res.json();
     if (data.success) {
@@ -115,7 +115,7 @@ async function approveDeposit(id) {
 }
 
 async function rejectDeposit(id) {
-    if (!confirm('이 입금 요청을 반려하시겠습니까?')) return;
+    if (!confirm('이 충전 요청을 반려하시겠습니까?')) return;
     const res = await fetch(`/admin/deposit/${id}/reject`, { method: 'POST' });
     if ((await res.json()).success) location.reload();
 }

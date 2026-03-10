@@ -179,11 +179,18 @@ def get_company_user(request: Request) -> dict | None:
 # ============================================================
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
+    # 평점순 상위 12개 업체
+    top_companies = sorted(
+        [c for c in companies_db if c["status"] == "active"],
+        key=lambda c: (c.get("rating", 0), c.get("review_count", 0)),
+        reverse=True,
+    )[:12]
     return templates.TemplateResponse("home.html", {
         "request": request,
         "debt_types": DEBT_TYPES,
         "regions": REGIONS,
         "debt_ranges": DEBT_RANGES,
+        "companies": top_companies,
     })
 
 

@@ -165,6 +165,39 @@
             {% endif %}
         </div>
     </div>
+
+    <!-- 입점 문의 -->
+    {% if inquiries %}
+    <div class="mt-8">
+        <h2 class="text-xl font-bold mb-4">입점 문의</h2>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">업체명</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">담당자</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">연락처</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">이메일</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">메시지</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">일시</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    {% for inq in inquiries|reverse %}
+                    <tr>
+                        <td class="px-3 py-2 font-medium">{{ inq.company_name }}</td>
+                        <td class="px-3 py-2">{{ inq.contact_name }}</td>
+                        <td class="px-3 py-2">{{ inq.contact_phone }}</td>
+                        <td class="px-3 py-2 text-xs">{{ inq.email or '-' }}</td>
+                        <td class="px-3 py-2 text-xs text-gray-500 max-w-xs truncate">{{ inq.message or '-' }}</td>
+                        <td class="px-3 py-2 text-xs text-gray-400">{{ inq.created_at[:16].replace('T', ' ') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 <script>

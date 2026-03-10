@@ -46,7 +46,7 @@
             {{ cat.category }}
         </h2>
         <div class="space-y-3">
-            {% for item in cat.items %}
+            {% for item in cat.questions %}
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition">
                     <span class="font-medium text-gray-800 pr-4">{{ item.q }}</span>

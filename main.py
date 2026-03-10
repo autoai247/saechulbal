@@ -74,6 +74,7 @@ companies_db: list[dict] = []     # 업체 목록
 company_users_db: list[dict] = [] # 업체 계정
 distributions_db: list[dict] = [] # 중개 기록 (신청 → 업체 매칭)
 purchases_db: list[dict] = []     # 열람(구매) 기록
+inquiries_db: list[dict] = []     # 업체 입점 문의
 
 # ============================================================
 # 크롤링 업체 데이터 로드 + 샘플 보강
@@ -353,6 +354,41 @@ async def company_detail(request: Request, company_id: str):
 
 
 # ============================================================
+# 업체 입점 문의
+# ============================================================
+@app.get("/company/inquiry", response_class=HTMLResponse)
+async def company_inquiry_page(request: Request):
+    return templates.TemplateResponse("company_inquiry.html", {
+        "request": request, "success": False,
+    })
+
+
+@app.post("/company/inquiry", response_class=HTMLResponse)
+async def company_inquiry_submit(
+    request: Request,
+    company_name: str = Form(...),
+    contact_name: str = Form(...),
+    contact_phone: str = Form(...),
+    email: str = Form(""),
+    message: str = Form(""),
+):
+    inquiry = {
+        "id": str(uuid.uuid4()),
+        "company_name": company_name,
+        "contact_name": contact_name,
+        "contact_phone": contact_phone,
+        "email": email,
+        "message": message,
+        "status": "pending",
+        "created_at": datetime.now().isoformat(),
+    }
+    inquiries_db.append(inquiry)
+    return templates.TemplateResponse("company_inquiry.html", {
+        "request": request, "success": True,
+    })
+
+
+# ============================================================
 # 업체 페이지
 # ============================================================
 @app.get("/company/login", response_class=HTMLResponse)
@@ -592,6 +628,7 @@ async def admin_dashboard(request: Request):
         "crawl_state": crawl_state,
         "applications": applications_db[-20:],  # 최근 20건
         "companies": companies_db,
+        "inquiries": inquiries_db[-10:],  # 최근 입점 문의 10건
     })
 
 
@@ -873,7 +910,7 @@ async def admin_crawl_status(request: Request):
 FAQ_DATA = [
     {
         "category": "개인회생",
-        "items": [
+        "questions": [
             {
                 "q": "개인회생이란 무엇인가요?",
                 "a": "개인회생은 정기적인 수입이 있는 채무자가 법원에 신청하여, 3~5년간 변제계획에 따라 채무 일부를 갚고 나머지를 면제받는 제도입니다. 채무 총액이 무담보 10억원, 담보 15억원 이하인 경우 신청 가능합니다."
@@ -918,7 +955,7 @@ FAQ_DATA = [
     },
     {
         "category": "개인파산·면책",
-        "items": [
+        "questions": [
             {
                 "q": "개인파산이란 무엇인가요?",
                 "a": "개인파산은 채무 변제가 불가능한 상태에서 법원에 파산을 신청하고, 면책(빚 탕감)을 받아 경제적으로 새출발하는 제도입니다. 소득이 없거나 매우 적어 개인회생이 불가능한 경우에 적합합니다."
@@ -959,7 +996,7 @@ FAQ_DATA = [
     },
     {
         "category": "기업회생·기업파산",
-        "items": [
+        "questions": [
             {
                 "q": "기업회생(법정관리)이란?",
                 "a": "기업회생은 재정난에 빠진 기업이 법원의 관리하에 사업을 계속하면서 채무를 조정하는 제도입니다. 고용을 유지하고 기업 가치를 보존하면서 채무를 감축할 수 있습니다."
@@ -984,7 +1021,7 @@ FAQ_DATA = [
     },
     {
         "category": "채무조정·신용회복",
-        "items": [
+        "questions": [
             {
                 "q": "개인워크아웃(신용회복위원회)이란?",
                 "a": "신용회복위원회를 통해 채권자(은행·카드사 등)와 협의하여 채무를 감면·조정하는 사적 제도입니다. 법원을 거치지 않아 절차가 간단하고, 이자 감면·원금 분할상환이 가능합니다."
@@ -1009,7 +1046,7 @@ FAQ_DATA = [
     },
     {
         "category": "실생활 궁금증",
-        "items": [
+        "questions": [
             {
                 "q": "회생/파산하면 가족에게 영향이 있나요?",
                 "a": "본인에게만 적용됩니다. 가족의 신용이나 재산에는 영향 없습니다. 다만 가족이 연대보증을 선 경우, 그 채무는 가족에게 청구될 수 있습니다."

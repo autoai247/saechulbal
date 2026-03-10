@@ -7,6 +7,9 @@
         <span class="text-lg font-bold">새출발 관리자</span>
         <div class="space-x-4 text-sm">
             <a href="/admin/dashboard" class="text-white font-medium">대시보드</a>
+            <a href="/admin/deposits" class="text-gray-300 hover:text-white">예치금 관리
+                {% if stats.pending_deposits %}<span class="ml-1 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">{{ stats.pending_deposits }}</span>{% endif %}
+            </a>
             <a href="/admin/crawl" class="text-gray-300 hover:text-white">크롤링 관리</a>
             <form action="/admin/logout" method="POST" class="inline">
                 <button class="text-gray-300 hover:text-white">로그아웃</button>
@@ -166,6 +169,45 @@
         </div>
     </div>
 
+    <!-- 예치금 입금 대기 -->
+    {% if pending_deposits %}
+    <div class="mt-8">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">예치금 입금 대기 <span class="text-sm font-normal text-yellow-600">({{ pending_deposits|length }}건)</span></h2>
+            <a href="/admin/deposits" class="text-sm text-primary hover:underline">전체보기 &rarr;</a>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">업체명</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">입금자</th>
+                        <th class="px-3 py-2 text-right text-xs text-gray-500">금액</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">요청일</th>
+                        <th class="px-3 py-2 text-center text-xs text-gray-500">관리</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    {% for dep in pending_deposits %}
+                    <tr class="bg-yellow-50">
+                        <td class="px-3 py-2 font-medium">{{ dep.company_name }}</td>
+                        <td class="px-3 py-2">{{ dep.depositor_name }}</td>
+                        <td class="px-3 py-2 text-right font-bold text-primary">{{ "{:,}".format(dep.amount) }}원</td>
+                        <td class="px-3 py-2 text-xs text-gray-400">{{ dep.created_at[:16].replace('T', ' ') }}</td>
+                        <td class="px-3 py-2 text-center space-x-1">
+                            <button onclick="approveDeposit('{{ dep.id }}')"
+                                class="bg-accent text-white text-xs px-2 py-1 rounded hover:bg-emerald-600">승인</button>
+                            <button onclick="rejectDeposit('{{ dep.id }}')"
+                                class="bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600">반려</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
     <!-- 입점 문의 -->
     {% if inquiries %}
     <div class="mt-8">
@@ -222,6 +264,24 @@ async function rejectApp(id) {
 async function approveCompany(id) {
     if (!confirm('이 업체를 승인하시겠습니까?')) return;
     const res = await fetch(`/admin/company/${id}/approve`, { method: 'POST' });
+    if ((await res.json()).success) location.reload();
+}
+
+async function approveDeposit(id) {
+    if (!confirm('이 입금 요청을 승인하시겠습니까?')) return;
+    const res = await fetch(`/admin/deposit/${id}/approve`, { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+        alert(data.message);
+        location.reload();
+    } else {
+        alert(data.error);
+    }
+}
+
+async function rejectDeposit(id) {
+    if (!confirm('이 입금 요청을 반려하시겠습니까?')) return;
+    const res = await fetch(`/admin/deposit/${id}/reject`, { method: 'POST' });
     if ((await res.json()).success) location.reload();
 }
 

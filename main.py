@@ -75,6 +75,8 @@ company_users_db: list[dict] = [] # 업체 계정
 distributions_db: list[dict] = [] # 중개 기록 (신청 → 업체 매칭)
 purchases_db: list[dict] = []     # 열람(구매) 기록
 inquiries_db: list[dict] = []     # 업체 입점 문의
+transactions_db: list[dict] = []  # 예치금 거래 내역
+deposit_requests_db: list[dict] = []  # 예치금 입금 요청
 
 # ============================================================
 # 크롤링 업체 데이터 로드 + 샘플 보강
@@ -507,11 +509,22 @@ async def company_dashboard(request: Request):
                 "dist_status": dist["status"],
             })
 
+    # 최근 거래 내역
+    recent_transactions = sorted(
+        [t for t in transactions_db if t["company_id"] == company["id"]],
+        key=lambda t: t["created_at"], reverse=True,
+    )[:5]
+
+    # 대기 중인 입금 요청
+    pending_deposit = any(d["company_id"] == company["id"] and d["status"] == "pending" for d in deposit_requests_db)
+
     return templates.TemplateResponse("company_dashboard.html", {
         "request": request,
         "company": company,
         "leads": leads,
         "lead_price": LEAD_PRICE,
+        "recent_transactions": recent_transactions,
+        "pending_deposit": pending_deposit,
     })
 
 
@@ -555,6 +568,13 @@ async def purchase_lead(request: Request, distribution_id: str):
     purchases_db.append(purchase)
     dist["status"] = "purchased"
 
+    # 거래 내역 기록
+    _record_transaction(
+        company["id"], "purchase", -LEAD_PRICE,
+        f"DB 열람 - {app_data.get('debt_type_label', '')} ({app_data.get('region', '')})",
+        ref_id=purchase["id"],
+    )
+
     # 신청인 정보 반환 (app_data는 위에서 이미 조회됨)
     return JSONResponse({
         "success": True,
@@ -569,6 +589,98 @@ async def company_logout():
     response = RedirectResponse("/company/login", status_code=303)
     response.delete_cookie("company_token")
     return response
+
+
+# ============================================================
+# 예치금 시스템
+# ============================================================
+def _record_transaction(company_id: str, tx_type: str, amount: int, description: str, ref_id: str = ""):
+    """거래 내역 기록"""
+    tx = {
+        "id": str(uuid.uuid4()),
+        "company_id": company_id,
+        "type": tx_type,  # deposit, purchase, refund, admin_charge
+        "amount": amount,  # 양수: 입금, 음수: 차감
+        "description": description,
+        "ref_id": ref_id,
+        "balance_after": next((c["balance"] for c in companies_db if c["id"] == company_id), 0),
+        "created_at": datetime.now().isoformat(),
+    }
+    transactions_db.append(tx)
+    return tx
+
+
+@app.get("/company/deposit", response_class=HTMLResponse)
+async def company_deposit_page(request: Request):
+    """예치금 관리 페이지"""
+    user = get_company_user(request)
+    if not user:
+        return RedirectResponse("/company/login")
+
+    company = next((c for c in companies_db if c["id"] == user["company_id"]), None)
+    if not company:
+        return RedirectResponse("/company/login")
+
+    # 이 업체의 거래 내역
+    my_transactions = sorted(
+        [t for t in transactions_db if t["company_id"] == company["id"]],
+        key=lambda t: t["created_at"], reverse=True,
+    )
+
+    # 이 업체의 입금 요청
+    my_deposits = sorted(
+        [d for d in deposit_requests_db if d["company_id"] == company["id"]],
+        key=lambda d: d["created_at"], reverse=True,
+    )
+
+    # 통계
+    total_deposited = sum(t["amount"] for t in transactions_db if t["company_id"] == company["id"] and t["type"] in ("deposit", "admin_charge"))
+    total_spent = abs(sum(t["amount"] for t in transactions_db if t["company_id"] == company["id"] and t["type"] == "purchase"))
+
+    return templates.TemplateResponse("company_deposit.html", {
+        "request": request,
+        "company": company,
+        "transactions": my_transactions[:50],
+        "deposit_requests": my_deposits[:10],
+        "total_deposited": total_deposited,
+        "total_spent": total_spent,
+    })
+
+
+@app.post("/company/deposit/request")
+async def company_deposit_request(
+    request: Request,
+    amount: int = Form(...),
+    depositor_name: str = Form(...),
+):
+    """예치금 입금 요청"""
+    user = get_company_user(request)
+    if not user:
+        return JSONResponse({"error": "로그인 필요"}, status_code=401)
+
+    company = next((c for c in companies_db if c["id"] == user["company_id"]), None)
+    if not company:
+        return JSONResponse({"error": "업체 없음"}, status_code=404)
+
+    if amount < 10000:
+        return JSONResponse({"error": "최소 입금 금액은 10,000원입니다."}, status_code=400)
+
+    if amount > 10000000:
+        return JSONResponse({"error": "최대 입금 금액은 10,000,000원입니다."}, status_code=400)
+
+    deposit_req = {
+        "id": str(uuid.uuid4()),
+        "company_id": company["id"],
+        "company_name": company["name"],
+        "amount": amount,
+        "depositor_name": depositor_name,
+        "status": "pending",  # pending → approved → rejected
+        "created_at": datetime.now().isoformat(),
+        "processed_at": None,
+    }
+    deposit_requests_db.append(deposit_req)
+
+    return JSONResponse({"success": True, "message": f"{amount:,}원 입금 요청이 접수되었습니다. 관리자 확인 후 처리됩니다."})
 
 
 # ============================================================
@@ -616,6 +728,7 @@ async def admin_dashboard(request: Request):
     total_revenue = sum(p["price"] for p in purchases_db)
 
     crawled_count = len([c for c in companies_db if c.get("source") == "naver_crawl"])
+    pending_deposits = [d for d in deposit_requests_db if d["status"] == "pending"]
     return templates.TemplateResponse("admin_dashboard.html", {
         "request": request,
         "stats": {
@@ -624,11 +737,13 @@ async def admin_dashboard(request: Request):
             "total_purchases": total_purchases,
             "total_revenue": total_revenue,
             "crawled_count": crawled_count,
+            "pending_deposits": len(pending_deposits),
         },
         "crawl_state": crawl_state,
-        "applications": applications_db[-20:],  # 최근 20건
+        "applications": applications_db[-20:],
         "companies": companies_db,
-        "inquiries": inquiries_db[-10:],  # 최근 입점 문의 10건
+        "inquiries": inquiries_db[-10:],
+        "pending_deposits": pending_deposits,
     })
 
 
@@ -658,6 +773,7 @@ async def charge_company(request: Request, company_id: str, amount: int = Form(.
         return JSONResponse({"error": "업체를 찾을 수 없습니다."}, status_code=404)
 
     company["balance"] += amount
+    _record_transaction(company["id"], "admin_charge", amount, "관리자 수동 충전")
     return JSONResponse({"success": True, "new_balance": company["balance"]})
 
 
@@ -705,6 +821,79 @@ async def admin_reject_application(request: Request, app_id: str):
         return JSONResponse({"error": "신청건을 찾을 수 없습니다."}, status_code=404)
 
     app_data["status"] = "rejected"
+    return JSONResponse({"success": True})
+
+
+@app.get("/admin/deposits", response_class=HTMLResponse)
+async def admin_deposits_page(request: Request):
+    """예치금 입금 요청 관리"""
+    admin = get_admin(request)
+    if not admin:
+        return RedirectResponse("/admin/login")
+
+    pending = [d for d in deposit_requests_db if d["status"] == "pending"]
+    processed = sorted(
+        [d for d in deposit_requests_db if d["status"] != "pending"],
+        key=lambda d: d.get("processed_at", ""), reverse=True,
+    )[:30]
+
+    return templates.TemplateResponse("admin_deposits.html", {
+        "request": request,
+        "pending_deposits": pending,
+        "processed_deposits": processed,
+    })
+
+
+@app.post("/admin/deposit/{deposit_id}/approve")
+async def admin_approve_deposit(request: Request, deposit_id: str):
+    """입금 요청 승인 → 잔액 추가"""
+    admin = get_admin(request)
+    if not admin:
+        return JSONResponse({"error": "권한 없음"}, status_code=401)
+
+    dep = next((d for d in deposit_requests_db if d["id"] == deposit_id), None)
+    if not dep:
+        return JSONResponse({"error": "요청을 찾을 수 없습니다."}, status_code=404)
+
+    if dep["status"] != "pending":
+        return JSONResponse({"error": "이미 처리된 요청입니다."}, status_code=400)
+
+    company = next((c for c in companies_db if c["id"] == dep["company_id"]), None)
+    if not company:
+        return JSONResponse({"error": "업체를 찾을 수 없습니다."}, status_code=404)
+
+    # 잔액 추가
+    company["balance"] += dep["amount"]
+    dep["status"] = "approved"
+    dep["processed_at"] = datetime.now().isoformat()
+
+    # 거래 내역 기록
+    _record_transaction(
+        company["id"], "deposit", dep["amount"],
+        f"예치금 입금 (입금자: {dep['depositor_name']})",
+        ref_id=dep["id"],
+    )
+
+    return JSONResponse({"success": True, "message": f"{dep['amount']:,}원 입금 승인 완료"})
+
+
+@app.post("/admin/deposit/{deposit_id}/reject")
+async def admin_reject_deposit(request: Request, deposit_id: str):
+    """입금 요청 반려"""
+    admin = get_admin(request)
+    if not admin:
+        return JSONResponse({"error": "권한 없음"}, status_code=401)
+
+    dep = next((d for d in deposit_requests_db if d["id"] == deposit_id), None)
+    if not dep:
+        return JSONResponse({"error": "요청을 찾을 수 없습니다."}, status_code=404)
+
+    if dep["status"] != "pending":
+        return JSONResponse({"error": "이미 처리된 요청입니다."}, status_code=400)
+
+    dep["status"] = "rejected"
+    dep["processed_at"] = datetime.now().isoformat()
+
     return JSONResponse({"success": True})
 
 

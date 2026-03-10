@@ -48,93 +48,144 @@
         </a>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
-        <!-- 최근 신청 -->
-        <div>
-            <h2 class="text-xl font-bold mb-4">최근 상담 신청</h2>
-            <div class="bg-white rounded-xl shadow overflow-hidden">
-                {% if applications %}
-                <table class="w-full text-sm">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-3 py-2 text-left text-xs text-gray-500">이름</th>
-                            <th class="px-3 py-2 text-left text-xs text-gray-500">유형</th>
-                            <th class="px-3 py-2 text-left text-xs text-gray-500">지역</th>
-                            <th class="px-3 py-2 text-left text-xs text-gray-500">상태</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y">
-                        {% for app in applications|reverse %}
-                        <tr>
-                            <td class="px-3 py-2">{{ app.name }}</td>
-                            <td class="px-3 py-2">{{ app.debt_type_label }}</td>
-                            <td class="px-3 py-2">{{ app.region }}</td>
-                            <td class="px-3 py-2">
-                                <span class="text-xs px-2 py-0.5 rounded
-                                    {% if app.status == 'distributed' %}bg-green-100 text-green-700
-                                    {% elif app.status == 'pending' %}bg-yellow-100 text-yellow-700
-                                    {% else %}bg-gray-100 text-gray-600{% endif %}">
-                                    {{ app.status }}
-                                </span>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <p class="p-6 text-center text-gray-400">아직 신청이 없습니다.</p>
-                {% endif %}
+    <!-- 상담 신청 관리 (전체 너비) -->
+    <div class="mb-8">
+        <h2 class="text-xl font-bold mb-4">상담 신청 관리</h2>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+            {% if applications %}
+            <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">이름</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">연락처</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">유형</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">지역</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">채무액</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">대상 업체</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">상태</th>
+                        <th class="px-3 py-2 text-center text-xs text-gray-500">관리</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    {% for app in applications|reverse %}
+                    <tr class="{% if app.status == 'pending' %}bg-yellow-50{% endif %}">
+                        <td class="px-3 py-2 font-medium">{{ app.name }}</td>
+                        <td class="px-3 py-2 text-gray-600">{{ app.phone }}</td>
+                        <td class="px-3 py-2">{{ app.debt_type_label }}</td>
+                        <td class="px-3 py-2">{{ app.region }}</td>
+                        <td class="px-3 py-2 text-xs">{{ app.debt_amount }}</td>
+                        <td class="px-3 py-2 text-xs">
+                            {% if app.direct_company_name %}
+                            <span class="text-blue-600">{{ app.direct_company_name }}</span>
+                            {% else %}
+                            <span class="text-gray-400">비교견적 ({{ app.max_companies }}곳)</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-3 py-2">
+                            <span class="text-xs px-2 py-0.5 rounded
+                                {% if app.status == 'distributed' %}bg-green-100 text-green-700
+                                {% elif app.status == 'pending' %}bg-yellow-100 text-yellow-700
+                                {% elif app.status == 'rejected' %}bg-red-100 text-red-700
+                                {% else %}bg-gray-100 text-gray-600{% endif %}">
+                                {% if app.status == 'pending' %}대기
+                                {% elif app.status == 'distributed' %}배분완료
+                                {% elif app.status == 'rejected' %}반려
+                                {% else %}{{ app.status }}{% endif %}
+                            </span>
+                        </td>
+                        <td class="px-3 py-2 text-center space-x-1">
+                            {% if app.status == 'pending' %}
+                            <button onclick="approveApp('{{ app.id }}')"
+                                class="bg-accent text-white text-xs px-2 py-1 rounded hover:bg-emerald-600">승인</button>
+                            <button onclick="rejectApp('{{ app.id }}')"
+                                class="bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600">반려</button>
+                            {% elif app.status == 'distributed' %}
+                            <span class="text-xs text-green-600">처리됨</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             </div>
+            {% else %}
+            <p class="p-6 text-center text-gray-400">아직 신청이 없습니다.</p>
+            {% endif %}
         </div>
+    </div>
 
-        <!-- 업체 관리 -->
-        <div>
-            <h2 class="text-xl font-bold mb-4">업체 관리</h2>
-            <div class="bg-white rounded-xl shadow overflow-hidden">
-                {% if companies %}
-                <table class="w-full text-sm">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-3 py-2 text-left text-xs text-gray-500">업체명</th>
-                            <th class="px-3 py-2 text-left text-xs text-gray-500">잔액</th>
-                            <th class="px-3 py-2 text-left text-xs text-gray-500">상태</th>
-                            <th class="px-3 py-2 text-center text-xs text-gray-500">관리</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y">
-                        {% for company in companies %}
-                        <tr>
-                            <td class="px-3 py-2 font-medium">{{ company.name }}</td>
-                            <td class="px-3 py-2">{{ "{:,}".format(company.balance) }}원</td>
-                            <td class="px-3 py-2">
-                                <span class="text-xs px-2 py-0.5 rounded
-                                    {% if company.status == 'active' %}bg-green-100 text-green-700
-                                    {% elif company.status == 'pending' %}bg-yellow-100 text-yellow-700
-                                    {% else %}bg-red-100 text-red-700{% endif %}">
-                                    {{ company.status }}
-                                </span>
-                            </td>
-                            <td class="px-3 py-2 text-center space-x-1">
-                                {% if company.status == 'pending' %}
-                                <button onclick="approveCompany('{{ company.id }}')"
-                                    class="bg-accent text-white text-xs px-2 py-1 rounded hover:bg-emerald-600">승인</button>
-                                {% endif %}
-                                <button onclick="chargeCompany('{{ company.id }}')"
-                                    class="bg-primary text-white text-xs px-2 py-1 rounded hover:bg-secondary">충전</button>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <p class="p-6 text-center text-gray-400">등록된 업체가 없습니다.</p>
+    <!-- 업체 관리 -->
+    <div>
+        <h2 class="text-xl font-bold mb-4">업체 관리 (직접 등록 업체)</h2>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+            {% set registered_companies = [] %}
+            {% for company in companies %}
+                {% if company.source != 'naver_crawl' %}
+                    {% if registered_companies.append(company) %}{% endif %}
                 {% endif %}
-            </div>
+            {% endfor %}
+            {% if registered_companies %}
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">업체명</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">잔액</th>
+                        <th class="px-3 py-2 text-left text-xs text-gray-500">상태</th>
+                        <th class="px-3 py-2 text-center text-xs text-gray-500">관리</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    {% for company in registered_companies %}
+                    <tr>
+                        <td class="px-3 py-2 font-medium">{{ company.name }}</td>
+                        <td class="px-3 py-2">{{ "{:,}".format(company.balance) }}원</td>
+                        <td class="px-3 py-2">
+                            <span class="text-xs px-2 py-0.5 rounded
+                                {% if company.status == 'active' %}bg-green-100 text-green-700
+                                {% elif company.status == 'pending' %}bg-yellow-100 text-yellow-700
+                                {% else %}bg-gray-100 text-gray-600{% endif %}">
+                                {{ company.status }}
+                            </span>
+                        </td>
+                        <td class="px-3 py-2 text-center space-x-1">
+                            {% if company.status == 'pending' %}
+                            <button onclick="approveCompany('{{ company.id }}')"
+                                class="bg-accent text-white text-xs px-2 py-1 rounded hover:bg-emerald-600">승인</button>
+                            {% endif %}
+                            <button onclick="chargeCompany('{{ company.id }}')"
+                                class="bg-primary text-white text-xs px-2 py-1 rounded hover:bg-secondary">충전</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="p-6 text-center text-gray-400">직접 등록한 업체가 없습니다. (크롤링 업체 {{ stats.crawled_count }}개는 <a href="/admin/crawl" class="text-primary underline">크롤링 관리</a>에서 확인)</p>
+            {% endif %}
         </div>
     </div>
 </div>
 
 <script>
+async function approveApp(id) {
+    if (!confirm('이 신청건을 승인하고 업체에 배분하시겠습니까?')) return;
+    const res = await fetch(`/admin/application/${id}/approve`, { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+        alert(data.message);
+        location.reload();
+    } else {
+        alert(data.error);
+    }
+}
+
+async function rejectApp(id) {
+    if (!confirm('이 신청건을 반려하시겠습니까?')) return;
+    const res = await fetch(`/admin/application/${id}/reject`, { method: 'POST' });
+    if ((await res.json()).success) location.reload();
+}
+
 async function approveCompany(id) {
     if (!confirm('이 업체를 승인하시겠습니까?')) return;
     const res = await fetch(`/admin/company/${id}/approve`, { method: 'POST' });

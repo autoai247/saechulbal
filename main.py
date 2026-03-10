@@ -231,8 +231,8 @@ async def apply_direct(
     debt_amount: str = Form(...),
     description: str = Form(""),
 ):
-    """특정 업체에 직접 상담 신청"""
-    target_company = next((c for c in companies_db if c["id"] == company_id and c["status"] == "active"), None)
+    """특정 업체에 직접 상담 신청 (관리자 승인 후 업체에 전달)"""
+    target_company = next((c for c in companies_db if c["id"] == company_id and c["status"] in ("active", "listed")), None)
     if not target_company:
         return RedirectResponse("/companies")
 
@@ -247,21 +247,13 @@ async def apply_direct(
         "max_companies": 1,
         "description": description,
         "direct_company_id": company_id,
-        "status": "distributed",
+        "direct_company_name": target_company["name"],
+        "status": "pending",  # 관리자 확인 전까지 pending
         "created_at": datetime.now().isoformat(),
     }
     applications_db.append(application)
 
-    # 해당 업체에만 직접 배분
-    distribution = {
-        "id": str(uuid.uuid4()),
-        "application_id": application["id"],
-        "company_id": company_id,
-        "status": "notified",
-        "created_at": datetime.now().isoformat(),
-    }
-    distributions_db.append(distribution)
-
+    # 업체에 바로 배분하지 않음 → 관리자가 승인 후 배분
     return templates.TemplateResponse("apply_complete.html", {
         "request": request,
         "application": application,
@@ -546,6 +538,15 @@ async def company_logout():
 # ============================================================
 # 관리자 페이지
 # ============================================================
+@app.get("/admin")
+async def admin_redirect(request: Request):
+    """관리자 로그인 페이지로 리다이렉트 (또는 이미 로그인 시 대시보드)"""
+    admin = get_admin(request)
+    if admin:
+        return RedirectResponse("/admin/dashboard")
+    return RedirectResponse("/admin/login")
+
+
 @app.get("/admin/login", response_class=HTMLResponse)
 async def admin_login_page(request: Request):
     return templates.TemplateResponse("admin_login.html", {"request": request})
@@ -621,6 +622,53 @@ async def charge_company(request: Request, company_id: str, amount: int = Form(.
 
     company["balance"] += amount
     return JSONResponse({"success": True, "new_balance": company["balance"]})
+
+
+@app.post("/admin/application/{app_id}/approve")
+async def admin_approve_application(request: Request, app_id: str):
+    """관리자가 신청건 승인 → 업체에 배분"""
+    admin = get_admin(request)
+    if not admin:
+        return JSONResponse({"error": "권한 없음"}, status_code=401)
+
+    app_data = next((a for a in applications_db if a["id"] == app_id), None)
+    if not app_data:
+        return JSONResponse({"error": "신청건을 찾을 수 없습니다."}, status_code=404)
+
+    if app_data["status"] != "pending":
+        return JSONResponse({"error": "이미 처리된 신청건입니다."}, status_code=400)
+
+    # 직접 신청인 경우 해당 업체에만 배분
+    if app_data.get("direct_company_id"):
+        distribution = {
+            "id": str(uuid.uuid4()),
+            "application_id": app_data["id"],
+            "company_id": app_data["direct_company_id"],
+            "status": "notified",
+            "created_at": datetime.now().isoformat(),
+        }
+        distributions_db.append(distribution)
+    else:
+        # 일반 신청: 필터 매칭 업체들에게 배분
+        _distribute_to_companies(app_data)
+
+    app_data["status"] = "distributed"
+    return JSONResponse({"success": True, "message": "승인 및 배분 완료"})
+
+
+@app.post("/admin/application/{app_id}/reject")
+async def admin_reject_application(request: Request, app_id: str):
+    """관리자가 신청건 반려"""
+    admin = get_admin(request)
+    if not admin:
+        return JSONResponse({"error": "권한 없음"}, status_code=401)
+
+    app_data = next((a for a in applications_db if a["id"] == app_id), None)
+    if not app_data:
+        return JSONResponse({"error": "신청건을 찾을 수 없습니다."}, status_code=404)
+
+    app_data["status"] = "rejected"
+    return JSONResponse({"success": True})
 
 
 @app.post("/admin/logout")

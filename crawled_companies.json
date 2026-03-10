@@ -1,6 +1,6 @@
 [
   {
-    "id": "43a611c0-fc1f-432d-8e4c-e7efcd32e1a7",
+    "id": "60e93ca4-0990-4b34-bf15-df5a36b75282",
     "name": "법무법인진산",
     "business_number": "",
     "contact_name": "",
@@ -28,10 +28,10 @@
     "balance": 0,
     "naver_place_id": "35251377",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290468"
+    "created_at": "2026-03-10T17:50:07.324421"
   },
   {
-    "id": "7fb57842-a463-4507-8645-6435387458fc",
+    "id": "bc54cda1-ccc6-48a4-8c05-f4c5b709263f",
     "name": "법무법인서해 도산 전문변호사 전택윤 인천사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -59,10 +59,10 @@
     "balance": 0,
     "naver_place_id": "1303150393",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290505"
+    "created_at": "2026-03-10T17:50:07.324452"
   },
   {
-    "id": "30a4aed4-cdba-41ed-8048-fa8f804a97ac",
+    "id": "9fde70a5-f119-4f1c-8566-c58fb33933f8",
     "name": "법무법인대인 안산사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -90,10 +90,10 @@
     "balance": 0,
     "naver_place_id": "1101313340",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290516"
+    "created_at": "2026-03-10T17:50:07.324463"
   },
   {
-    "id": "35caf3b2-c016-4bf5-b354-75e79615a162",
+    "id": "96dfd5b4-6823-4970-adca-54dd31acc40c",
     "name": "법무법인공명 인천분사무소쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -121,10 +121,10 @@
     "balance": 0,
     "naver_place_id": "1920539705",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290525"
+    "created_at": "2026-03-10T17:50:07.324472"
   },
   {
-    "id": "2a5b4b0f-56f5-4945-a04b-395defad1467",
+    "id": "ec71e3d9-ed8d-4b2f-b5a3-ee682256fc4a",
     "name": "법무법인이일 종합법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -152,10 +152,10 @@
     "balance": 0,
     "naver_place_id": "34217507",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290533"
+    "created_at": "2026-03-10T17:50:07.324480"
   },
   {
-    "id": "5868d318-b168-4be7-b101-1072845c13b1",
+    "id": "77969d62-7d08-4ffc-b6b5-eaa7a79ffb24",
     "name": "변호사법무법인대인 인천 주사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -183,10 +183,10 @@
     "balance": 0,
     "naver_place_id": "38563116",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290541"
+    "created_at": "2026-03-10T17:50:07.324487"
   },
   {
-    "id": "f2926bf4-2967-4522-b562-5d36d0fae5b3",
+    "id": "806d256f-4825-4404-ae53-f4523929e388",
     "name": "미추홀법률사무소형사 민사개인회생이혼 상속인천변호사",
     "business_number": "",
     "contact_name": "",
@@ -213,10 +213,10 @@
     "balance": 0,
     "naver_place_id": "2080547377",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290549"
+    "created_at": "2026-03-10T17:50:07.324496"
   },
   {
-    "id": "8dd75999-7d50-4963-8bc7-744f628c25df",
+    "id": "0109f811-d112-40aa-b9d3-4e428f40d272",
     "name": "법률사무소일로톡톡",
     "business_number": "",
     "contact_name": "",
@@ -244,10 +244,10 @@
     "balance": 0,
     "naver_place_id": "125599199",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290556"
+    "created_at": "2026-03-10T17:50:07.324503"
   },
   {
-    "id": "61d6a26f-8ccb-4cdb-bf30-c5512eb59383",
+    "id": "6fbd84ec-1e89-44e6-868e-4280bd5a3d98",
     "name": "법률사무소메가 한은석 변호사톡톡",
     "business_number": "",
     "contact_name": "",
@@ -275,10 +275,10 @@
     "balance": 0,
     "naver_place_id": "1115453392",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290563"
+    "created_at": "2026-03-10T17:50:07.324511"
   },
   {
-    "id": "68c65390-d61b-4414-90cf-d649ed421d4c",
+    "id": "67af9976-9633-40fa-91e6-642aef2769a3",
     "name": "수원개인회생김종수변호사법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -305,10 +305,10 @@
     "balance": 0,
     "naver_place_id": "11830114",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290571"
+    "created_at": "2026-03-10T17:50:07.324519"
   },
   {
-    "id": "da739115-6645-499e-80bf-d8696ed67347",
+    "id": "1987b955-71cc-4b56-a7a9-6deda4ddc582",
     "name": "이혼형사전문변호사 은승우법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -336,10 +336,10 @@
     "balance": 0,
     "naver_place_id": "38576560",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290578"
+    "created_at": "2026-03-10T17:50:07.324526"
   },
   {
-    "id": "5c8f213a-d59a-4d81-807a-97715c402a2d",
+    "id": "a0da9921-e3df-4ad6-82b2-cf064b2ce23f",
     "name": "변호사전성주법률사무소부천 이혼형사개인회생파산톡톡",
     "business_number": "",
     "contact_name": "",
@@ -367,10 +367,10 @@
     "balance": 0,
     "naver_place_id": "760773142",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290585"
+    "created_at": "2026-03-10T17:50:07.324533"
   },
   {
-    "id": "279fcf09-5a65-4c2f-847c-f62e468fd725",
+    "id": "539b3bf2-153a-4199-8f8e-f916dcaf672c",
     "name": "변호사예솔종합법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -398,10 +398,10 @@
     "balance": 0,
     "naver_place_id": "1535033613",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290593"
+    "created_at": "2026-03-10T17:50:07.324541"
   },
   {
-    "id": "4b422af2-f746-406b-b47e-3f9db75224d4",
+    "id": "43c99337-8ac0-41c6-885e-6b64c70a0769",
     "name": "수원개인회생파산법원출신법무사송정환톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -429,10 +429,10 @@
     "balance": 0,
     "naver_place_id": "1443638804",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290601"
+    "created_at": "2026-03-10T17:50:07.324548"
   },
   {
-    "id": "96813fd9-ae3a-464f-9c24-420d249db27f",
+    "id": "81178d6d-53aa-48ac-8294-be78891ca9d1",
     "name": "수원개인회생법인회생파산전문상담 변호사강지훈법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -460,10 +460,10 @@
     "balance": 0,
     "naver_place_id": "1317275443",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290608"
+    "created_at": "2026-03-10T17:50:07.324555"
   },
   {
-    "id": "fe2e88f3-78e4-43bb-bf30-65edd629f8f9",
+    "id": "d832514d-593a-44de-ae55-bfa5173860d0",
     "name": "수원개인회생파산전문 이서영 변호사 사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -491,10 +491,10 @@
     "balance": 0,
     "naver_place_id": "1805344577",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290615"
+    "created_at": "2026-03-10T17:50:07.324562"
   },
   {
-    "id": "22de491e-5b1c-4fe2-ae94-6eba08d8a6e6",
+    "id": "9355efda-59cd-465a-8cda-25f21f4a6456",
     "name": "미추홀법률사무소형사 민사개인회생 이혼 상속인천변호사",
     "business_number": "",
     "contact_name": "",
@@ -521,10 +521,10 @@
     "balance": 0,
     "naver_place_id": "2080547377",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290622"
+    "created_at": "2026-03-10T17:50:07.324570"
   },
   {
-    "id": "b62fc590-d788-44ff-9f1d-efb282a50d9e",
+    "id": "e005ab1e-eafe-408e-8a5b-d9e3f1f10438",
     "name": "수원개인회생파산전문법률사무소나온",
     "business_number": "",
     "contact_name": "",
@@ -552,10 +552,10 @@
     "balance": 0,
     "naver_place_id": "1603249372",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290629"
+    "created_at": "2026-03-10T17:50:07.324577"
   },
   {
-    "id": "582492bd-e0ba-4fd3-81dd-e0626282d2aa",
+    "id": "c6240742-eced-456e-810f-c6f256106817",
     "name": "법무법인 서해 도산 전문변호사 전택윤 인천사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -583,10 +583,10 @@
     "balance": 0,
     "naver_place_id": "1303150393",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290636"
+    "created_at": "2026-03-10T17:50:07.324584"
   },
   {
-    "id": "dfd04cbf-7550-4763-8860-886a4b49c0e1",
+    "id": "d83c6292-c45c-4e67-95f7-5a512242b4c0",
     "name": "부산개인회생파산법무법인김앤파트너스",
     "business_number": "",
     "contact_name": "",
@@ -614,10 +614,10 @@
     "balance": 0,
     "naver_place_id": "1712549509",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290643"
+    "created_at": "2026-03-10T17:50:07.324592"
   },
   {
-    "id": "451956a3-6478-4d42-9de3-329e2a760d70",
+    "id": "9aa1d06b-c9d8-4c82-a0e8-0bbf8934eb21",
     "name": "법무법인김앤파트너스 서울 변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -645,10 +645,10 @@
     "balance": 0,
     "naver_place_id": "1204957686",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290650"
+    "created_at": "2026-03-10T17:50:07.324598"
   },
   {
-    "id": "0eba5860-eadf-4184-9182-11944f2b12b6",
+    "id": "9eb58a31-d3c2-4497-a320-3c1261f2e61e",
     "name": "법무법인지금톡톡",
     "business_number": "",
     "contact_name": "",
@@ -676,10 +676,10 @@
     "balance": 0,
     "naver_place_id": "37883385",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290657"
+    "created_at": "2026-03-10T17:50:07.324605"
   },
   {
-    "id": "d87358c5-8845-4084-9836-ba64cf405397",
+    "id": "7e54400e-eb2c-4857-a29f-bf8cd8f6e7d6",
     "name": "법무법인호안",
     "business_number": "",
     "contact_name": "",
@@ -707,10 +707,10 @@
     "balance": 0,
     "naver_place_id": "1889472631",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290663"
+    "created_at": "2026-03-10T17:50:07.324612"
   },
   {
-    "id": "527afd84-d0e7-4e1e-abb4-57b535008f03",
+    "id": "84578efe-c6eb-4bdf-96fe-f956a84127b8",
     "name": "법률사무소 율진 이혼형사 개인회생교통사고손해배상 전문톡톡",
     "business_number": "",
     "contact_name": "",
@@ -737,10 +737,10 @@
     "balance": 0,
     "naver_place_id": "1448535218",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290671"
+    "created_at": "2026-03-10T17:50:07.324618"
   },
   {
-    "id": "09ee7854-d2b2-46cd-a073-71b8d88abc10",
+    "id": "71e5df4f-e243-4b77-8827-31edf084032b",
     "name": "수원개인회생파산전문법무사류진열사무소톡톡쿠폰법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -768,10 +768,10 @@
     "balance": 0,
     "naver_place_id": "1601602088",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290678"
+    "created_at": "2026-03-10T17:50:07.324625"
   },
   {
-    "id": "b56d188c-1ee1-4c66-88aa-74c5dfd74865",
+    "id": "ef9afc5e-b67b-402c-b158-fe23514e6c5c",
     "name": "경기신용회복 개인회생파산전문도시현법무사사무소톡톡쿠폰법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -799,10 +799,10 @@
     "balance": 0,
     "naver_place_id": "1251581649",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290685"
+    "created_at": "2026-03-10T17:50:07.324632"
   },
   {
-    "id": "8026e52d-1340-4e31-9fa0-fc8068399d35",
+    "id": "f00c371d-f149-42a3-84a6-c64e312192fb",
     "name": "수원개인회생파산 전문김성태 법무사 사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -830,10 +830,10 @@
     "balance": 0,
     "naver_place_id": "1071656597",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290692"
+    "created_at": "2026-03-10T17:50:07.324639"
   },
   {
-    "id": "76ab7afe-b6a9-414e-96f0-baf3e97bf68b",
+    "id": "5beb83cd-5dd6-4d50-b127-b01de4988c06",
     "name": "수원개인회생 법인회생 파산전문상담 변호사강지훈법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -861,10 +861,10 @@
     "balance": 0,
     "naver_place_id": "1317275443",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290699"
+    "created_at": "2026-03-10T17:50:07.324646"
   },
   {
-    "id": "834e8c20-d8c2-4672-83ef-05a198c86c0c",
+    "id": "f7bb7bdc-9beb-4662-a878-540c177682ab",
     "name": "수원개인회생파산 전문이서영 변호사 사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -892,10 +892,10 @@
     "balance": 0,
     "naver_place_id": "1805344577",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290706"
+    "created_at": "2026-03-10T17:50:07.324652"
   },
   {
-    "id": "faeece9a-b444-449d-b9ae-a8aff9d928c0",
+    "id": "f4fd7f29-094d-4958-97ad-a5bba6af9f59",
     "name": "미추홀법률사무소 형사 민사개인회생이혼 상속인천변호사",
     "business_number": "",
     "contact_name": "",
@@ -922,10 +922,10 @@
     "balance": 0,
     "naver_place_id": "2080547377",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290713"
+    "created_at": "2026-03-10T17:50:07.324660"
   },
   {
-    "id": "023622d0-a83c-4167-b0e3-5e85f7b219f9",
+    "id": "e441b8bb-2e4b-40d9-9a74-70860f4904bf",
     "name": "법률사무소 일로톡톡",
     "business_number": "",
     "contact_name": "",
@@ -953,10 +953,10 @@
     "balance": 0,
     "naver_place_id": "125599199",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290721"
+    "created_at": "2026-03-10T17:50:07.324666"
   },
   {
-    "id": "8b676282-c8a8-4b3d-8eb0-f5142ad3ef89",
+    "id": "a16012af-0d87-466e-af4c-95eadebeaaaf",
     "name": "법률사무소 메가 한은석변호사톡톡",
     "business_number": "",
     "contact_name": "",
@@ -984,10 +984,10 @@
     "balance": 0,
     "naver_place_id": "1115453392",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290727"
+    "created_at": "2026-03-10T17:50:07.324673"
   },
   {
-    "id": "10eba5a2-8ef6-433e-a76d-276e424c261f",
+    "id": "161153d5-1813-4c30-9c7f-0c916be67f05",
     "name": "이혼형사전문변호사은승우법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1015,10 +1015,10 @@
     "balance": 0,
     "naver_place_id": "38576560",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290734"
+    "created_at": "2026-03-10T17:50:07.324680"
   },
   {
-    "id": "27ecc156-2601-4dfa-9ae2-c2bd0d5e59e3",
+    "id": "d5b0ff87-12ac-453a-a8d0-10ea4c9b8bc7",
     "name": "변호사전성주법률사무소 부천 이혼형사개인회생파산톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1046,10 +1046,10 @@
     "balance": 0,
     "naver_place_id": "760773142",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290741"
+    "created_at": "2026-03-10T17:50:07.324687"
   },
   {
-    "id": "4fb3ebd7-c175-4e72-9fc5-85f61447d98e",
+    "id": "f4f5f9ef-7a92-4b64-bf9d-ce5ed628181e",
     "name": "법무법인대담 서초사무소",
     "business_number": "",
     "contact_name": "",
@@ -1077,10 +1077,10 @@
     "balance": 0,
     "naver_place_id": "1022540418",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290748"
+    "created_at": "2026-03-10T17:50:07.324694"
   },
   {
-    "id": "f7130189-d574-488c-85cc-72b42fccd593",
+    "id": "1b7437b7-1dd3-4ff4-8ead-484ef528d664",
     "name": "법률사무소 현우톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1108,10 +1108,10 @@
     "balance": 0,
     "naver_place_id": "1565562538",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290754"
+    "created_at": "2026-03-10T17:50:07.324700"
   },
   {
-    "id": "e9f7974e-e544-44dd-a3d1-3642064d1a0f",
+    "id": "a2b037ce-1260-4484-ae7f-bd51ab7c777a",
     "name": "창원개인회생파산법무법인김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1139,10 +1139,10 @@
     "balance": 0,
     "naver_place_id": "1052118110",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290761"
+    "created_at": "2026-03-10T17:50:07.324707"
   },
   {
-    "id": "94419a6e-f380-4941-89be-822a58bd0828",
+    "id": "df31b9d8-5948-417d-a53b-6ebd17cc9b92",
     "name": "법무법인 대건 성수분사무소",
     "business_number": "",
     "contact_name": "",
@@ -1170,10 +1170,10 @@
     "balance": 0,
     "naver_place_id": "1833140463",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290768"
+    "created_at": "2026-03-10T17:50:07.324714"
   },
   {
-    "id": "d1d982b9-344f-4adf-91b7-1e08ece32c09",
+    "id": "6a500234-f764-44af-80cb-c1bfd47eac19",
     "name": "법률사무소대한톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1201,10 +1201,10 @@
     "balance": 0,
     "naver_place_id": "1211349138",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290774"
+    "created_at": "2026-03-10T17:50:07.324721"
   },
   {
-    "id": "6ba7072d-3478-4a02-94e4-d9425cd87670",
+    "id": "eccda0b7-1097-4164-89e8-1faa19dd1f16",
     "name": "법무법인대현 성남 주사무소",
     "business_number": "",
     "contact_name": "",
@@ -1232,10 +1232,10 @@
     "balance": 0,
     "naver_place_id": "12872300",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290781"
+    "created_at": "2026-03-10T17:50:07.324727"
   },
   {
-    "id": "d83deccf-b1f5-40a9-bbc3-9a6e6aaab04b",
+    "id": "706fcc07-cacd-4940-8bc7-05ff83fcf2dc",
     "name": "변호사고강락법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -1263,10 +1263,10 @@
     "balance": 0,
     "naver_place_id": "1779679101",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290788"
+    "created_at": "2026-03-10T17:50:07.324734"
   },
   {
-    "id": "ab74adb8-8064-42ae-9029-53b69c2f47e0",
+    "id": "6cf4f7e7-cc1e-4e2e-9778-5a833e566a30",
     "name": "법률사무소리현",
     "business_number": "",
     "contact_name": "",
@@ -1294,10 +1294,10 @@
     "balance": 0,
     "naver_place_id": "1144090107",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290794"
+    "created_at": "2026-03-10T17:50:07.324741"
   },
   {
-    "id": "e6a4587c-d4b9-4a47-ac90-18aac8f158c1",
+    "id": "251c1756-ad88-4420-a6be-7253ad3671a7",
     "name": "법률사무소기쁨",
     "business_number": "",
     "contact_name": "",
@@ -1325,10 +1325,10 @@
     "balance": 0,
     "naver_place_id": "37408141",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290801"
+    "created_at": "2026-03-10T17:50:07.324748"
   },
   {
-    "id": "3f6bc9d3-0394-4541-afd6-e0bb32836b1a",
+    "id": "60f6f6d1-79cf-4539-b152-3e1046948e03",
     "name": "법무법인파로스",
     "business_number": "",
     "contact_name": "",
@@ -1356,10 +1356,10 @@
     "balance": 0,
     "naver_place_id": "36666000",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290808"
+    "created_at": "2026-03-10T17:50:07.324755"
   },
   {
-    "id": "e2da6e9a-3195-41c6-a9ef-4e6ba10b31fa",
+    "id": "a65dba20-3ff3-4d52-a8b6-d68fac50063e",
     "name": "법무법인김앤파트너스서울변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1387,10 +1387,10 @@
     "balance": 0,
     "naver_place_id": "1204957686",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290814"
+    "created_at": "2026-03-10T17:50:07.324761"
   },
   {
-    "id": "b4b2ced6-64ff-4942-8b10-132b7efcc3ae",
+    "id": "3ce4046e-ea19-42ea-b606-943994f3f409",
     "name": "법무법인이엘",
     "business_number": "",
     "contact_name": "",
@@ -1418,10 +1418,10 @@
     "balance": 0,
     "naver_place_id": "52004719",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290821"
+    "created_at": "2026-03-10T17:50:07.324768"
   },
   {
-    "id": "2a417d26-d414-448e-a541-cb1cf24a5dc1",
+    "id": "497782af-c796-45a6-9bb1-08b26a6670bf",
     "name": "법무법인서앤율톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1449,10 +1449,10 @@
     "balance": 0,
     "naver_place_id": "567752143",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290828"
+    "created_at": "2026-03-10T17:50:07.324775"
   },
   {
-    "id": "faba96d8-6e11-43f1-b771-6c6fcafe532d",
+    "id": "e73ea74b-88d7-49d0-abbb-6807537122dd",
     "name": "법무법인태청 서초분사무소",
     "business_number": "",
     "contact_name": "",
@@ -1480,10 +1480,10 @@
     "balance": 0,
     "naver_place_id": "972917290",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290835"
+    "created_at": "2026-03-10T17:50:07.324782"
   },
   {
-    "id": "f151bdc7-328e-422a-bf71-ebf4cc66c1d6",
+    "id": "18c3d578-b324-4235-bcf4-09fa07e88c1e",
     "name": "법무법인공명",
     "business_number": "",
     "contact_name": "",
@@ -1511,10 +1511,10 @@
     "balance": 0,
     "naver_place_id": "1224745885",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290841"
+    "created_at": "2026-03-10T17:50:07.324789"
   },
   {
-    "id": "245f569a-e505-4738-955c-922f9c85f068",
+    "id": "0a506ad6-ab6e-4f07-9164-727b3ce41e57",
     "name": "법률사무소 수림네이버페이톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1542,10 +1542,10 @@
     "balance": 0,
     "naver_place_id": "1526995191",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290848"
+    "created_at": "2026-03-10T17:50:07.324796"
   },
   {
-    "id": "6b136b30-4970-4288-a733-47795e987b50",
+    "id": "9ab0c409-30e1-46bb-8a13-853dc82cb895",
     "name": "박용대법무사톡톡쿠폰법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -1573,10 +1573,10 @@
     "balance": 0,
     "naver_place_id": "1725350517",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290854"
+    "created_at": "2026-03-10T17:50:07.324803"
   },
   {
-    "id": "47deb62d-c581-446d-852f-404461a6cfe4",
+    "id": "8c1bfc15-e01d-4663-8f47-828869e3c7fd",
     "name": "수원개인회생파산 법원출신법무사송정환톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -1604,10 +1604,10 @@
     "balance": 0,
     "naver_place_id": "1443638804",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290861"
+    "created_at": "2026-03-10T17:50:07.324810"
   },
   {
-    "id": "8750d5e9-1332-4757-9562-f172f2e6e6f8",
+    "id": "47240d32-be8a-432f-ad53-a56225e932f9",
     "name": "수원개인회생법인회생 파산전문상담 변호사강지훈법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1635,10 +1635,10 @@
     "balance": 0,
     "naver_place_id": "1317275443",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290868"
+    "created_at": "2026-03-10T17:50:07.324817"
   },
   {
-    "id": "87a843f1-835a-4e21-93c5-196c04901f3f",
+    "id": "5ffc0e2a-02e4-42f7-9a5b-f5a12cc263d4",
     "name": "변호사법무법인대인인천주사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1666,10 +1666,10 @@
     "balance": 0,
     "naver_place_id": "38563116",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290875"
+    "created_at": "2026-03-10T17:50:07.324825"
   },
   {
-    "id": "e2065240-cc54-4647-8511-4e076a9356e1",
+    "id": "c68a3d14-402f-4974-b9ae-61ac6455d6bf",
     "name": "법무사김정호사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -1697,10 +1697,10 @@
     "balance": 0,
     "naver_place_id": "1769327071",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290883"
+    "created_at": "2026-03-10T17:50:07.324833"
   },
   {
-    "id": "d8f63da1-fca9-4300-9dba-5d5844864d52",
+    "id": "6b5ee234-5b1f-4662-865c-9195c719e6fe",
     "name": "한율법무사 오춘복 사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -1728,10 +1728,10 @@
     "balance": 0,
     "naver_place_id": "1809863646",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290889"
+    "created_at": "2026-03-10T17:50:07.324839"
   },
   {
-    "id": "fb492696-9c29-416e-84c3-0be53f5c36a6",
+    "id": "6a7df9db-29bd-4cd4-a43f-786aaeb3af51",
     "name": "법무법인서해 도산 전문변호사 전택윤인천사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1759,10 +1759,10 @@
     "balance": 0,
     "naver_place_id": "1303150393",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290896"
+    "created_at": "2026-03-10T17:50:07.324846"
   },
   {
-    "id": "09a5879a-b082-4a0e-8875-fa49b18c6bc0",
+    "id": "5b4d3864-49fe-49b7-8d84-b30eb6ef2cd9",
     "name": "부산부동산개인회생전문변호사법무법인로율부산분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1789,10 +1789,10 @@
     "balance": 0,
     "naver_place_id": "1092718766",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290903"
+    "created_at": "2026-03-10T17:50:07.324853"
   },
   {
-    "id": "6f214a61-8650-4aaa-84f0-c9beb6bb8360",
+    "id": "9251c6cf-4775-4ac0-8944-76178bbe313b",
     "name": "법무법인솔루션 이혼부동산전문부산변호사사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1820,10 +1820,10 @@
     "balance": 0,
     "naver_place_id": "32472800",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290910"
+    "created_at": "2026-03-10T17:50:07.324860"
   },
   {
-    "id": "3a9fc613-c72b-4490-b651-94ffa37aa454",
+    "id": "915959be-b53b-474b-97d3-834f24e3034d",
     "name": "법무법인장한부산분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1851,10 +1851,10 @@
     "balance": 0,
     "naver_place_id": "2023376713",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290916"
+    "created_at": "2026-03-10T17:50:07.324867"
   },
   {
-    "id": "0416ec83-0389-4287-b0fa-26f3218e5c3c",
+    "id": "8cdbe9e8-6b61-4cc5-9fe7-1b4891e13b35",
     "name": "법무법인슬기톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1882,10 +1882,10 @@
     "balance": 0,
     "naver_place_id": "2066602705",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290923"
+    "created_at": "2026-03-10T17:50:07.324873"
   },
   {
-    "id": "7a20af34-6b2e-4b0a-bf06-ed6c5057d38f",
+    "id": "b8fc1d11-182e-42ee-b2d6-ba5858ff20e4",
     "name": "법무법인리얼 로펌개인회생파산부산본점톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -1913,10 +1913,10 @@
     "balance": 0,
     "naver_place_id": "1735867409",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290929"
+    "created_at": "2026-03-10T17:50:07.324880"
   },
   {
-    "id": "fbf84715-4589-4ec0-bc31-98d31031ae6e",
+    "id": "dc883f6d-49d0-4be0-a7fc-a888952dee76",
     "name": "법무법인더킴로펌대구분사무소",
     "business_number": "",
     "contact_name": "",
@@ -1944,10 +1944,10 @@
     "balance": 0,
     "naver_place_id": "1598431867",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290936"
+    "created_at": "2026-03-10T17:50:07.324887"
   },
   {
-    "id": "e69e707a-c7ee-4e9e-a3e5-6c5c574f5e64",
+    "id": "669bd052-6f9d-4d8c-a976-cddc0eae553b",
     "name": "법무법인그날 회생파산센터톡톡",
     "business_number": "",
     "contact_name": "",
@@ -1975,10 +1975,10 @@
     "balance": 0,
     "naver_place_id": "2077547691",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290943"
+    "created_at": "2026-03-10T17:50:07.324893"
   },
   {
-    "id": "f2978f36-be91-4d97-b44d-0a6303d65152",
+    "id": "0de9133f-7b55-4b9a-9589-b925c9f62cdb",
     "name": "법무법인그날 서부회생파산센터톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2006,10 +2006,10 @@
     "balance": 0,
     "naver_place_id": "2023310568",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290950"
+    "created_at": "2026-03-10T17:50:07.324900"
   },
   {
-    "id": "62f08ea8-ed76-4c96-962b-5c4299d4a62c",
+    "id": "61a81e7b-4ba1-4ba1-9801-77d8b9723067",
     "name": "대구개인회생파산법무법인김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2037,10 +2037,10 @@
     "balance": 0,
     "naver_place_id": "1025992664",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290957"
+    "created_at": "2026-03-10T17:50:07.324908"
   },
   {
-    "id": "e7dd325e-6ab1-4255-98c8-42f0d34a0ead",
+    "id": "d8738dc4-b8df-4007-9ef4-efbe49e137eb",
     "name": "법무법인지름길대구분사무소",
     "business_number": "",
     "contact_name": "",
@@ -2068,10 +2068,10 @@
     "balance": 0,
     "naver_place_id": "1674143459",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290964"
+    "created_at": "2026-03-10T17:50:07.324915"
   },
   {
-    "id": "5fd3ad04-550c-4912-a5ec-6dd7d76683d3",
+    "id": "f28818d9-b89f-4f86-8abe-da6e70d90202",
     "name": "법무사법인루안법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2099,10 +2099,10 @@
     "balance": 0,
     "naver_place_id": "2094696284",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290970"
+    "created_at": "2026-03-10T17:50:07.324921"
   },
   {
-    "id": "4230a110-78c7-40dc-a09c-782d2ec5661b",
+    "id": "23c2294a-7c54-45ee-97fc-ee33b2a13156",
     "name": "법무법인글로리대전사무소 이혼형사전문변호사톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2130,10 +2130,10 @@
     "balance": 0,
     "naver_place_id": "1815642631",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290977"
+    "created_at": "2026-03-10T17:50:07.324928"
   },
   {
-    "id": "3983c3b1-a6e6-4549-bea6-cc3390baf57c",
+    "id": "4d548c41-0ca3-4f62-9a60-a3df44bf7afb",
     "name": "법무법인로앤대전사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2161,10 +2161,10 @@
     "balance": 0,
     "naver_place_id": "33996834",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290984"
+    "created_at": "2026-03-10T17:50:07.324936"
   },
   {
-    "id": "7607f2ac-d719-4df8-ab3d-cb8cbd4294ce",
+    "id": "00424f71-82e9-4c71-b626-a939cc1e9372",
     "name": "법무법인율지대전분사무소",
     "business_number": "",
     "contact_name": "",
@@ -2192,10 +2192,10 @@
     "balance": 0,
     "naver_place_id": "1079601617",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290990"
+    "created_at": "2026-03-10T17:50:07.324943"
   },
   {
-    "id": "48c3228c-abac-476e-85f6-5d958c6d8003",
+    "id": "04dbdea6-43a8-4bba-a26f-28f6ab71617a",
     "name": "대전법무사법인법무",
     "business_number": "",
     "contact_name": "",
@@ -2223,10 +2223,10 @@
     "balance": 0,
     "naver_place_id": "37537731",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.290997"
+    "created_at": "2026-03-10T17:50:07.324950"
   },
   {
-    "id": "f99f4f32-4d8a-400d-9a90-5e8f60adf6ab",
+    "id": "9d350493-bf20-4226-b386-c83b6327df50",
     "name": "법률사무소 율진 이혼형사개인회생교통사고손해배상 전문톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2253,10 +2253,10 @@
     "balance": 0,
     "naver_place_id": "1448535218",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291004"
+    "created_at": "2026-03-10T17:50:07.324957"
   },
   {
-    "id": "93d65aeb-a230-48bc-af68-4d136108cd91",
+    "id": "2e67510e-5fe1-4df0-bb41-452af4219be9",
     "name": "스타법무법인대전분사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2284,10 +2284,10 @@
     "balance": 0,
     "naver_place_id": "1252891369",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291010"
+    "created_at": "2026-03-10T17:50:07.324963"
   },
   {
-    "id": "bac5ed95-7c7c-448c-8d81-aa7d797ab5c7",
+    "id": "fa13dce1-b98b-4094-ae33-98205b534ca2",
     "name": "법무법인거북이광주지산분사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2315,10 +2315,10 @@
     "balance": 0,
     "naver_place_id": "1584591210",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291017"
+    "created_at": "2026-03-10T17:50:07.324971"
   },
   {
-    "id": "d8a2131a-f55e-4058-b305-b6b705ba5ffb",
+    "id": "26e1438e-ac85-48c5-a5c7-0a664afdb028",
     "name": "법무법인법가",
     "business_number": "",
     "contact_name": "",
@@ -2346,10 +2346,10 @@
     "balance": 0,
     "naver_place_id": "1464003457",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291024"
+    "created_at": "2026-03-10T17:50:07.324978"
   },
   {
-    "id": "341267f7-3d67-42ee-9a6d-9e5fdaf8bb84",
+    "id": "a3837499-aa11-4b92-9d4a-ba4ccce6fb7c",
     "name": "법무법인바른길",
     "business_number": "",
     "contact_name": "",
@@ -2377,10 +2377,10 @@
     "balance": 0,
     "naver_place_id": "13004774",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291030"
+    "created_at": "2026-03-10T17:50:07.324984"
   },
   {
-    "id": "52c4f8d7-32ca-4ae8-aade-5e45ac4e6e2e",
+    "id": "c82bbc4a-2a54-4c6c-83cb-292b5e946a5b",
     "name": "법무법인가현",
     "business_number": "",
     "contact_name": "",
@@ -2408,10 +2408,10 @@
     "balance": 0,
     "naver_place_id": "1574413430",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291038"
+    "created_at": "2026-03-10T17:50:07.324992"
   },
   {
-    "id": "27029a63-da5a-45ca-a4ce-25c9f2e42d66",
+    "id": "bb3f735f-f374-4bc5-8d16-17516488fc69",
     "name": "법무법인빛고을종합법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -2439,10 +2439,10 @@
     "balance": 0,
     "naver_place_id": "1146460162",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291045"
+    "created_at": "2026-03-10T17:50:07.324998"
   },
   {
-    "id": "57764064-69cd-427b-bb42-cd1704dbf652",
+    "id": "f78283c9-92e9-4b32-ad96-5cc0a0ac87a1",
     "name": "법무사최회동사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2470,10 +2470,10 @@
     "balance": 0,
     "naver_place_id": "1328502961",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291052"
+    "created_at": "2026-03-10T17:50:07.325005"
   },
   {
-    "id": "5438534e-6e10-44eb-bc43-f8a306138457",
+    "id": "3e9bf875-e250-4a35-aa9b-386f4422d559",
     "name": "법무법인세화 김순득변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2501,10 +2501,10 @@
     "balance": 0,
     "naver_place_id": "1910480262",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291059"
+    "created_at": "2026-03-10T17:50:07.325013"
   },
   {
-    "id": "766c9a87-1514-4a5d-a0b1-985dd5d30428",
+    "id": "69e12143-2af8-4b41-9cd1-1a99222ddbb9",
     "name": "법무사박수현사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2532,10 +2532,10 @@
     "balance": 0,
     "naver_place_id": "1299404137",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291104"
+    "created_at": "2026-03-10T17:50:07.325020"
   },
   {
-    "id": "3442c9c5-a46c-4881-b83f-e5bc3c019bec",
+    "id": "daf9546a-a7b9-4d4d-8292-3a396fb1e829",
     "name": "법무사김상현사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2563,10 +2563,10 @@
     "balance": 0,
     "naver_place_id": "38605380",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291118"
+    "created_at": "2026-03-10T17:50:07.325027"
   },
   {
-    "id": "d2b5077d-f266-4eb5-933e-aa166a394dd5",
+    "id": "6131cc2e-6e25-479f-b096-678b97fe9b63",
     "name": "법무사김신희사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2594,10 +2594,10 @@
     "balance": 0,
     "naver_place_id": "37579156",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291126"
+    "created_at": "2026-03-10T17:50:07.325033"
   },
   {
-    "id": "6941c46c-2c6f-407b-b6c5-4454150deeca",
+    "id": "dcadf777-cd6c-4474-a198-7acbc7acc78e",
     "name": "법무사정창수사무소톡톡쿠폰법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2625,10 +2625,10 @@
     "balance": 0,
     "naver_place_id": "1455123402",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291134"
+    "created_at": "2026-03-10T17:50:07.325040"
   },
   {
-    "id": "e0b52741-1c38-49f3-a3b3-0d0b861a8e41",
+    "id": "12ebfed8-6d7c-4cfc-9aa1-ce506a54e18e",
     "name": "신우종합법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -2656,10 +2656,10 @@
     "balance": 0,
     "naver_place_id": "1356420001",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291141"
+    "created_at": "2026-03-10T17:50:07.325047"
   },
   {
-    "id": "141ebe58-0486-4b70-ba06-8966837dd920",
+    "id": "d26c143d-69e1-4daf-8ceb-735496c69e87",
     "name": "수원개인회생파산 전문 이서영 변호사 사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -2685,10 +2685,10 @@
     "balance": 0,
     "naver_place_id": "1805344577",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291149"
+    "created_at": "2026-03-10T17:50:07.325055"
   },
   {
-    "id": "342f54ea-c13b-46a1-9537-edc74ffd95d4",
+    "id": "2d600ca4-aae7-4cc8-a9b0-74384feab795",
     "name": "법무법인라이즈",
     "business_number": "",
     "contact_name": "",
@@ -2714,10 +2714,10 @@
     "balance": 0,
     "naver_place_id": "1686021003",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291156"
+    "created_at": "2026-03-10T17:50:07.325062"
   },
   {
-    "id": "8346ce67-ae61-49eb-82cd-353bf8474f68",
+    "id": "7e9b2603-f849-4bec-b7df-6aac793b494c",
     "name": "법률사무소 새수원",
     "business_number": "",
     "contact_name": "",
@@ -2743,10 +2743,10 @@
     "balance": 0,
     "naver_place_id": "34968627",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291163"
+    "created_at": "2026-03-10T17:50:07.325069"
   },
   {
-    "id": "0d0ac2aa-b617-4fe6-b1d2-be15724ccd01",
+    "id": "7543a80c-3e5d-4292-bc25-031533ee64ee",
     "name": "법무법인이담",
     "business_number": "",
     "contact_name": "",
@@ -2772,10 +2772,10 @@
     "balance": 0,
     "naver_place_id": "180081844",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291170"
+    "created_at": "2026-03-10T17:50:07.325076"
   },
   {
-    "id": "d41092f2-e98e-40b6-80cc-ea9487de5e0a",
+    "id": "80c25d7d-e33d-45f6-8885-7672c34ee68f",
     "name": "법무법인대현성남주사무소",
     "business_number": "",
     "contact_name": "",
@@ -2803,10 +2803,10 @@
     "balance": 0,
     "naver_place_id": "12872300",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291177"
+    "created_at": "2026-03-10T17:50:07.325082"
   },
   {
-    "id": "7dcb9c49-9b01-4b77-a5dd-e798e0e29075",
+    "id": "6cc0ded5-f07f-443a-a878-d9f212e9622d",
     "name": "김훈대법무사 사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2834,10 +2834,10 @@
     "balance": 0,
     "naver_place_id": "1203868035",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291183"
+    "created_at": "2026-03-10T17:50:07.325089"
   },
   {
-    "id": "0e7bd657-5a0d-4990-bb62-7daea5614753",
+    "id": "209b0977-b85c-4aec-a871-41abff4de8ca",
     "name": "나날법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2865,10 +2865,10 @@
     "balance": 0,
     "naver_place_id": "21791236",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291190"
+    "created_at": "2026-03-10T17:50:07.325096"
   },
   {
-    "id": "5ae33718-740f-4ba6-8a12-523e742f94b2",
+    "id": "a97a67eb-f299-4d3e-82cf-7337ac8493da",
     "name": "계영법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2896,10 +2896,10 @@
     "balance": 0,
     "naver_place_id": "32403452",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291197"
+    "created_at": "2026-03-10T17:50:07.325103"
   },
   {
-    "id": "47609995-06a9-41f8-81a8-372b27c6860f",
+    "id": "8b960038-4ca2-4212-8b57-963200159777",
     "name": "법무사김충관사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2927,10 +2927,10 @@
     "balance": 0,
     "naver_place_id": "35032102",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291204"
+    "created_at": "2026-03-10T17:50:07.325110"
   },
   {
-    "id": "1f8dd0fc-fd41-411b-a1a3-5ea59cb58697",
+    "id": "978ed49d-0f46-4109-81d2-842db1fab03f",
     "name": "지광석법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -2958,10 +2958,10 @@
     "balance": 0,
     "naver_place_id": "1885817417",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291210"
+    "created_at": "2026-03-10T17:50:07.325116"
   },
   {
-    "id": "9c61c196-19f5-432f-9e54-5733ac378e0c",
+    "id": "601b5e07-7a87-43a0-af56-9f9fad1ec365",
     "name": "법무법인정연",
     "business_number": "",
     "contact_name": "",
@@ -2989,10 +2989,10 @@
     "balance": 0,
     "naver_place_id": "1804144586",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291218"
+    "created_at": "2026-03-10T17:50:07.325123"
   },
   {
-    "id": "746a9098-3a36-4541-b961-7dc0f5c77a3e",
+    "id": "be24f484-b10f-4d0a-a189-fde0aeaa1006",
     "name": "법무법인목성",
     "business_number": "",
     "contact_name": "",
@@ -3020,10 +3020,10 @@
     "balance": 0,
     "naver_place_id": "18353651",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291225"
+    "created_at": "2026-03-10T17:50:07.325130"
   },
   {
-    "id": "df3e1b9d-a847-4fc3-b81b-9b38d567ac14",
+    "id": "deb0244c-138d-4287-8435-cc46b61653b8",
     "name": "법률사무소 한울",
     "business_number": "",
     "contact_name": "",
@@ -3051,10 +3051,10 @@
     "balance": 0,
     "naver_place_id": "2098142775",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291231"
+    "created_at": "2026-03-10T17:50:07.325136"
   },
   {
-    "id": "26d3f309-9ab0-4e44-a2e7-53c188d908b7",
+    "id": "0f91b317-20fc-4579-aad1-7ebb89963a8c",
     "name": "법무사원영미사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3082,10 +3082,10 @@
     "balance": 0,
     "naver_place_id": "1289827179",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291238"
+    "created_at": "2026-03-10T17:50:07.325143"
   },
   {
-    "id": "5bbe987f-dba5-4023-ae48-e7bad99062f2",
+    "id": "a5ca2f46-17eb-468e-9fdf-ffecd234753f",
     "name": "법무법인서린",
     "business_number": "",
     "contact_name": "",
@@ -3111,10 +3111,10 @@
     "balance": 0,
     "naver_place_id": "1714225343",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291245"
+    "created_at": "2026-03-10T17:50:07.325151"
   },
   {
-    "id": "bcea0287-e239-452a-969d-6956f9e5cf1f",
+    "id": "b7f7482f-ba51-41d2-9b15-395679585cb2",
     "name": "신리법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3140,10 +3140,10 @@
     "balance": 0,
     "naver_place_id": "1640155081",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291253"
+    "created_at": "2026-03-10T17:50:07.325158"
   },
   {
-    "id": "f41ff0aa-0942-40b5-91be-df47cd012ab3",
+    "id": "6daca73b-9d74-4bfb-b1d6-61106da6fddc",
     "name": "법무사 윤진희 사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3169,10 +3169,10 @@
     "balance": 0,
     "naver_place_id": "13443411",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291259"
+    "created_at": "2026-03-10T17:50:07.325199"
   },
   {
-    "id": "8d3c97b5-f92f-4ab0-a89d-2308472873cb",
+    "id": "d33cebef-64d3-4a34-ba64-3b1e3d13d8d1",
     "name": "법무법인지름길 동탄분사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -3198,10 +3198,10 @@
     "balance": 0,
     "naver_place_id": "2011470455",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291266"
+    "created_at": "2026-03-10T17:50:07.325216"
   },
   {
-    "id": "32486a2a-8baf-49a6-9fe9-d235a4254b5e",
+    "id": "6565d75b-95dd-4646-b77e-43de0bf0f679",
     "name": "법무법인장한창원사무소 형사가사도산전문 이동성변호사톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -3227,10 +3227,10 @@
     "balance": 0,
     "naver_place_id": "36322923",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291274"
+    "created_at": "2026-03-10T17:50:07.325225"
   },
   {
-    "id": "f5a67b6e-2be6-46b3-959e-b83635bd293d",
+    "id": "0c126127-fe73-419c-b9a4-93f37895e3d3",
     "name": "법무법인더킴로펌개인회생파산창원센터톡톡",
     "business_number": "",
     "contact_name": "",
@@ -3256,10 +3256,10 @@
     "balance": 0,
     "naver_place_id": "1227815002",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291281"
+    "created_at": "2026-03-10T17:50:07.325233"
   },
   {
-    "id": "96308958-34ae-4f6f-9a4b-23e66b844e64",
+    "id": "b1c27699-7981-4b0e-833d-642885078a93",
     "name": "법무법인리얼 로펌개인회생파산창원분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -3285,10 +3285,10 @@
     "balance": 0,
     "naver_place_id": "1852771986",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291288"
+    "created_at": "2026-03-10T17:50:07.325241"
   },
   {
-    "id": "fa1d757a-09ac-4e3b-96a3-d20bc29fe316",
+    "id": "f0a02b31-f3a7-45e0-91b6-9723f3b9681a",
     "name": "법무법인장한창원분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -3314,10 +3314,10 @@
     "balance": 0,
     "naver_place_id": "1813513108",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291295"
+    "created_at": "2026-03-10T17:50:07.325248"
   },
   {
-    "id": "700b5fda-e88c-40c5-910d-dd59a3383ab4",
+    "id": "71d2eba1-b800-41e8-8c0c-6c78ea272217",
     "name": "법무법인디에이치창원법률사무소 정성원변호사 형사이혼전문톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -3343,10 +3343,10 @@
     "balance": 0,
     "naver_place_id": "1750217539",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291302"
+    "created_at": "2026-03-10T17:50:07.325255"
   },
   {
-    "id": "65502526-768d-4a7f-9320-106ff1d1fb9e",
+    "id": "75a68769-69fb-4719-a45f-3047a1c553b9",
     "name": "법무법인영우청주사무소 이혼 형사개인회생전문",
     "business_number": "",
     "contact_name": "",
@@ -3371,10 +3371,10 @@
     "balance": 0,
     "naver_place_id": "1549576579",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291320"
+    "created_at": "2026-03-10T17:50:07.325262"
   },
   {
-    "id": "f57a9b6c-b132-40c5-b3c7-cd49a1d613b2",
+    "id": "7e3e66e6-eb88-4ec0-9129-3c802197c9a6",
     "name": "법무법인우리청주사무소 이혼형사전문 김혜진변호사",
     "business_number": "",
     "contact_name": "",
@@ -3400,10 +3400,10 @@
     "balance": 0,
     "naver_place_id": "21559525",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291328"
+    "created_at": "2026-03-10T17:50:07.325269"
   },
   {
-    "id": "8edb9e7a-3eb4-4ee6-9a2c-5470f912d0f7",
+    "id": "c6922f6b-ba9a-47a4-9297-3d72a337c52a",
     "name": "법무법인프런티어 성범죄교통사고형사이혼전문법률상담청주지사톡톡",
     "business_number": "",
     "contact_name": "",
@@ -3429,10 +3429,10 @@
     "balance": 0,
     "naver_place_id": "2090665016",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291334"
+    "created_at": "2026-03-10T17:50:07.325276"
   },
   {
-    "id": "0088de89-edde-4411-84e9-b11701e3e94a",
+    "id": "c8fe6617-3649-434d-bf0b-248145202d5f",
     "name": "법무법인프런티어 공은택 변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -3458,10 +3458,10 @@
     "balance": 0,
     "naver_place_id": "2065869135",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291342"
+    "created_at": "2026-03-10T17:50:07.325284"
   },
   {
-    "id": "d993c532-4da4-4c83-8b1c-83969cca48fc",
+    "id": "e2a719b5-555c-49e8-8710-a4a0f1f58f2b",
     "name": "법무사고창순사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3487,10 +3487,10 @@
     "balance": 0,
     "naver_place_id": "21744111",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291349"
+    "created_at": "2026-03-10T17:50:07.325291"
   },
   {
-    "id": "f37b3218-ec0c-4472-b4f2-8af6b841e218",
+    "id": "827fd387-81da-4eea-ae09-52fd96fc5fd2",
     "name": "법무법인유안 민사형사전문청주사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -3516,10 +3516,10 @@
     "balance": 0,
     "naver_place_id": "37933032",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291356"
+    "created_at": "2026-03-10T17:50:07.325298"
   },
   {
-    "id": "990ac2ee-66f6-4193-80bc-fd036dbb72d5",
+    "id": "c72f0826-924e-47be-a374-a15b02798a4c",
     "name": "법무법인파트원전주톡톡",
     "business_number": "",
     "contact_name": "",
@@ -3547,10 +3547,10 @@
     "balance": 0,
     "naver_place_id": "1232254069",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291364"
+    "created_at": "2026-03-10T17:50:07.325306"
   },
   {
-    "id": "c8b6d3c0-f181-4d3f-9186-a9e172c1dade",
+    "id": "48df32b9-7caa-4102-905f-bb34c4ef4cc2",
     "name": "법무법인태앤규 형사이혼부동산노동전문쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -3578,10 +3578,10 @@
     "balance": 0,
     "naver_place_id": "1203047375",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291371"
+    "created_at": "2026-03-10T17:50:07.325314"
   },
   {
-    "id": "addc7a5c-d656-41d2-8f5e-be2487959ae8",
+    "id": "449eedc3-cbc3-4d42-baed-c72349254c17",
     "name": "법률사무소 도담톡톡",
     "business_number": "",
     "contact_name": "",
@@ -3609,10 +3609,10 @@
     "balance": 0,
     "naver_place_id": "37555510",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291379"
+    "created_at": "2026-03-10T17:50:07.325321"
   },
   {
-    "id": "8e8ac397-c8db-464c-99a0-c985b9e7c97b",
+    "id": "c4243c69-183e-4ae6-99a7-eccbe2c262e5",
     "name": "법무법인비케이에스전주사무소",
     "business_number": "",
     "contact_name": "",
@@ -3640,10 +3640,10 @@
     "balance": 0,
     "naver_place_id": "1848038349",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291386"
+    "created_at": "2026-03-10T17:50:07.325328"
   },
   {
-    "id": "bea2e319-54ff-481d-90c3-3c2d499fb1ce",
+    "id": "05217326-8b5d-4170-9253-857c35ee6c89",
     "name": "청산법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3671,10 +3671,10 @@
     "balance": 0,
     "naver_place_id": "1618016734",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291394"
+    "created_at": "2026-03-10T17:50:07.325335"
   },
   {
-    "id": "b535a60e-999a-44a3-a2e5-03027be61551",
+    "id": "3ac5555f-e2e5-4b59-8d61-bfcf59323fb4",
     "name": "법무사김승수사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3702,10 +3702,10 @@
     "balance": 0,
     "naver_place_id": "35358109",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291499"
+    "created_at": "2026-03-10T17:50:07.325342"
   },
   {
-    "id": "de54e260-ba46-4ac1-96b2-fbe011a54c38",
+    "id": "8a3b902e-ef2e-41d8-baa2-6afba6d90b7f",
     "name": "서도법무법인공증인",
     "business_number": "",
     "contact_name": "",
@@ -3733,10 +3733,10 @@
     "balance": 0,
     "naver_place_id": "38695660",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291509"
+    "created_at": "2026-03-10T17:50:07.325350"
   },
   {
-    "id": "da20e091-ddcb-48c6-b9f4-a1eb0ab704ca",
+    "id": "c43e692a-06d4-4aaa-80c5-da82206cf5f2",
     "name": "법무법인정도천안분사무소",
     "business_number": "",
     "contact_name": "",
@@ -3764,10 +3764,10 @@
     "balance": 0,
     "naver_place_id": "1433135005",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291516"
+    "created_at": "2026-03-10T17:50:07.325357"
   },
   {
-    "id": "6ec2d45e-6e4c-4519-bed8-6c9eee688ffb",
+    "id": "c4c7eeb1-0ad0-49ce-ade3-bdc929498eca",
     "name": "법무법인라이즈천안임이지변호사",
     "business_number": "",
     "contact_name": "",
@@ -3795,10 +3795,10 @@
     "balance": 0,
     "naver_place_id": "1055575544",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291522"
+    "created_at": "2026-03-10T17:50:07.325364"
   },
   {
-    "id": "01ee7c12-635e-432c-bad4-5d4d859546ed",
+    "id": "fc4b78cc-2a0b-43d8-8f89-dd430eb657ac",
     "name": "세종법무사사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3826,10 +3826,10 @@
     "balance": 0,
     "naver_place_id": "12895641",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291530"
+    "created_at": "2026-03-10T17:50:07.325371"
   },
   {
-    "id": "863ead17-0902-4e87-ada0-62f28def28ff",
+    "id": "71685898-1b9e-4489-a0ec-7283d6ccc01c",
     "name": "율현법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3857,10 +3857,10 @@
     "balance": 0,
     "naver_place_id": "1888931916",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291537"
+    "created_at": "2026-03-10T17:50:07.325378"
   },
   {
-    "id": "b415f1a2-fc1f-4acd-b430-d8cd87e6f489",
+    "id": "a6317315-bbff-4b6d-98b7-98505e4493ed",
     "name": "법무사안선환사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3888,10 +3888,10 @@
     "balance": 0,
     "naver_place_id": "1297392882",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291544"
+    "created_at": "2026-03-10T17:50:07.325385"
   },
   {
-    "id": "c38c03af-c886-464f-b78e-2b8e0692a863",
+    "id": "96f1e7e9-b283-45f2-9406-8c22965906ff",
     "name": "법무사김강일사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3919,10 +3919,10 @@
     "balance": 0,
     "naver_place_id": "36276553",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291552"
+    "created_at": "2026-03-10T17:50:07.325392"
   },
   {
-    "id": "e7bfb7f8-e400-4aa4-b797-d328d95d9202",
+    "id": "75f1c294-9643-44b3-afbd-f833418d90c8",
     "name": "법무사 김창국 사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -3950,10 +3950,10 @@
     "balance": 0,
     "naver_place_id": "1565048314",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291560"
+    "created_at": "2026-03-10T17:50:07.325400"
   },
   {
-    "id": "942ff99a-e814-4f56-8999-f6109427d330",
+    "id": "079a7ccd-df81-448e-adbe-975890f4273d",
     "name": "로스토리법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -3981,10 +3981,10 @@
     "balance": 0,
     "naver_place_id": "1319939563",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291568"
+    "created_at": "2026-03-10T17:50:07.325408"
   },
   {
-    "id": "7737a62c-c993-4314-9477-c6860f444a86",
+    "id": "f39d7e17-b466-428d-8f40-148f73ccc953",
     "name": "법률사무소율생",
     "business_number": "",
     "contact_name": "",
@@ -4012,10 +4012,10 @@
     "balance": 0,
     "naver_place_id": "1952053812",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291575"
+    "created_at": "2026-03-10T17:50:07.325414"
   },
   {
-    "id": "89d1182f-5175-488b-bb93-56cd52c27888",
+    "id": "ce922290-7185-46a0-9952-af69dab8f1ef",
     "name": "법률사무소온성",
     "business_number": "",
     "contact_name": "",
@@ -4043,10 +4043,10 @@
     "balance": 0,
     "naver_place_id": "1710906492",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291582"
+    "created_at": "2026-03-10T17:50:07.325421"
   },
   {
-    "id": "78555865-ab28-4d22-b4b0-970552fa5327",
+    "id": "d1b48baa-69e6-4d09-b430-11eb4d54f28c",
     "name": "법무법인 파로스",
     "business_number": "",
     "contact_name": "",
@@ -4074,10 +4074,10 @@
     "balance": 0,
     "naver_place_id": "36666000",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291588"
+    "created_at": "2026-03-10T17:50:07.325427"
   },
   {
-    "id": "7b3a3dea-6dbe-4925-9c56-403bb24b8093",
+    "id": "18783f34-582b-4b76-b37d-3c644e318597",
     "name": "법무법인 김앤파트너스서울변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4105,10 +4105,10 @@
     "balance": 0,
     "naver_place_id": "1204957686",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291595"
+    "created_at": "2026-03-10T17:50:07.325434"
   },
   {
-    "id": "5f15bc1e-b06d-4da6-985b-9abfcf7b39ba",
+    "id": "6b31631f-3575-4720-8c72-19c859a6a34a",
     "name": "형사이혼전문법률사무소나인 김현수변호사톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4136,10 +4136,10 @@
     "balance": 0,
     "naver_place_id": "1437781619",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291603"
+    "created_at": "2026-03-10T17:50:07.325442"
   },
   {
-    "id": "ae584e42-a53e-47ac-9fe2-78d22532ee9f",
+    "id": "d0a968a5-6706-4a1e-bced-bf2b94ea8bb0",
     "name": "법률사무소수림네이버페이톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4167,10 +4167,10 @@
     "balance": 0,
     "naver_place_id": "1526995191",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291610"
+    "created_at": "2026-03-10T17:50:07.325448"
   },
   {
-    "id": "9d38c81b-6915-49f2-b282-51de87e4f1fa",
+    "id": "1034afec-1ce6-44a1-8ff5-de1b76a6a2d9",
     "name": "법무법인 이일 종합법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -4198,10 +4198,10 @@
     "balance": 0,
     "naver_place_id": "34217507",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291617"
+    "created_at": "2026-03-10T17:50:07.325455"
   },
   {
-    "id": "e9431cf3-e17f-4127-9b35-eb21c202d69d",
+    "id": "18307a94-3cf1-4d85-bad1-7c8dcbe3b626",
     "name": "인천이혼전문변호사 김인철법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4229,10 +4229,10 @@
     "balance": 0,
     "naver_place_id": "1869822827",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291623"
+    "created_at": "2026-03-10T17:50:07.325462"
   },
   {
-    "id": "b4081689-b0be-4abe-b171-0b50c1f4f2b1",
+    "id": "00e8b32a-e25b-4396-9b0f-f80b04eae81f",
     "name": "변호사 법무법인 대인인천주사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4260,10 +4260,10 @@
     "balance": 0,
     "naver_place_id": "38563116",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291630"
+    "created_at": "2026-03-10T17:50:07.325469"
   },
   {
-    "id": "b43ccca7-4502-4d7f-9cde-3ba07029e004",
+    "id": "496cf252-c2f2-44f1-8520-9181140763d8",
     "name": "남동종합법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4291,10 +4291,10 @@
     "balance": 0,
     "naver_place_id": "1542183200",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291638"
+    "created_at": "2026-03-10T17:50:07.325476"
   },
   {
-    "id": "261a7de5-5ff8-474f-aded-bceb6613d2db",
+    "id": "24fe5a37-ad29-4796-8fbf-4710e0b84ad6",
     "name": "부산부동산개인회생전문변호사 법무법인 로율부산분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4321,10 +4321,10 @@
     "balance": 0,
     "naver_place_id": "1092718766",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291645"
+    "created_at": "2026-03-10T17:50:07.325483"
   },
   {
-    "id": "be6d651c-5868-494a-a5b7-9e710a8a98b3",
+    "id": "432ab570-fa3c-4201-85ad-82f2c554546a",
     "name": "부산개인회생파산법률사무소다옴톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4352,10 +4352,10 @@
     "balance": 0,
     "naver_place_id": "1130183146",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291653"
+    "created_at": "2026-03-10T17:50:07.325490"
   },
   {
-    "id": "17996c44-6d00-4d0a-9d1d-1cc9ffcd6b0b",
+    "id": "b3ca3eca-f17d-4f76-9058-d9ccd7cacd58",
     "name": "법무법인 장한부산분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4383,10 +4383,10 @@
     "balance": 0,
     "naver_place_id": "2023376713",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291660"
+    "created_at": "2026-03-10T17:50:07.325497"
   },
   {
-    "id": "4ea98eae-9f0a-4bcc-b112-b5c1d86c3f46",
+    "id": "3c1c20d9-2246-4117-aa28-78616696db6c",
     "name": "법무법인 슬기톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4414,10 +4414,10 @@
     "balance": 0,
     "naver_place_id": "2066602705",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291667"
+    "created_at": "2026-03-10T17:50:07.325504"
   },
   {
-    "id": "66c2d5f6-b7a8-4e29-8848-9e355d396d71",
+    "id": "27dc8df6-2052-4349-9aa3-5685c65c8632",
     "name": "법무법인 리얼 로펌개인회생파산부산본점톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4445,10 +4445,10 @@
     "balance": 0,
     "naver_place_id": "1735867409",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291674"
+    "created_at": "2026-03-10T17:50:07.325510"
   },
   {
-    "id": "9acda1bb-8092-4b61-9f04-09c27aaf13c0",
+    "id": "897f9949-b582-4bae-ae97-5909f910edd1",
     "name": "법무법인 더킴로펌대구분사무소",
     "business_number": "",
     "contact_name": "",
@@ -4476,10 +4476,10 @@
     "balance": 0,
     "naver_place_id": "1598431867",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291682"
+    "created_at": "2026-03-10T17:50:07.325517"
   },
   {
-    "id": "3c04d1bd-2716-4be3-9842-3dbb0251541e",
+    "id": "183a3085-847b-4c4f-9c9f-528190c70b22",
     "name": "법무법인 그날 서부회생파산센터톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4507,10 +4507,10 @@
     "balance": 0,
     "naver_place_id": "2023310568",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291689"
+    "created_at": "2026-03-10T17:50:07.325524"
   },
   {
-    "id": "512bfba4-2bc2-4620-907e-527c64bc74dc",
+    "id": "d043420f-e27a-475e-905c-25dfafe75f5f",
     "name": "대구개인회생파산 법무법인 김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4538,10 +4538,10 @@
     "balance": 0,
     "naver_place_id": "1025992664",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291697"
+    "created_at": "2026-03-10T17:50:07.325531"
   },
   {
-    "id": "0829921a-5b2a-41d9-b3c7-07d854ee19d4",
+    "id": "324f40c9-05f3-45e5-b6f2-49a063a66c80",
     "name": "대구개인회생파산전문변호사 구회석법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -4569,10 +4569,10 @@
     "balance": 0,
     "naver_place_id": "1495618756",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291705"
+    "created_at": "2026-03-10T17:50:07.325537"
   },
   {
-    "id": "2841cb3c-5974-4fbb-91b8-d832cdf6a6e4",
+    "id": "e2d88cfa-049a-4540-9b03-c0798c6f87d2",
     "name": "리안법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4600,10 +4600,10 @@
     "balance": 0,
     "naver_place_id": "1787466912",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291713"
+    "created_at": "2026-03-10T17:50:07.325544"
   },
   {
-    "id": "72d05655-0d9a-4427-adb3-ac1b5d012576",
+    "id": "5f76db2f-2411-4f04-a585-02d178abdf47",
     "name": "대전법률사무소청록 형사개인회생이혼전문변호사 이원주여지원톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -4630,10 +4630,10 @@
     "balance": 0,
     "naver_place_id": "1226018426",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291721"
+    "created_at": "2026-03-10T17:50:07.325551"
   },
   {
-    "id": "ccd2affc-be51-4cbc-85ff-b3dc9923c07f",
+    "id": "29c7d265-85f6-4a0d-99ae-467c5983be2b",
     "name": "법무법인 글로리대전사무소이혼형사전문변호사톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4661,10 +4661,10 @@
     "balance": 0,
     "naver_place_id": "1815642631",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291729"
+    "created_at": "2026-03-10T17:50:07.325558"
   },
   {
-    "id": "d01bcdb2-9ba8-4c9c-8f81-78794bc2282b",
+    "id": "dabe34dd-ba7e-4d9e-8894-ac5edd96643f",
     "name": "글로리개인회생파산센터대전사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4692,10 +4692,10 @@
     "balance": 0,
     "naver_place_id": "1408997873",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291736"
+    "created_at": "2026-03-10T17:50:07.325565"
   },
   {
-    "id": "58ef551e-141e-4efe-90d1-2a6a1ab48c4b",
+    "id": "11460585-25c6-49d6-aec2-5a4015005df6",
     "name": "대전개인회생전문법률사무소금강톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4722,10 +4722,10 @@
     "balance": 0,
     "naver_place_id": "1813096438",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291744"
+    "created_at": "2026-03-10T17:50:07.325571"
   },
   {
-    "id": "758b53b0-bbe3-478d-bc37-3fb19c0b9a78",
+    "id": "6d44fa00-11e6-4ebd-96fb-07246202eefe",
     "name": "법률사무소율진 이혼형사개인회생교통사고손해배상 전문톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4752,10 +4752,10 @@
     "balance": 0,
     "naver_place_id": "1448535218",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291751"
+    "created_at": "2026-03-10T17:50:07.325578"
   },
   {
-    "id": "bf6e50b2-27fb-459c-97f6-ac64945326e6",
+    "id": "d78e4f40-c2b2-437c-a62b-5f3cb7d2f5ab",
     "name": "법무법인 로앤대전사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4783,10 +4783,10 @@
     "balance": 0,
     "naver_place_id": "33996834",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291758"
+    "created_at": "2026-03-10T17:50:07.325584"
   },
   {
-    "id": "7bdcea18-6f5f-41f4-9638-cdbf2ad8f7ca",
+    "id": "e415313c-beb2-44ca-80a7-8e608427541c",
     "name": "법무법인 거북이광주지산분사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4814,10 +4814,10 @@
     "balance": 0,
     "naver_place_id": "1584591210",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291767"
+    "created_at": "2026-03-10T17:50:07.325591"
   },
   {
-    "id": "4d39cdfb-a256-41c6-bda1-2e2d3c37b101",
+    "id": "836bc490-57a7-411d-a3f8-aa285d1937e5",
     "name": "법률사무소소율톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4845,10 +4845,10 @@
     "balance": 0,
     "naver_place_id": "1963983914",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291776"
+    "created_at": "2026-03-10T17:50:07.325598"
   },
   {
-    "id": "3a2aeb10-fb1e-4d67-bee7-4c9f982ce7dd",
+    "id": "22e9764e-2f41-49ee-9d90-f5dd0fdb7047",
     "name": "법무법인 법가",
     "business_number": "",
     "contact_name": "",
@@ -4876,10 +4876,10 @@
     "balance": 0,
     "naver_place_id": "1464003457",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291784"
+    "created_at": "2026-03-10T17:50:07.325605"
   },
   {
-    "id": "45190f4e-fd65-4fb8-a889-72624f66670d",
+    "id": "411e66d8-b668-4ae3-8f44-47ae9c5889be",
     "name": "법무법인 바른길",
     "business_number": "",
     "contact_name": "",
@@ -4907,10 +4907,10 @@
     "balance": 0,
     "naver_place_id": "13004774",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291791"
+    "created_at": "2026-03-10T17:50:07.325612"
   },
   {
-    "id": "e039fc2d-4845-4ce8-80ae-2a7fb1f9c83c",
+    "id": "bff0a0a0-e10e-44cb-9c28-443e75c2f3fa",
     "name": "법무법인 가현",
     "business_number": "",
     "contact_name": "",
@@ -4938,10 +4938,10 @@
     "balance": 0,
     "naver_place_id": "1574413430",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291798"
+    "created_at": "2026-03-10T17:50:07.325618"
   },
   {
-    "id": "f90adefb-3ebd-4feb-aa24-3cf91a32397a",
+    "id": "da6fe4af-6f96-4af7-82f6-9084a67d5bd9",
     "name": "울산개인회생 법률사무소제성",
     "business_number": "",
     "contact_name": "",
@@ -4968,10 +4968,10 @@
     "balance": 0,
     "naver_place_id": "1151874930",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291806"
+    "created_at": "2026-03-10T17:50:07.325625"
   },
   {
-    "id": "398ee4ad-2c94-432f-a026-639575ebef78",
+    "id": "d3441b7e-4a6d-4335-9009-9648ac21ade2",
     "name": "법률사무소법강울산형사이혼전문변호사개인회생상담톡톡",
     "business_number": "",
     "contact_name": "",
@@ -4998,10 +4998,10 @@
     "balance": 0,
     "naver_place_id": "1234785434",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291815"
+    "created_at": "2026-03-10T17:50:07.325632"
   },
   {
-    "id": "ed3c3b0e-e36a-4e03-80a6-e6096821336d",
+    "id": "9788b9ac-ae3c-4c4d-8c31-1977cddc3569",
     "name": "울산개인회생변호사김민수법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -5028,10 +5028,10 @@
     "balance": 0,
     "naver_place_id": "20123172",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291821"
+    "created_at": "2026-03-10T17:50:07.325639"
   },
   {
-    "id": "bb65cb12-15f0-4a0e-8cca-46f03fb169c1",
+    "id": "e05ed486-610a-4e1a-8ec2-9b3c95ce3f89",
     "name": "개인회생변호사김낙구법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -5058,10 +5058,10 @@
     "balance": 0,
     "naver_place_id": "37849243",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291829"
+    "created_at": "2026-03-10T17:50:07.325645"
   },
   {
-    "id": "67e7d399-c92e-4ddc-a6ee-a706899bcfad",
+    "id": "c7024456-3ae3-4eb5-9187-56a145078ee6",
     "name": "해율법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5089,10 +5089,10 @@
     "balance": 0,
     "naver_place_id": "1532406602",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291836"
+    "created_at": "2026-03-10T17:50:07.325652"
   },
   {
-    "id": "ee0171eb-a7af-4976-b8ca-c732814966f2",
+    "id": "a526da9e-aae3-4906-b9e1-a123e9547a10",
     "name": "법무법인 세화 김순득변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5120,10 +5120,10 @@
     "balance": 0,
     "naver_place_id": "1910480262",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291843"
+    "created_at": "2026-03-10T17:50:07.325658"
   },
   {
-    "id": "9002e83c-16c9-483f-9b15-d6bf0bc8f10b",
+    "id": "cccb4af5-d64e-49d9-89b1-bdbfe601b09e",
     "name": "수원개인회생파산 전문 이서영 변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5149,10 +5149,10 @@
     "balance": 0,
     "naver_place_id": "1805344577",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291851"
+    "created_at": "2026-03-10T17:50:07.325665"
   },
   {
-    "id": "63680de1-7857-4e40-af0d-4657b3956fdd",
+    "id": "2389659b-0f21-4db8-adb2-55a0da9d0746",
     "name": "법무법인 라이즈",
     "business_number": "",
     "contact_name": "",
@@ -5178,10 +5178,10 @@
     "balance": 0,
     "naver_place_id": "1686021003",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291858"
+    "created_at": "2026-03-10T17:50:07.325672"
   },
   {
-    "id": "8db132c5-2279-4865-a6d1-05d68bdc7272",
+    "id": "f520b3ec-46b6-4e6b-80c0-49b3f4881397",
     "name": "하나법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5207,10 +5207,10 @@
     "balance": 0,
     "naver_place_id": "1318745816",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291866"
+    "created_at": "2026-03-10T17:50:07.325679"
   },
   {
-    "id": "4a7aa064-9fa7-4a64-bf9e-fc804e3ecd68",
+    "id": "8965b3cf-f232-45e1-9519-9cef6e9a5a2a",
     "name": "법률사무소무율 김도현변호사사무소네이버페이톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5238,10 +5238,10 @@
     "balance": 0,
     "naver_place_id": "1750734689",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291873"
+    "created_at": "2026-03-10T17:50:07.325686"
   },
   {
-    "id": "bc5b4bed-efc5-45b7-8b08-a690f9836475",
+    "id": "f82c5fbc-2424-4a89-bf52-b11f69eec96d",
     "name": "법률사무소정안 대표변호사 박선영톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5269,10 +5269,10 @@
     "balance": 0,
     "naver_place_id": "1077772703",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291881"
+    "created_at": "2026-03-10T17:50:07.325693"
   },
   {
-    "id": "904a6a41-234f-432b-9185-e08fb6a1659b",
+    "id": "052cf075-2c83-4dc6-96a7-fa76559d0143",
     "name": "법률사무소해안",
     "business_number": "",
     "contact_name": "",
@@ -5300,10 +5300,10 @@
     "balance": 0,
     "naver_place_id": "34363118",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291888"
+    "created_at": "2026-03-10T17:50:07.325700"
   },
   {
-    "id": "3312bc71-9ab9-40d2-a2ee-f5be2f10236d",
+    "id": "14ae0739-c887-48b6-a23c-5fac1da729a3",
     "name": "법률사무소정의로",
     "business_number": "",
     "contact_name": "",
@@ -5331,10 +5331,10 @@
     "balance": 0,
     "naver_place_id": "2060462420",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291896"
+    "created_at": "2026-03-10T17:50:07.325707"
   },
   {
-    "id": "09d43424-8fa5-44db-94c5-595a553f0b39",
+    "id": "1b24e680-9796-4839-bccf-b6113454ce93",
     "name": "법률사무소화민톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -5362,10 +5362,10 @@
     "balance": 0,
     "naver_place_id": "1691485761",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291904"
+    "created_at": "2026-03-10T17:50:07.325714"
   },
   {
-    "id": "671705c1-bcdf-410d-b61a-eb9bcd94303b",
+    "id": "6dec72c5-2991-4c20-8725-f60ab35e30d1",
     "name": "법률사무소한울",
     "business_number": "",
     "contact_name": "",
@@ -5393,10 +5393,10 @@
     "balance": 0,
     "naver_place_id": "2098142775",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291911"
+    "created_at": "2026-03-10T17:50:07.325721"
   },
   {
-    "id": "2ff2968d-d5e0-4935-8646-5291bab34e41",
+    "id": "1231c170-677c-4166-94e6-dde16ae591a6",
     "name": "변호사이강수법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -5424,10 +5424,10 @@
     "balance": 0,
     "naver_place_id": "1661355699",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291917"
+    "created_at": "2026-03-10T17:50:07.325727"
   },
   {
-    "id": "1ee6d575-6013-46a5-9d36-68a47beaaa45",
+    "id": "2134020c-f1fb-418b-9f43-cbd35410545f",
     "name": "법무법인 정연",
     "business_number": "",
     "contact_name": "",
@@ -5455,10 +5455,10 @@
     "balance": 0,
     "naver_place_id": "1804144586",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291924"
+    "created_at": "2026-03-10T17:50:07.325734"
   },
   {
-    "id": "8c8e497e-7105-453c-aa19-f84de76dd993",
+    "id": "5c3cb494-34ed-4200-b4b8-2996e2726a82",
     "name": "법무법인 서린",
     "business_number": "",
     "contact_name": "",
@@ -5484,10 +5484,10 @@
     "balance": 0,
     "naver_place_id": "1714225343",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291931"
+    "created_at": "2026-03-10T17:50:07.325741"
   },
   {
-    "id": "1b94934a-bb5c-44a8-85f6-8408f42adeff",
+    "id": "8c1659e0-a4e4-4fae-bb2b-5cab7d86ed52",
     "name": "법률사무소태성",
     "business_number": "",
     "contact_name": "",
@@ -5513,10 +5513,10 @@
     "balance": 0,
     "naver_place_id": "1149157585",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291938"
+    "created_at": "2026-03-10T17:50:07.325748"
   },
   {
-    "id": "e74eadec-10dd-4ba7-bbb3-3d343f907de2",
+    "id": "82f1eed0-2dc4-497a-89ff-eff73cedfba8",
     "name": "법무사정현태사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -5542,10 +5542,10 @@
     "balance": 0,
     "naver_place_id": "1086520160",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291946"
+    "created_at": "2026-03-10T17:50:07.325755"
   },
   {
-    "id": "b409c6bf-d2ee-466d-847c-23635743cda8",
+    "id": "dd7526ba-37d6-4e60-90df-8455cdfdde63",
     "name": "법무법인장한창원사무소형사가사도산전문 이동성변호사톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -5571,10 +5571,10 @@
     "balance": 0,
     "naver_place_id": "36322923",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291953"
+    "created_at": "2026-03-10T17:50:07.325762"
   },
   {
-    "id": "d3a09c72-aabd-48cb-8333-7b345ab386b6",
+    "id": "19a5a517-cf3c-4d9d-8713-2a24a5061879",
     "name": "법무법인 리얼 로펌개인회생파산창원분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -5600,10 +5600,10 @@
     "balance": 0,
     "naver_place_id": "1852771986",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291960"
+    "created_at": "2026-03-10T17:50:07.325769"
   },
   {
-    "id": "a3a3a7d7-7bd6-4881-b551-4837606d265b",
+    "id": "0d1ab5f7-5e07-4afa-aaa4-1d46786c261a",
     "name": "김소연법률사무소개인회생파산 음주운전 교통사고전문변호사",
     "business_number": "",
     "contact_name": "",
@@ -5629,10 +5629,10 @@
     "balance": 0,
     "naver_place_id": "1939157381",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291967"
+    "created_at": "2026-03-10T17:50:07.325776"
   },
   {
-    "id": "5b688c86-f2e5-4b9f-bad5-452cabae0453",
+    "id": "db221f5b-e09e-48b5-8da4-756020a24413",
     "name": "창원개인회생파산 법무법인 김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5658,10 +5658,10 @@
     "balance": 0,
     "naver_place_id": "1052118110",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291974"
+    "created_at": "2026-03-10T17:50:07.325783"
   },
   {
-    "id": "e4b2d104-04fc-4956-a2cc-fd9c6d955cb4",
+    "id": "f6065e2e-edcc-4e78-8341-8df79dd5ec50",
     "name": "형사전문 가사전문 변호사 박인욱법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5687,10 +5687,10 @@
     "balance": 0,
     "naver_place_id": "37893821",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291981"
+    "created_at": "2026-03-10T17:50:07.325790"
   },
   {
-    "id": "1dbeaa5c-6eb1-4cb0-b4ed-5e12e09c7747",
+    "id": "44726ce7-ba24-4051-b31d-2a57813c6fdc",
     "name": "법무법인 영우 청주사무소 이혼 형사 개인회생 전문",
     "business_number": "",
     "contact_name": "",
@@ -5715,10 +5715,10 @@
     "balance": 0,
     "naver_place_id": "",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291988"
+    "created_at": "2026-03-10T17:50:07.325797"
   },
   {
-    "id": "149816be-569d-4f2e-a9b0-d437f1f28e39",
+    "id": "f434ef89-576e-474c-aa57-108efad2a0eb",
     "name": "법률사무소 제우톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5744,10 +5744,10 @@
     "balance": 0,
     "naver_place_id": "",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.291996"
+    "created_at": "2026-03-10T17:50:07.325805"
   },
   {
-    "id": "8b84f407-f61c-40d3-aa63-d9a1e5035463",
+    "id": "965b06c7-d6da-4b91-a16f-c2044421c246",
     "name": "법무법인 영우청주사무소이혼 형사개인회생전문",
     "business_number": "",
     "contact_name": "",
@@ -5772,10 +5772,10 @@
     "balance": 0,
     "naver_place_id": "1549576579",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292003"
+    "created_at": "2026-03-10T17:50:07.325812"
   },
   {
-    "id": "62593025-4c12-412e-93e7-f583cf55a9b5",
+    "id": "ccac8128-d58b-46c0-aed3-9608a19ba33c",
     "name": "최석진법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -5801,10 +5801,10 @@
     "balance": 0,
     "naver_place_id": "17375348",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292010"
+    "created_at": "2026-03-10T17:50:07.325880"
   },
   {
-    "id": "df032b86-d0a0-458e-b70e-8339ff59c1f0",
+    "id": "07c9d96e-abfb-47dc-b189-68e905b5531e",
     "name": "법무법인 우리청주사무소이혼형사전문 김혜진변호사",
     "business_number": "",
     "contact_name": "",
@@ -5830,10 +5830,10 @@
     "balance": 0,
     "naver_place_id": "21559525",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292057"
+    "created_at": "2026-03-10T17:50:07.325888"
   },
   {
-    "id": "74d2ec29-2634-40e2-aac8-956e5cfde2d0",
+    "id": "f34516da-c1ac-4ff0-8883-889a31ce85e7",
     "name": "법률사무소사람&사람톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5859,10 +5859,10 @@
     "balance": 0,
     "naver_place_id": "20001541",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292074"
+    "created_at": "2026-03-10T17:50:07.325895"
   },
   {
-    "id": "7126a247-c862-42e5-ac3a-121aab5379b9",
+    "id": "233dbab8-e780-45b3-9310-e7d81fc69218",
     "name": "법률사무소리드",
     "business_number": "",
     "contact_name": "",
@@ -5890,10 +5890,10 @@
     "balance": 0,
     "naver_place_id": "17036618",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292084"
+    "created_at": "2026-03-10T17:50:07.325903"
   },
   {
-    "id": "4c0a5255-d451-434e-8e9f-1ce7ea14bede",
+    "id": "94db4b96-4f12-4ab8-a2a9-01c25a56942c",
     "name": "법률사무소도담톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5921,10 +5921,10 @@
     "balance": 0,
     "naver_place_id": "37555510",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292092"
+    "created_at": "2026-03-10T17:50:07.325910"
   },
   {
-    "id": "4a912e10-4e7f-4a77-958e-448a2de75175",
+    "id": "abcce352-bdf2-4518-aa9d-7966bdfa21d2",
     "name": "변호사이보향법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -5952,10 +5952,10 @@
     "balance": 0,
     "naver_place_id": "36295069",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292100"
+    "created_at": "2026-03-10T17:50:07.325917"
   },
   {
-    "id": "7fecf0ba-400d-46fe-8343-0ffa03dcdf6c",
+    "id": "f3cc952c-5d2a-4cc8-855d-5aae16f345f8",
     "name": "법무법인 태앤규 형사이혼부동산노동전문쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -5983,10 +5983,10 @@
     "balance": 0,
     "naver_place_id": "1203047375",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292108"
+    "created_at": "2026-03-10T17:50:07.325924"
   },
   {
-    "id": "640cada5-a57d-4116-ae37-b8f777b0dbab",
+    "id": "a38ed35b-5a05-40bc-b6a1-2f489375371d",
     "name": "대유법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -6014,10 +6014,10 @@
     "balance": 0,
     "naver_place_id": "1274415611",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292115"
+    "created_at": "2026-03-10T17:50:07.325931"
   },
   {
-    "id": "b3de143c-81da-4b8f-a786-7c3ed3264e0b",
+    "id": "defcc308-c20e-4158-b42a-e778dddc6726",
     "name": "법무법인 정도천안분사무소",
     "business_number": "",
     "contact_name": "",
@@ -6043,10 +6043,10 @@
     "balance": 0,
     "naver_place_id": "1433135005",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292123"
+    "created_at": "2026-03-10T17:50:07.325938"
   },
   {
-    "id": "943901e8-3a52-4ac6-8a11-f97379d7e16f",
+    "id": "a5861619-b50b-4aa2-88e7-3358045725c2",
     "name": "법무법인 라이즈천안임이지변호사",
     "business_number": "",
     "contact_name": "",
@@ -6072,10 +6072,10 @@
     "balance": 0,
     "naver_place_id": "1055575544",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292130"
+    "created_at": "2026-03-10T17:50:07.325946"
   },
   {
-    "id": "0c2a72ca-7d7a-439e-9264-8dd097a9f971",
+    "id": "c30a177f-265c-4378-953f-bff3255fd7ee",
     "name": "교통사고개인회생파산전문변호사이경근사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -6101,10 +6101,10 @@
     "balance": 0,
     "naver_place_id": "1944961762",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292138"
+    "created_at": "2026-03-10T17:50:07.325953"
   },
   {
-    "id": "dfc8d4f6-5988-4b5b-bbd7-94ca4feb1ece",
+    "id": "582c03d5-e361-4d7f-b8f5-198cdae78e47",
     "name": "변호사송호택법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -6130,10 +6130,10 @@
     "balance": 0,
     "naver_place_id": "1519439261",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292145"
+    "created_at": "2026-03-10T17:50:07.325959"
   },
   {
-    "id": "c85077dd-e4db-4646-ba00-3938afc2893c",
+    "id": "22c3bf81-fa8a-4c7e-9ef8-88a158e252f3",
     "name": "법률사무소천안아산톡톡",
     "business_number": "",
     "contact_name": "",
@@ -6159,10 +6159,10 @@
     "balance": 0,
     "naver_place_id": "1616969849",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292154"
+    "created_at": "2026-03-10T17:50:07.325967"
   },
   {
-    "id": "d8dc0f6a-61a3-4201-90a1-5e33425fc7f7",
+    "id": "e5450c00-6d3b-48b8-bde6-f80e5d611219",
     "name": "변호사신윤식법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -6188,10 +6188,10 @@
     "balance": 0,
     "naver_place_id": "12961929",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292162"
+    "created_at": "2026-03-10T17:50:07.325974"
   },
   {
-    "id": "4dd8b79a-72bc-4c4d-b7dc-43037d8c7336",
+    "id": "7a66289b-190b-47c9-8c08-df8390bf65e0",
     "name": "제주이혼&개인회생전문 정세훈변호사 해오름법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -6218,10 +6218,10 @@
     "balance": 0,
     "naver_place_id": "1274567526",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292170"
+    "created_at": "2026-03-10T17:50:07.325981"
   },
   {
-    "id": "2a16f585-ae69-4950-8702-0f90a13adb3b",
+    "id": "db132527-d246-49a5-9964-17d4fac7bbf9",
     "name": "변호사 권우진법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -6249,10 +6249,10 @@
     "balance": 0,
     "naver_place_id": "1473744152",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292177"
+    "created_at": "2026-03-10T17:50:07.325989"
   },
   {
-    "id": "c1db37ae-ea04-42ac-a4e5-b64c750e0d5f",
+    "id": "cd40b0d2-8d93-4863-86c2-c1be43dc5a6d",
     "name": "변호사김영준법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -6280,10 +6280,10 @@
     "balance": 0,
     "naver_place_id": "1302825624",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292185"
+    "created_at": "2026-03-10T17:50:07.325996"
   },
   {
-    "id": "316d5ff2-44c4-474d-aba1-fd86409a9e62",
+    "id": "2cca1906-7c37-49a4-a1e0-ca5b62355546",
     "name": "법률사무소헌율",
     "business_number": "",
     "contact_name": "",
@@ -6311,10 +6311,10 @@
     "balance": 0,
     "naver_place_id": "977852161",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292192"
+    "created_at": "2026-03-10T17:50:07.326003"
   },
   {
-    "id": "fa246a86-5f1e-47a7-aba7-f34f4f4b6b0d",
+    "id": "b0d61a63-39a6-4c74-9a35-66caa6d6537d",
     "name": "변호사김성학법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -6342,10 +6342,10 @@
     "balance": 0,
     "naver_place_id": "1857077216",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292200"
+    "created_at": "2026-03-10T17:50:07.326010"
   },
   {
-    "id": "68dc74d7-4be8-458d-81d1-903e181e55f4",
+    "id": "afe670ce-c351-4ea7-aa1a-8296c2d52e1d",
     "name": "법무법인평온 북부지점",
     "business_number": "",
     "contact_name": "",
@@ -6373,10 +6373,10 @@
     "balance": 0,
     "naver_place_id": "1653484391",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292207"
+    "created_at": "2026-03-10T17:50:07.326016"
   },
   {
-    "id": "d5367f58-c9ae-4f6c-bc94-f4092f85b0d2",
+    "id": "45985e52-5920-4e51-af4f-ff318bcb8ffb",
     "name": "득향법무사안양일사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6404,10 +6404,10 @@
     "balance": 0,
     "naver_place_id": "13154626",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292214"
+    "created_at": "2026-03-10T17:50:07.326023"
   },
   {
-    "id": "94c1d010-83f1-4d0e-9a02-2bf78e373942",
+    "id": "c6fc606d-59ed-4e4b-9cf7-05b520f49869",
     "name": "법무법인공명인천분사무소쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -6435,10 +6435,10 @@
     "balance": 0,
     "naver_place_id": "1920539705",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292222"
+    "created_at": "2026-03-10T17:50:07.326030"
   },
   {
-    "id": "223ba054-67f7-4672-b854-fa64535c89b9",
+    "id": "efb8268f-0e36-4e90-958e-485d7e370a2e",
     "name": "법무사호인사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6466,10 +6466,10 @@
     "balance": 0,
     "naver_place_id": "32906829",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292229"
+    "created_at": "2026-03-10T17:50:07.326037"
   },
   {
-    "id": "dfe5e8e1-2fa0-4c52-a9d7-5725375ee178",
+    "id": "355ce190-a7c9-4bd4-8507-e7031200e129",
     "name": "부산개인회생파산 법무법인김앤파트너스",
     "business_number": "",
     "contact_name": "",
@@ -6497,10 +6497,10 @@
     "balance": 0,
     "naver_place_id": "1712549509",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292236"
+    "created_at": "2026-03-10T17:50:07.326044"
   },
   {
-    "id": "e93fe64f-1eb3-4d91-b02f-c65182c5d010",
+    "id": "4892ad5d-6d73-445b-907b-eb439ae0e08f",
     "name": "법무법인한앤율 한창재변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -6528,10 +6528,10 @@
     "balance": 0,
     "naver_place_id": "1693935789",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292244"
+    "created_at": "2026-03-10T17:50:07.326051"
   },
   {
-    "id": "1d1f3dcc-5e19-407a-9187-056173499de8",
+    "id": "b1ba9e7c-eebb-4207-9070-7d22c32e260d",
     "name": "법무법인신세계부산",
     "business_number": "",
     "contact_name": "",
@@ -6559,10 +6559,10 @@
     "balance": 0,
     "naver_place_id": "1255667242",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292252"
+    "created_at": "2026-03-10T17:50:07.326058"
   },
   {
-    "id": "d77f8697-040c-4974-9d09-f83dd3ffe326",
+    "id": "168151c2-9b80-4f69-a2c9-db45fb637853",
     "name": "법무법인시우부산사무소",
     "business_number": "",
     "contact_name": "",
@@ -6590,10 +6590,10 @@
     "balance": 0,
     "naver_place_id": "1306437501",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292259"
+    "created_at": "2026-03-10T17:50:07.326065"
   },
   {
-    "id": "222c63f0-c4e8-4414-8a0b-b66c98f9c57f",
+    "id": "9c477427-566a-4438-99b7-f5886057fd0c",
     "name": "대구개인회생파산 법무법인김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -6621,10 +6621,10 @@
     "balance": 0,
     "naver_place_id": "1025992664",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292266"
+    "created_at": "2026-03-10T17:50:07.326072"
   },
   {
-    "id": "37651de9-e89a-4a26-9ce5-a3a6798eaae2",
+    "id": "6acebe12-6274-4109-bcf0-abccfecabe6e",
     "name": "법무사 김태완 사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6652,10 +6652,10 @@
     "balance": 0,
     "naver_place_id": "21193175",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292273"
+    "created_at": "2026-03-10T17:50:07.326079"
   },
   {
-    "id": "43e34e40-08d5-49e3-b992-261adb63e35a",
+    "id": "c7a654f2-f578-4b49-9cd2-308f38cf7336",
     "name": "법무사오승훈사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6683,10 +6683,10 @@
     "balance": 0,
     "naver_place_id": "806559198",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292280"
+    "created_at": "2026-03-10T17:50:07.326086"
   },
   {
-    "id": "2952a48e-4bb3-4b28-894d-a703cd5303f5",
+    "id": "5fb92123-448f-4e98-8227-7deda86c2685",
     "name": "법무사남궁길사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6714,10 +6714,10 @@
     "balance": 0,
     "naver_place_id": "38709510",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292287"
+    "created_at": "2026-03-10T17:50:07.326093"
   },
   {
-    "id": "3453bedf-ffa8-40ab-9da8-e56d8875ba44",
+    "id": "94f9d8b2-10f2-43a8-a076-52e9bc84db23",
     "name": "전해철법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6745,10 +6745,10 @@
     "balance": 0,
     "naver_place_id": "1366606259",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292294"
+    "created_at": "2026-03-10T17:50:07.326100"
   },
   {
-    "id": "b2ee7cc6-824e-4dc2-a518-1df639a85a15",
+    "id": "75d7db07-1b02-47d4-8caf-30f5ec70c006",
     "name": "법무법인태광광주분사무소",
     "business_number": "",
     "contact_name": "",
@@ -6776,10 +6776,10 @@
     "balance": 0,
     "naver_place_id": "2072826766",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292302"
+    "created_at": "2026-03-10T17:50:07.326135"
   },
   {
-    "id": "fb9fa239-e418-4c13-a682-fee754691654",
+    "id": "8c81611d-f7d6-4bd9-80c8-8f0e41d64b46",
     "name": "수원개인회생파산전문 길법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6805,10 +6805,10 @@
     "balance": 0,
     "naver_place_id": "1624246102",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292309"
+    "created_at": "2026-03-10T17:50:07.326150"
   },
   {
-    "id": "f60bba56-5183-433b-b1ed-227c17f57644",
+    "id": "a7538335-da79-4b35-b304-99650c911402",
     "name": "하민법무사사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6834,10 +6834,10 @@
     "balance": 0,
     "naver_place_id": "943052023",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292316"
+    "created_at": "2026-03-10T17:50:07.326159"
   },
   {
-    "id": "e9f6892a-4efc-4475-825a-b42bc10a7f68",
+    "id": "f8db3f58-6242-494b-ad3a-d1fc51d72164",
     "name": "법무사김현수사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6865,10 +6865,10 @@
     "balance": 0,
     "naver_place_id": "1012328765",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292324"
+    "created_at": "2026-03-10T17:50:07.326185"
   },
   {
-    "id": "ff7efb01-eef2-4fd5-b900-436df22bd2fb",
+    "id": "6a6bf83a-8dca-4335-8d2d-770e4aa5cc16",
     "name": "바른법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6896,10 +6896,10 @@
     "balance": 0,
     "naver_place_id": "1043367683",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292331"
+    "created_at": "2026-03-10T17:50:07.326196"
   },
   {
-    "id": "173f9e2b-efb2-45a1-a335-74a27fbb7cc4",
+    "id": "d56f7f2c-bfb9-4926-bffd-84533df209fb",
     "name": "더월드 손의원법무사 행정사 사무소톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6927,10 +6927,10 @@
     "balance": 0,
     "naver_place_id": "2088923419",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292338"
+    "created_at": "2026-03-10T17:50:07.326204"
   },
   {
-    "id": "2004c7e8-1b9e-426c-b6b4-d556cdd651ba",
+    "id": "eb7a1dfe-afe5-42f9-8d12-4b71260cd42f",
     "name": "청목법무사사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -6958,10 +6958,10 @@
     "balance": 0,
     "naver_place_id": "1715281234",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292345"
+    "created_at": "2026-03-10T17:50:07.326211"
   },
   {
-    "id": "ffa49139-9570-45e2-937e-251e4629ac90",
+    "id": "4e9135a1-a797-4b55-9780-57e5ac39a566",
     "name": "법무법인통일쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -6989,10 +6989,10 @@
     "balance": 0,
     "naver_place_id": "1492518900",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292354"
+    "created_at": "2026-03-10T17:50:07.326218"
   },
   {
-    "id": "a06febcc-ca5e-46ef-8677-3dfd793330d1",
+    "id": "54673a00-0f58-4cca-9196-e95947a23aa6",
     "name": "창원개인회생파산 법무법인김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7018,10 +7018,10 @@
     "balance": 0,
     "naver_place_id": "1052118110",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292368"
+    "created_at": "2026-03-10T17:50:07.326225"
   },
   {
-    "id": "e4035438-2557-444d-9653-0817859d70b2",
+    "id": "1165e0e8-a1b7-4f37-8e34-1b9f5bb1052c",
     "name": "법무사법인창원김동수사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -7047,10 +7047,10 @@
     "balance": 0,
     "naver_place_id": "1346863166",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292380"
+    "created_at": "2026-03-10T17:50:07.326232"
   },
   {
-    "id": "91f80f03-93f9-47c3-bd8c-961eb9a6cde2",
+    "id": "51de6954-7d8d-491b-808e-b304de6537bb",
     "name": "법무법인영우청주사무소 이혼 형사개인회생 전문",
     "business_number": "",
     "contact_name": "",
@@ -7077,10 +7077,10 @@
     "balance": 0,
     "naver_place_id": "1549576579",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292394"
+    "created_at": "2026-03-10T17:50:07.326239"
   },
   {
-    "id": "28780f31-8a91-4789-9368-3c1bfed85b27",
+    "id": "e983b598-04fa-4543-bb47-e9f8449c943c",
     "name": "법무사사무소동행톡톡법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -7108,10 +7108,10 @@
     "balance": 0,
     "naver_place_id": "2005577954",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292405"
+    "created_at": "2026-03-10T17:50:07.326246"
   },
   {
-    "id": "de52140e-91e4-4dd4-b865-c826f2f25b67",
+    "id": "314d79f3-e785-4acc-918e-5c98919a647a",
     "name": "법무사박순식사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -7139,10 +7139,10 @@
     "balance": 0,
     "naver_place_id": "1765370470",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292414"
+    "created_at": "2026-03-10T17:50:07.326254"
   },
   {
-    "id": "86790d14-64e4-4d46-9017-294702640077",
+    "id": "60c673ca-2d22-4792-892e-d5ec4d1ba742",
     "name": "법무법인명경",
     "business_number": "",
     "contact_name": "",
@@ -7170,10 +7170,10 @@
     "balance": 0,
     "naver_place_id": "1750854074",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292421"
+    "created_at": "2026-03-10T17:50:07.326261"
   },
   {
-    "id": "ece90ef7-f380-40aa-a755-cedf0c237dde",
+    "id": "7aa28991-ea87-4807-a183-fdd6f9e9a44c",
     "name": "법무법인수인전주분사무소",
     "business_number": "",
     "contact_name": "",
@@ -7201,10 +7201,10 @@
     "balance": 0,
     "naver_place_id": "37176055",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292429"
+    "created_at": "2026-03-10T17:50:07.326268"
   },
   {
-    "id": "d4f5361b-5e2d-4e02-a731-2f1ba19994c6",
+    "id": "dc65ae77-c0bc-4460-b1b2-6c0ee40baff1",
     "name": "법률사무소경청",
     "business_number": "",
     "contact_name": "",
@@ -7232,10 +7232,10 @@
     "balance": 0,
     "naver_place_id": "1536110410",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292436"
+    "created_at": "2026-03-10T17:50:07.326275"
   },
   {
-    "id": "6c2205d9-fd3e-46c9-9130-14b4b9c43cd1",
+    "id": "d917f0d8-a83c-496c-a385-e7b1c01a2de7",
     "name": "서울개인회생파산김파톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7263,10 +7263,10 @@
     "balance": 0,
     "naver_place_id": "2083689077",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292443"
+    "created_at": "2026-03-10T17:50:07.326282"
   },
   {
-    "id": "7f8dbd8a-f638-46e7-a790-9a8ea1a666d3",
+    "id": "c7802db9-ea25-4f78-a0b4-d32954ba9a48",
     "name": "개인회생파산전문법률상담사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7294,10 +7294,10 @@
     "balance": 0,
     "naver_place_id": "1354484583",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292450"
+    "created_at": "2026-03-10T17:50:07.326289"
   },
   {
-    "id": "a2c27046-44b8-42c5-8702-f0314b89bbc6",
+    "id": "b30dfb1b-fe1b-4268-aac5-6e4c82d2fb4f",
     "name": "법무법인 이엘",
     "business_number": "",
     "contact_name": "",
@@ -7325,10 +7325,10 @@
     "balance": 0,
     "naver_place_id": "52004719",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292458"
+    "created_at": "2026-03-10T17:50:07.326295"
   },
   {
-    "id": "15c22512-541f-46e7-bb75-8809071d8991",
+    "id": "186a1f5c-9d42-44b1-b608-028fbe226de2",
     "name": "수원개인회생 김종수변호사법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7355,10 +7355,10 @@
     "balance": 0,
     "naver_place_id": "11830114",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292466"
+    "created_at": "2026-03-10T17:50:07.326302"
   },
   {
-    "id": "a68db4d3-d0df-4a49-b5d2-308bde632073",
+    "id": "99ce1a58-ffad-45a6-b994-3d0803e7d79f",
     "name": "수원개인회생 법인회생파산전문상담 변호사강지훈법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7386,10 +7386,10 @@
     "balance": 0,
     "naver_place_id": "1317275443",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292474"
+    "created_at": "2026-03-10T17:50:07.326309"
   },
   {
-    "id": "d8b4a45e-e68c-46a7-bb56-e047db774e2d",
+    "id": "fdca49fd-72e6-429a-8398-1307dd573ee1",
     "name": "수원개인회생파산전문 이서영 변호사사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7417,10 +7417,10 @@
     "balance": 0,
     "naver_place_id": "1805344577",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292481"
+    "created_at": "2026-03-10T17:50:07.326316"
   },
   {
-    "id": "6f362d7c-a384-4664-a8f8-e8ba6c664b51",
+    "id": "2fea0f5b-5db8-4b3e-bdb9-e00e2d06dc4e",
     "name": "법률사무소휘선 평택변호사네이버페이",
     "business_number": "",
     "contact_name": "",
@@ -7448,10 +7448,10 @@
     "balance": 0,
     "naver_place_id": "1290882464",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292488"
+    "created_at": "2026-03-10T17:50:07.326323"
   },
   {
-    "id": "6dc2c17f-04c0-4d48-ae62-4bc717fe226d",
+    "id": "aa5fb709-1308-42bc-a097-a1f4e95ac27c",
     "name": "법무법인 서해 도산 전문변호사 전택윤인천사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7479,10 +7479,10 @@
     "balance": 0,
     "naver_place_id": "1303150393",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292496"
+    "created_at": "2026-03-10T17:50:07.326330"
   },
   {
-    "id": "a9fd5374-1320-4524-b9ca-4a194b49d34f",
+    "id": "84f20337-fdd0-44ed-8362-a94b2f682510",
     "name": "법무법인 공명인천분사무소쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -7510,10 +7510,10 @@
     "balance": 0,
     "naver_place_id": "1920539705",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292503"
+    "created_at": "2026-03-10T17:50:07.326336"
   },
   {
-    "id": "dd34a627-5a2c-45a5-be26-ee990009b955",
+    "id": "0346ec07-5882-4c06-ad48-2dba33162731",
     "name": "부산개인회생파산 법률사무소다옴톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -7541,10 +7541,10 @@
     "balance": 0,
     "naver_place_id": "1130183146",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292510"
+    "created_at": "2026-03-10T17:50:07.326343"
   },
   {
-    "id": "ca13dfd6-f360-4239-8838-b189c3392ee6",
+    "id": "d2967b55-ea04-4812-ab89-3c859beb020b",
     "name": "부산개인회생파산법무법인 김앤파트너스",
     "business_number": "",
     "contact_name": "",
@@ -7572,10 +7572,10 @@
     "balance": 0,
     "naver_place_id": "1712549509",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292518"
+    "created_at": "2026-03-10T17:50:07.326351"
   },
   {
-    "id": "b90ff782-31e6-4ee9-9466-99f12930a081",
+    "id": "955e07d4-546f-4a09-98bc-0c7d1baa6c98",
     "name": "변호사유주연법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -7603,10 +7603,10 @@
     "balance": 0,
     "naver_place_id": "12793708",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292535"
+    "created_at": "2026-03-10T17:50:07.326358"
   },
   {
-    "id": "1c952e33-d062-4fca-a59a-576baad07d93",
+    "id": "36c8e447-75fd-4742-8720-a82d1c5ddd76",
     "name": "종합법률사무소창명",
     "business_number": "",
     "contact_name": "",
@@ -7634,10 +7634,10 @@
     "balance": 0,
     "naver_place_id": "1081903626",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292553"
+    "created_at": "2026-03-10T17:50:07.326365"
   },
   {
-    "id": "ad761a65-14ab-4de8-84d1-7522a2c733b4",
+    "id": "eb45aab9-1296-4841-b5a9-d53b8023b615",
     "name": "대구개인회생파산법무법인 김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7665,10 +7665,10 @@
     "balance": 0,
     "naver_place_id": "1025992664",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292564"
+    "created_at": "2026-03-10T17:50:07.326372"
   },
   {
-    "id": "72ecb37e-d6a2-4aaa-8837-89ec1ca2b780",
+    "id": "9890efa1-e171-4ffd-8830-3bdee6c64563",
     "name": "법무법인 지름길대구분사무소",
     "business_number": "",
     "contact_name": "",
@@ -7696,10 +7696,10 @@
     "balance": 0,
     "naver_place_id": "1674143459",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292572"
+    "created_at": "2026-03-10T17:50:07.326379"
   },
   {
-    "id": "0125eb6d-639a-4952-981f-8ff74462ff49",
+    "id": "08d1e5d5-9f2f-488c-95f6-a18c178b6ebe",
     "name": "가원법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -7727,10 +7727,10 @@
     "balance": 0,
     "naver_place_id": "38325310",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292580"
+    "created_at": "2026-03-10T17:50:07.326386"
   },
   {
-    "id": "72819e2e-5d94-46c4-8749-ef6d7d28d963",
+    "id": "55bc7481-a689-4729-9333-60f96876a0d6",
     "name": "대한법률구조공단대전개인회생파산종합지원센터법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -7758,10 +7758,10 @@
     "balance": 0,
     "naver_place_id": "1172072571",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292588"
+    "created_at": "2026-03-10T17:50:07.326393"
   },
   {
-    "id": "99af5fe8-a973-4b12-82b7-88b6936e7f20",
+    "id": "95e91efd-03a9-4738-8093-705ac90d180d",
     "name": "법무법인 율지대전분사무소",
     "business_number": "",
     "contact_name": "",
@@ -7789,10 +7789,10 @@
     "balance": 0,
     "naver_place_id": "1079601617",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292595"
+    "created_at": "2026-03-10T17:50:07.326401"
   },
   {
-    "id": "c618e46b-3654-477f-bc2d-b3fd82ee040a",
+    "id": "bdbcaf6d-f3c2-451b-af39-ac8a06a374b8",
     "name": "최기석법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -7820,10 +7820,10 @@
     "balance": 0,
     "naver_place_id": "1270078910",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292602"
+    "created_at": "2026-03-10T17:50:07.326408"
   },
   {
-    "id": "ee3c72c7-0cb3-49c5-86df-a1e44ebfcb56",
+    "id": "4b77eec7-1852-4427-878a-9de4e74f1655",
     "name": "변호사우종현법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -7851,10 +7851,10 @@
     "balance": 0,
     "naver_place_id": "31293211",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292609"
+    "created_at": "2026-03-10T17:50:07.326415"
   },
   {
-    "id": "14410c7a-7f3a-4808-b9c8-023bef24bea9",
+    "id": "ee395edf-970c-40c8-9a6a-10859e118d1c",
     "name": "김남혁법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -7882,10 +7882,10 @@
     "balance": 0,
     "naver_place_id": "37754952",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292616"
+    "created_at": "2026-03-10T17:50:07.326421"
   },
   {
-    "id": "37d56369-5a69-466f-b98a-821f44f1df1d",
+    "id": "04f6c5ca-5ba0-4feb-9d70-51cad0cb8542",
     "name": "법무법인 태광광주분사무소",
     "business_number": "",
     "contact_name": "",
@@ -7913,10 +7913,10 @@
     "balance": 0,
     "naver_place_id": "2072826766",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292625"
+    "created_at": "2026-03-10T17:50:07.326429"
   },
   {
-    "id": "31d6f9fe-84ca-4ddc-ae33-0a9bc6c96753",
+    "id": "a74b6ff3-8951-44ea-982a-0b2a1d0acba2",
     "name": "변호사허재영법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -7944,10 +7944,10 @@
     "balance": 0,
     "naver_place_id": "1239457396",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292632"
+    "created_at": "2026-03-10T17:50:07.326436"
   },
   {
-    "id": "a55a9c08-e213-4f09-83e5-63c7d4ed7434",
+    "id": "83c874e0-bd3f-42c3-8f05-831083f89c24",
     "name": "울산개인회생 변호사김민수법률사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -7974,10 +7974,10 @@
     "balance": 0,
     "naver_place_id": "20123172",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292640"
+    "created_at": "2026-03-10T17:50:07.326443"
   },
   {
-    "id": "27e0420f-659f-438d-b6d3-6011c011f243",
+    "id": "85fbabf3-c767-40b3-8315-c23430234ce8",
     "name": "개인회생 변호사김낙구법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -8004,10 +8004,10 @@
     "balance": 0,
     "naver_place_id": "37849243",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292648"
+    "created_at": "2026-03-10T17:50:07.326450"
   },
   {
-    "id": "e5a55574-1efd-4f2d-a424-90240b685e13",
+    "id": "1f537b7f-c7dd-47db-9d53-f65569a38a67",
     "name": "울산개인회생법률사무소제성",
     "business_number": "",
     "contact_name": "",
@@ -8034,10 +8034,10 @@
     "balance": 0,
     "naver_place_id": "1151874930",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292655"
+    "created_at": "2026-03-10T17:50:07.326457"
   },
   {
-    "id": "9095a445-6832-4c72-86f6-421a586fa255",
+    "id": "c98aebdd-6862-4c56-8886-74992af378bf",
     "name": "변호사정선희법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -8065,10 +8065,10 @@
     "balance": 0,
     "naver_place_id": "35135833",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292662"
+    "created_at": "2026-03-10T17:50:07.326465"
   },
   {
-    "id": "388da22b-9dec-4929-b81c-6a2fc4ffbb6e",
+    "id": "349922bc-86d5-4338-9193-b8302ebcc5bf",
     "name": "변호사홍성준법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -8096,10 +8096,10 @@
     "balance": 0,
     "naver_place_id": "37553540",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292670"
+    "created_at": "2026-03-10T17:50:07.326472"
   },
   {
-    "id": "d63e2f05-3148-428b-840d-ec8c0c8d006d",
+    "id": "008261f2-7844-496a-b7f6-1702690d2eeb",
     "name": "법무법인 신세계울산형사전문변호사톡톡",
     "business_number": "",
     "contact_name": "",
@@ -8127,10 +8127,10 @@
     "balance": 0,
     "naver_place_id": "37675437",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292677"
+    "created_at": "2026-03-10T17:50:07.326479"
   },
   {
-    "id": "a185b074-8986-455f-9b14-a519e7aef520",
+    "id": "19987f0e-b07b-447d-9db2-64e887c04346",
     "name": "수원개인회생파산전문무료법률상담사무소컨설팅",
     "business_number": "",
     "contact_name": "",
@@ -8156,10 +8156,10 @@
     "balance": 0,
     "naver_place_id": "432579148",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292685"
+    "created_at": "2026-03-10T17:50:07.326486"
   },
   {
-    "id": "a8d17478-8df8-4180-9ec6-d386fd078b23",
+    "id": "d31a1795-3da0-4f4d-ad5b-602d5efc86f7",
     "name": "법률사무소엘리셋",
     "business_number": "",
     "contact_name": "",
@@ -8185,10 +8185,10 @@
     "balance": 0,
     "naver_place_id": "2049905429",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292693"
+    "created_at": "2026-03-10T17:50:07.326493"
   },
   {
-    "id": "4c198cd1-9321-4999-aa37-63c13ef3c5bd",
+    "id": "b061ebdd-490a-43e9-84a5-4e397e3187ed",
     "name": "새오름법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -8216,10 +8216,10 @@
     "balance": 0,
     "naver_place_id": "1834997459",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292702"
+    "created_at": "2026-03-10T17:50:07.326500"
   },
   {
-    "id": "7af001a2-be21-46f1-82f7-dfe3e19c9022",
+    "id": "2a039f22-087e-434a-8f48-a7e89d5ab6c5",
     "name": "그린법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -8247,10 +8247,10 @@
     "balance": 0,
     "naver_place_id": "1119848853",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292714"
+    "created_at": "2026-03-10T17:50:07.326507"
   },
   {
-    "id": "14b47afd-338d-442f-98cf-0b129df160a9",
+    "id": "147cc6cd-22a7-4821-a76e-bab6a99f540a",
     "name": "법무법인 통일쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -8278,10 +8278,10 @@
     "balance": 0,
     "naver_place_id": "1492518900",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292727"
+    "created_at": "2026-03-10T17:50:07.326514"
   },
   {
-    "id": "29194c7c-1dca-494d-8095-c237306306d2",
+    "id": "601f7b36-5043-48b8-b618-201adab5cae9",
     "name": "김소연법률사무소개인회생파산음주운전 교통사고전문변호사",
     "business_number": "",
     "contact_name": "",
@@ -8307,10 +8307,10 @@
     "balance": 0,
     "naver_place_id": "1939157381",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292741"
+    "created_at": "2026-03-10T17:50:07.326521"
   },
   {
-    "id": "78471351-aa58-4ef5-bc4b-f9c926d47abf",
+    "id": "5e71d6d4-66c7-41fa-a772-b8934cce9d5b",
     "name": "창원개인회생파산법무법인 김앤파트너스톡톡",
     "business_number": "",
     "contact_name": "",
@@ -8336,10 +8336,10 @@
     "balance": 0,
     "naver_place_id": "1052118110",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292754"
+    "created_at": "2026-03-10T17:50:07.326528"
   },
   {
-    "id": "bd945fa4-cfef-403e-9a81-d232ae5d2d32",
+    "id": "94f087ae-c1f5-49a8-a13f-b85ac3372d6c",
     "name": "법무법인디에이치창원법률사무소정성원변호사 형사이혼전문톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -8365,10 +8365,10 @@
     "balance": 0,
     "naver_place_id": "1750217539",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292766"
+    "created_at": "2026-03-10T17:50:07.326535"
   },
   {
-    "id": "36069b76-8d5a-4e64-9806-3aa73231f878",
+    "id": "2b300e28-997a-452f-abee-4728efb039c9",
     "name": "법무법인 장한창원분사무소톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -8394,10 +8394,10 @@
     "balance": 0,
     "naver_place_id": "1813513108",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292778"
+    "created_at": "2026-03-10T17:50:07.326542"
   },
   {
-    "id": "7531aba4-d3b9-4b49-b408-554de6100888",
+    "id": "c92cddc5-3abc-4029-adbc-2f76afb154b9",
     "name": "법무법인 영우청주사무소이혼 형사개인회생 전문",
     "business_number": "",
     "contact_name": "",
@@ -8422,10 +8422,10 @@
     "balance": 0,
     "naver_place_id": "1549576579",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292790"
+    "created_at": "2026-03-10T17:50:07.326550"
   },
   {
-    "id": "9481d08c-84fb-4ff5-9660-c42fb7c5c0a6",
+    "id": "f437498f-dd3e-4de8-9dd5-df0feef390f8",
     "name": "법무법인 유안 민사형사전문청주사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -8451,10 +8451,10 @@
     "balance": 0,
     "naver_place_id": "37933032",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292802"
+    "created_at": "2026-03-10T17:50:07.326556"
   },
   {
-    "id": "70207a98-2388-40a7-917a-26da8696aa32",
+    "id": "f1f62f91-26c1-4e35-8315-191289244f3c",
     "name": "법률사무소어진 변호사 양병진",
     "business_number": "",
     "contact_name": "",
@@ -8480,10 +8480,10 @@
     "balance": 0,
     "naver_place_id": "253860739",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292814"
+    "created_at": "2026-03-10T17:50:07.326563"
   },
   {
-    "id": "dd02c81e-00f9-401f-8429-b9445f383c1b",
+    "id": "b89ff03f-eef1-4ede-9aea-43e9730d49e6",
     "name": "법무사이송희사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -8509,10 +8509,10 @@
     "balance": 0,
     "naver_place_id": "1476235511",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292826"
+    "created_at": "2026-03-10T17:50:07.326570"
   },
   {
-    "id": "22d4f7e6-67ec-4fd0-a26e-19b3e0d24a9a",
+    "id": "dcdf6352-704a-44b5-936e-7fc5c928f1e6",
     "name": "법률사무소공감 김미경변호사톡톡쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -8540,10 +8540,10 @@
     "balance": 0,
     "naver_place_id": "1878297506",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292839"
+    "created_at": "2026-03-10T17:50:07.326578"
   },
   {
-    "id": "719e0663-95fd-41ae-8109-136d67b6bb78",
+    "id": "2c1e2e0d-677c-4bb3-9632-778715ce0212",
     "name": "법무법인 수인전주분사무소",
     "business_number": "",
     "contact_name": "",
@@ -8571,10 +8571,10 @@
     "balance": 0,
     "naver_place_id": "37176055",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292852"
+    "created_at": "2026-03-10T17:50:07.326584"
   },
   {
-    "id": "7a4925e3-8a8e-4a35-98dc-0b6b31565877",
+    "id": "b07aee84-da6c-405e-8355-431ce39323f0",
     "name": "변호사 최성칠법률사무소톡톡",
     "business_number": "",
     "contact_name": "",
@@ -8602,10 +8602,10 @@
     "balance": 0,
     "naver_place_id": "17036702",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292866"
+    "created_at": "2026-03-10T17:50:07.326591"
   },
   {
-    "id": "be3c6f37-5413-4690-af26-b69967c86ae8",
+    "id": "8c201889-8aac-45e1-9fc6-0c49ca0bc774",
     "name": "법률사무소위너스",
     "business_number": "",
     "contact_name": "",
@@ -8631,10 +8631,10 @@
     "balance": 0,
     "naver_place_id": "1165569880",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292880"
+    "created_at": "2026-03-10T17:50:07.326599"
   },
   {
-    "id": "34fa78ff-395e-4193-a644-05b98cf8d4b4",
+    "id": "87c02229-d926-4afa-b60f-d678cbfbc0b9",
     "name": "변호사 김기성법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -8662,10 +8662,10 @@
     "balance": 0,
     "naver_place_id": "1906653641",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292894"
+    "created_at": "2026-03-10T17:50:07.326606"
   },
   {
-    "id": "432bad06-cf17-4550-8651-4dce5c07fbae",
+    "id": "71667868-0c79-4f2e-840f-a9d564338bf5",
     "name": "법무사강재성사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -8693,10 +8693,10 @@
     "balance": 0,
     "naver_place_id": "1192601393",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292908"
+    "created_at": "2026-03-10T17:50:07.326613"
   },
   {
-    "id": "d5cf3e80-092f-41da-9021-60eb2cd23dc0",
+    "id": "0765f059-87e2-4a91-b285-50a5feb682c6",
     "name": "법무법인영진톡톡",
     "business_number": "",
     "contact_name": "",
@@ -8724,10 +8724,10 @@
     "balance": 0,
     "naver_place_id": "796106918",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292920"
+    "created_at": "2026-03-10T17:50:07.326620"
   },
   {
-    "id": "cd54a9d1-a6a2-4444-a255-d5692da2f4df",
+    "id": "1dc826e2-1fdd-4f2c-ba81-5b9cce45bab0",
     "name": "법무법인주원 조세희변호사",
     "business_number": "",
     "contact_name": "",
@@ -8755,10 +8755,10 @@
     "balance": 0,
     "naver_place_id": "1506547694",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292932"
+    "created_at": "2026-03-10T17:50:07.326627"
   },
   {
-    "id": "f9ec397f-1b0f-4122-9867-21bc3347d450",
+    "id": "1ff39b3c-5f03-456e-ba09-81e7580bb220",
     "name": "법무법인효명 안산사무소",
     "business_number": "",
     "contact_name": "",
@@ -8786,10 +8786,10 @@
     "balance": 0,
     "naver_place_id": "37703832",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292943"
+    "created_at": "2026-03-10T17:50:07.326634"
   },
   {
-    "id": "3e0153d4-d4e6-4187-8eaf-48dba5847ef8",
+    "id": "332f9a0b-e9fe-4b70-91c8-5e94747d0106",
     "name": "법무사김형욱사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -8817,10 +8817,10 @@
     "balance": 0,
     "naver_place_id": "36667246",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292955"
+    "created_at": "2026-03-10T17:50:07.326640"
   },
   {
-    "id": "6fb5ca02-8333-4e3a-a2de-4f9157df315c",
+    "id": "d9071991-2c7c-4149-bdbb-7655ffce8b75",
     "name": "이춘산법률사무소",
     "business_number": "",
     "contact_name": "",
@@ -8848,10 +8848,10 @@
     "balance": 0,
     "naver_place_id": "1495555306",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292966"
+    "created_at": "2026-03-10T17:50:07.326647"
   },
   {
-    "id": "eadf4347-b2bf-4ab1-9d95-be1abbbffed8",
+    "id": "ae1e4bfe-c648-4aef-9e4d-510f25576d54",
     "name": "법률사무소 해윰 변호사 이송아",
     "business_number": "",
     "contact_name": "",
@@ -8879,10 +8879,10 @@
     "balance": 0,
     "naver_place_id": "1152830297",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292977"
+    "created_at": "2026-03-10T17:50:07.326653"
   },
   {
-    "id": "34f0a907-7673-4e7d-9186-024efab79188",
+    "id": "0d90da23-1a78-48a1-8a63-96d7004412f5",
     "name": "법무법인디에이치부산분사무소쿠폰",
     "business_number": "",
     "contact_name": "",
@@ -8910,10 +8910,10 @@
     "balance": 0,
     "naver_place_id": "1927450257",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.292989"
+    "created_at": "2026-03-10T17:50:07.326660"
   },
   {
-    "id": "8dd49e0c-3543-4527-914a-44783141e613",
+    "id": "b206a90c-1548-4a1e-94ce-c7201fde0550",
     "name": "법무법인성안",
     "business_number": "",
     "contact_name": "",
@@ -8941,10 +8941,10 @@
     "balance": 0,
     "naver_place_id": "2093415668",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293001"
+    "created_at": "2026-03-10T17:50:07.326666"
   },
   {
-    "id": "7cb1c2cb-3464-426c-abf8-7c6f2e0d6c32",
+    "id": "8106fdb7-831e-4e89-bcbf-f8fb56808278",
     "name": "법무법인브라이트톡톡",
     "business_number": "",
     "contact_name": "",
@@ -8972,10 +8972,10 @@
     "balance": 0,
     "naver_place_id": "1186079117",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293012"
+    "created_at": "2026-03-10T17:50:07.326673"
   },
   {
-    "id": "15e5b8b4-92e8-406e-a8c6-6beb3c664db1",
+    "id": "be5cfccf-8b03-4d73-9764-a32b27726834",
     "name": "법무법인저스티스 변호사 김영학 사무소",
     "business_number": "",
     "contact_name": "",
@@ -9003,10 +9003,10 @@
     "balance": 0,
     "naver_place_id": "1189203926",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293023"
+    "created_at": "2026-03-10T17:50:07.326680"
   },
   {
-    "id": "946756d9-2f6a-4fa4-8b34-9c91e23d1d10",
+    "id": "b630d019-e8f1-4672-97d5-b412759ec19e",
     "name": "법무법인효현",
     "business_number": "",
     "contact_name": "",
@@ -9034,10 +9034,10 @@
     "balance": 0,
     "naver_place_id": "59554121",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293148"
+    "created_at": "2026-03-10T17:50:07.326686"
   },
   {
-    "id": "3e5604d3-1468-4188-905f-d00ce1728eeb",
+    "id": "b90bc353-693a-48c5-84f5-bedc78b03504",
     "name": "법무법인우리하나로대구분사무소",
     "business_number": "",
     "contact_name": "",
@@ -9065,10 +9065,10 @@
     "balance": 0,
     "naver_place_id": "1366201167",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293160"
+    "created_at": "2026-03-10T17:50:07.326694"
   },
   {
-    "id": "fecd0924-57b9-4259-bf98-4795e22386c1",
+    "id": "541f7ac1-bc96-4e2b-bcfb-a2cdb819da7e",
     "name": "법무법인바를정톡톡",
     "business_number": "",
     "contact_name": "",
@@ -9096,10 +9096,10 @@
     "balance": 0,
     "naver_place_id": "1995511936",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293167"
+    "created_at": "2026-03-10T17:50:07.326701"
   },
   {
-    "id": "2b9c81e2-db33-437d-9493-0b0a85e6a123",
+    "id": "af83bbfd-eb02-43bb-ade3-485f35d84126",
     "name": "법무법인바른길 법원사무소",
     "business_number": "",
     "contact_name": "",
@@ -9127,10 +9127,10 @@
     "balance": 0,
     "naver_place_id": "20303367",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293175"
+    "created_at": "2026-03-10T17:50:07.326707"
   },
   {
-    "id": "e8cbe2df-cf2e-4872-b1d6-3f70a1f33651",
+    "id": "079a302c-c127-45cf-ae3a-724ec4d1e8c4",
     "name": "법무사강종석사무소법무사사무소",
     "business_number": "",
     "contact_name": "",
@@ -9158,10 +9158,10 @@
     "balance": 0,
     "naver_place_id": "1658886276",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293184"
+    "created_at": "2026-03-10T17:50:07.326715"
   },
   {
-    "id": "340e5623-d616-4357-801a-2725bc3e9f72",
+    "id": "b76ec8ff-85d9-48dd-a97c-41e13daddea7",
     "name": "법무법인세화 강부환변호사사무소",
     "business_number": "",
     "contact_name": "",
@@ -9189,10 +9189,10 @@
     "balance": 0,
     "naver_place_id": "21476118",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293196"
+    "created_at": "2026-03-10T17:50:07.326723"
   },
   {
-    "id": "1b34c032-e01a-42f6-9aab-dbd57eba1ccf",
+    "id": "887cc4f0-748a-48ab-90cf-96483164c71b",
     "name": "법무사홍영국사무소",
     "business_number": "",
     "contact_name": "",
@@ -9220,10 +9220,10 @@
     "balance": 0,
     "naver_place_id": "",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293209"
+    "created_at": "2026-03-10T17:50:07.326729"
   },
   {
-    "id": "cd697069-6983-42e4-b3e4-38ea0a3ec4b9",
+    "id": "08fa556f-f68c-4e4b-939c-b3d14625c307",
     "name": "법무법인더킴로펌",
     "business_number": "",
     "contact_name": "",
@@ -9249,10 +9249,10 @@
     "balance": 0,
     "naver_place_id": "1421366441",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293221"
+    "created_at": "2026-03-10T17:50:07.326737"
   },
   {
-    "id": "2c84dbde-48e7-46e4-a1eb-a32ea83577b7",
+    "id": "52cd1c40-2af2-4917-b0a7-ac0b49313bf3",
     "name": "법무법인세원톡톡",
     "business_number": "",
     "contact_name": "",
@@ -9278,6 +9278,6 @@
     "balance": 0,
     "naver_place_id": "1191058616",
     "source": "naver_crawl",
-    "created_at": "2026-03-10T17:35:07.293229"
+    "created_at": "2026-03-10T17:50:07.326744"
   }
 ]

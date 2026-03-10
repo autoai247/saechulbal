@@ -81,9 +81,20 @@
                 {% elif company.tier == 'vip' %}bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-300
                 {% elif company.tier == 'premium' %}bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300
                 {% else %}bg-white{% endif %}" data-types="{{ company.filters.debt_types | join(',') }}">
-                <!-- 썸네일 -->
-                <div class="h-24 bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
-                    <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                <!-- 썸네일 (이미지 없으면 업체명 표시) -->
+                <div class="h-24 flex items-center justify-center px-4
+                    {% if company.tier == 'diamond' %}bg-gradient-to-r from-amber-100 to-yellow-50
+                    {% elif company.tier == 'vip' %}bg-gradient-to-r from-purple-100 to-indigo-50
+                    {% elif company.tier == 'premium' %}bg-gradient-to-r from-blue-100 to-cyan-50
+                    {% else %}bg-gradient-to-r from-slate-100 to-gray-50{% endif %}">
+                    <span class="text-lg font-bold text-center leading-tight
+                        {% if company.tier == 'diamond' %}text-amber-700
+                        {% elif company.tier == 'vip' %}text-purple-700
+                        {% elif company.tier == 'premium' %}text-blue-700
+                        {% else %}text-gray-500{% endif %}"
+                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all;">
+                        {{ company.name }}
+                    </span>
                 </div>
                 <div class="p-4">
                 <div class="flex justify-between items-start mb-1">

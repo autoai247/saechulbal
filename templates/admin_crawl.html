@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% block title %}크롤링 관리{% endblock %}
+
+{% block body %}
+<nav class="bg-gray-800 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <span class="text-lg font-bold">새출발 관리자</span>
+        <div class="space-x-4 text-sm">
+            <a href="/admin/dashboard" class="text-gray-300 hover:text-white">대시보드</a>
+            <a href="/admin/crawl" class="text-white font-medium">크롤링 관리</a>
+            <form action="/admin/logout" method="POST" class="inline">
+                <button class="text-gray-300 hover:text-white">로그아웃</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="max-w-6xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-6">크롤링 관리</h1>
+
+    <!-- 현황 카드 -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white rounded-xl shadow p-5">
+            <p class="text-sm text-gray-500">크롤링 업체</p>
+            <p class="text-3xl font-bold text-primary">{{ total_crawled }}</p>
+        </div>
+        <div class="bg-white rounded-xl shadow p-5">
+            <p class="text-sm text-gray-500">직접 등록 업체</p>
+            <p class="text-3xl font-bold text-accent">{{ total_registered }}</p>
+        </div>
+        <div class="bg-white rounded-xl shadow p-5">
+            <p class="text-sm text-gray-500">마지막 크롤링</p>
+            <p class="text-lg font-bold text-gray-700" id="lastCrawlAt">
+                {% if crawl_state.last_crawl_at %}
+                {{ crawl_state.last_crawl_at[:16].replace('T', ' ') }}
+                {% else %}
+                -
+                {% endif %}
+            </p>
+        </div>
+        <div class="bg-white rounded-xl shadow p-5">
+            <p class="text-sm text-gray-500">다음 자동 크롤링</p>
+            <p class="text-lg font-bold text-gray-700" id="nextScheduled">
+                {% if crawl_state.next_scheduled %}
+                {{ crawl_state.next_scheduled[:16].replace('T', ' ') }}
+                {% else %}
+                -
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+        <!-- 크롤링 실행 -->
+        <div>
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="font-bold text-lg mb-4">수동 크롤링</h2>
+                <p class="text-sm text-gray-500 mb-4">
+                    네이버 검색에서 회생/파산 관련 업체를 크롤링합니다.<br>
+                    10개 키워드 x 17개 지역 = 총 95개 검색어를 조합하여 수집합니다.<br>
+                    소요 시간: 약 2~3분
+                </p>
+
+                <!-- 상태 표시 -->
+                <div id="crawlStatus" class="mb-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-sm font-medium">상태:</span>
+                        <span id="statusBadge" class="text-xs px-2 py-0.5 rounded
+                            {% if crawl_state.status == 'running' %}bg-yellow-100 text-yellow-700
+                            {% elif crawl_state.status == 'completed' %}bg-green-100 text-green-700
+                            {% elif crawl_state.status == 'error' %}bg-red-100 text-red-700
+                            {% else %}bg-gray-100 text-gray-600{% endif %}">
+                            {% if crawl_state.status == 'running' %}진행 중
+                            {% elif crawl_state.status == 'completed' %}완료
+                            {% elif crawl_state.status == 'error' %}오류
+                            {% else %}대기{% endif %}
+                        </span>
+                    </div>
+                    <p id="progressText" class="text-sm text-gray-600">{{ crawl_state.progress or '크롤링 대기 중' }}</p>
+                </div>
+
+                <!-- 진행바 (크롤링 중일 때) -->
+                <div id="progressBar" class="mb-4 {% if crawl_state.status != 'running' %}hidden{% endif %}">
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-primary h-2 rounded-full animate-pulse" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <button id="crawlBtn" onclick="startCrawl()"
+                    class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 rounded-lg transition
+                    {% if crawl_state.status == 'running' %}opacity-50 cursor-not-allowed{% endif %}"
+                    {% if crawl_state.status == 'running' %}disabled{% endif %}>
+                    {% if crawl_state.status == 'running' %}크롤링 진행 중...{% else %}지금 크롤링 시작{% endif %}
+                </button>
+
+                <!-- 로그 -->
+                <div id="crawlLog" class="mt-4 {% if not crawl_state.log %}hidden{% endif %}">
+                    <h3 class="text-sm font-medium text-gray-500 mb-2">실행 로그</h3>
+                    <div class="bg-gray-900 text-green-400 rounded-lg p-4 text-xs font-mono max-h-48 overflow-y-auto" id="logContent">
+                        {% for line in crawl_state.log %}
+                        <div>{{ line }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- 자동 스케줄 설정 -->
+            <div class="bg-white rounded-xl shadow p-6 mt-6">
+                <h2 class="font-bold text-lg mb-3">자동 크롤링 스케줄</h2>
+                <div class="flex items-center gap-3 p-4 bg-blue-50 rounded-lg">
+                    <svg class="w-8 h-8 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div>
+                        <p class="font-medium text-gray-800">매주 자동 실행</p>
+                        <p class="text-sm text-gray-500">서버 시작일 기준 7일마다 자동으로 크롤링이 실행됩니다.</p>
+                    </div>
+                    <span class="ml-auto bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">활성</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 지역별 통계 -->
+        <div>
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="font-bold text-lg mb-4">지역별 크롤링 업체</h2>
+                {% if region_stats %}
+                <div class="space-y-2">
+                    {% for region, count in region_stats.items() %}
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-700 w-16">{{ region }}</span>
+                        <div class="flex-1 mx-3">
+                            <div class="w-full bg-gray-100 rounded-full h-5">
+                                <div class="bg-primary h-5 rounded-full flex items-center justify-end pr-2"
+                                    style="width: {{ (count / total_crawled * 100) | round(1) }}%; min-width: 30px;">
+                                    <span class="text-white text-xs font-bold">{{ count }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400 w-12 text-right">{{ (count / total_crawled * 100) | round(1) }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-gray-400 py-8">크롤링 데이터가 없습니다</p>
+                {% endif %}
+            </div>
+
+            <!-- 검색 키워드 목록 -->
+            <div class="bg-white rounded-xl shadow p-6 mt-6">
+                <h2 class="font-bold text-lg mb-3">검색 키워드</h2>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">개인회생 법무법인</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">개인회생 법률사무소</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">개인파산 법무법인</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">개인파산 법률사무소</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">기업회생 법무법인</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">회생파산 전문</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">개인회생 전문 변호사</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">채무조정 법무법인</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">개인회생 상담</span>
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full">파산면책 법률사무소</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-3">x 17개 지역 (서울, 경기, 인천, 부산, 대구, 대전, 광주, 울산, 수원, 성남, 고양, 용인, 창원, 청주, 전주, 천안, 제주)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let polling = null;
+
+async function startCrawl() {
+    if (!confirm('크롤링을 시작하시겠습니까? 약 2~3분 소요됩니다.')) return;
+
+    const btn = document.getElementById('crawlBtn');
+    btn.disabled = true;
+    btn.textContent = '크롤링 진행 중...';
+    btn.classList.add('opacity-50', 'cursor-not-allowed');
+    document.getElementById('progressBar').classList.remove('hidden');
+    document.getElementById('crawlLog').classList.remove('hidden');
+
+    const res = await fetch('/admin/crawl/start', { method: 'POST' });
+    const data = await res.json();
+
+    if (data.success) {
+        // 폴링 시작
+        polling = setInterval(checkStatus, 3000);
+    } else {
+        alert(data.error || '크롤링 시작 실패');
+        btn.disabled = false;
+        btn.textContent = '지금 크롤링 시작';
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+}
+
+async function checkStatus() {
+    try {
+        const res = await fetch('/admin/crawl/status');
+        const data = await res.json();
+
+        document.getElementById('progressText').textContent = data.progress;
+
+        // 로그 업데이트
+        const logEl = document.getElementById('logContent');
+        logEl.innerHTML = data.log.map(l => `<div>${l}</div>`).join('');
+        logEl.scrollTop = logEl.scrollHeight;
+
+        // 상태 배지 업데이트
+        const badge = document.getElementById('statusBadge');
+        if (data.status === 'running') {
+            badge.className = 'text-xs px-2 py-0.5 rounded bg-yellow-100 text-yellow-700';
+            badge.textContent = '진행 중';
+        } else if (data.status === 'completed') {
+            badge.className = 'text-xs px-2 py-0.5 rounded bg-green-100 text-green-700';
+            badge.textContent = '완료';
+            stopPolling();
+        } else if (data.status === 'error') {
+            badge.className = 'text-xs px-2 py-0.5 rounded bg-red-100 text-red-700';
+            badge.textContent = '오류';
+            stopPolling();
+        }
+
+        if (data.last_crawl_at) {
+            document.getElementById('lastCrawlAt').textContent = data.last_crawl_at.substring(0, 16).replace('T', ' ');
+        }
+        if (data.next_scheduled) {
+            document.getElementById('nextScheduled').textContent = data.next_scheduled.substring(0, 16).replace('T', ' ');
+        }
+    } catch(e) {}
+}
+
+function stopPolling() {
+    if (polling) clearInterval(polling);
+    const btn = document.getElementById('crawlBtn');
+    btn.disabled = false;
+    btn.textContent = '지금 크롤링 시작';
+    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    document.getElementById('progressBar').classList.add('hidden');
+}
+
+// 크롤링 중이면 자동 폴링
+{% if crawl_state.status == 'running' %}
+polling = setInterval(checkStatus, 3000);
+{% endif %}
+</script>
+{% endblock %}

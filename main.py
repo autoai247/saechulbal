@@ -8,6 +8,9 @@ from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from datetime import datetime, timedelta
+from contextlib import asynccontextmanager
+import asyncio
+import threading
 import os
 import jwt
 import bcrypt
@@ -575,6 +578,7 @@ async def admin_dashboard(request: Request):
     total_purchases = len(purchases_db)
     total_revenue = sum(p["price"] for p in purchases_db)
 
+    crawled_count = len([c for c in companies_db if c.get("source") == "naver_crawl"])
     return templates.TemplateResponse("admin_dashboard.html", {
         "request": request,
         "stats": {
@@ -582,7 +586,9 @@ async def admin_dashboard(request: Request):
             "total_companies": total_companies,
             "total_purchases": total_purchases,
             "total_revenue": total_revenue,
+            "crawled_count": crawled_count,
         },
+        "crawl_state": crawl_state,
         "applications": applications_db[-20:],  # 최근 20건
         "companies": companies_db,
     })
@@ -622,6 +628,195 @@ async def admin_logout():
     response = RedirectResponse("/admin/login", status_code=303)
     response.delete_cookie("admin_token")
     return response
+
+
+# ============================================================
+# 크롤링 관리 (관리자)
+# ============================================================
+crawl_state = {
+    "status": "idle",       # idle, running, completed, error
+    "last_crawl_at": None,
+    "last_count": 0,
+    "new_count": 0,
+    "log": [],
+    "progress": "",
+    "next_scheduled": None,
+}
+
+# 초기 로드 시 crawled_companies.json의 수정 시간을 last_crawl_at으로 설정
+if _os.path.exists(_crawled_path):
+    _mod_time = datetime.fromtimestamp(_os.path.getmtime(_crawled_path))
+    crawl_state["last_crawl_at"] = _mod_time.isoformat()
+    crawl_state["last_count"] = len(companies_db)
+
+
+def _run_crawl_sync():
+    """크롤링 실행 (동기 - 별도 스레드에서 실행)"""
+    from crawler import crawl_all, to_company_format, save_results
+
+    crawl_state["status"] = "running"
+    crawl_state["log"] = []
+    crawl_state["progress"] = "크롤링 시작..."
+
+    try:
+        # 크롤링 실행
+        crawl_state["progress"] = "네이버 검색 중..."
+        raw = crawl_all()
+        crawl_state["log"].append(f"네이버 검색 완료: {len(raw)}개 수집")
+
+        # 포맷 변환
+        crawl_state["progress"] = "데이터 변환 중..."
+        new_companies = to_company_format(raw)
+        crawl_state["log"].append(f"포맷 변환 완료: {len(new_companies)}개")
+
+        # JSON 파일 저장
+        crawl_state["progress"] = "파일 저장 중..."
+        _save_path = _os.path.join(_os.path.dirname(__file__) or ".", "crawled_companies.json")
+        save_results(new_companies, _save_path)
+        crawl_state["log"].append(f"crawled_companies.json 저장 완료")
+
+        # 메모리 DB 업데이트 (기존 크롤링 업체 교체, 등록/인증 업체는 유지)
+        existing_registered = [c for c in companies_db if c.get("source") != "naver_crawl"]
+        companies_db.clear()
+        companies_db.extend(existing_registered)
+
+        # 새 크롤링 데이터 로드
+        for _c in new_companies:
+            _name = _c.get("name", "")
+            _name = _re.sub(r"(톡톡|쿠폰|법률사무소$|법무사사무소$)", "", _name).strip()
+            _c["name"] = _name
+            _c["tier"] = "free"
+            _c["verified"] = False
+            _c["status"] = "listed"
+            for field, default in [("description", ""), ("rating", 0.0), ("review_count", 0),
+                                   ("success_count", 0), ("experience_years", ""), ("min_fee", ""), ("balance", 0)]:
+                if not _c.get(field):
+                    _c[field] = default
+        companies_db.extend(new_companies)
+
+        new_added = len(new_companies) - crawl_state["last_count"]
+        if new_added < 0:
+            new_added = 0
+
+        crawl_state["status"] = "completed"
+        crawl_state["last_crawl_at"] = datetime.now().isoformat()
+        crawl_state["last_count"] = len(new_companies)
+        crawl_state["new_count"] = new_added
+        crawl_state["progress"] = f"완료! 총 {len(new_companies)}개 업체 (신규 {new_added}개)"
+        crawl_state["log"].append(f"DB 업데이트 완료: 총 {len(companies_db)}개 업체")
+
+        print(f"[새출발] 크롤링 완료: {len(new_companies)}개 업체")
+
+    except Exception as e:
+        crawl_state["status"] = "error"
+        crawl_state["progress"] = f"오류 발생: {str(e)}"
+        crawl_state["log"].append(f"ERROR: {str(e)}")
+        print(f"[새출발] 크롤링 오류: {e}")
+
+
+def start_crawl_background():
+    """별도 스레드에서 크롤링 시작"""
+    if crawl_state["status"] == "running":
+        return False
+    thread = threading.Thread(target=_run_crawl_sync, daemon=True)
+    thread.start()
+    return True
+
+
+# 주간 자동 크롤링 스케줄러
+_scheduler_running = False
+
+
+def _weekly_scheduler():
+    """1주일마다 크롤링 자동 실행"""
+    global _scheduler_running
+    _scheduler_running = True
+    WEEK_SECONDS = 7 * 24 * 60 * 60  # 604800초
+
+    while _scheduler_running:
+        # 다음 실행 시간 계산
+        next_run = datetime.now() + timedelta(seconds=WEEK_SECONDS)
+        crawl_state["next_scheduled"] = next_run.isoformat()
+        print(f"[새출발] 다음 자동 크롤링 예정: {next_run.strftime('%Y-%m-%d %H:%M')}")
+
+        # 1주일 대기 (10분 단위로 체크하여 종료 가능)
+        waited = 0
+        while waited < WEEK_SECONDS and _scheduler_running:
+            import time
+            time.sleep(600)  # 10분
+            waited += 600
+
+        if _scheduler_running:
+            print("[새출발] 주간 자동 크롤링 시작")
+            start_crawl_background()
+
+
+@app.on_event("startup")
+async def startup_scheduler():
+    """서버 시작 시 주간 스케줄러 실행"""
+    thread = threading.Thread(target=_weekly_scheduler, daemon=True)
+    thread.start()
+    next_run = datetime.now() + timedelta(weeks=1)
+    crawl_state["next_scheduled"] = next_run.isoformat()
+    print(f"[새출발] 주간 크롤링 스케줄러 시작됨 (다음: {next_run.strftime('%Y-%m-%d %H:%M')})")
+
+
+@app.get("/admin/crawl", response_class=HTMLResponse)
+async def admin_crawl_page(request: Request):
+    """크롤링 관리 페이지"""
+    admin = get_admin(request)
+    if not admin:
+        return RedirectResponse("/admin/login")
+
+    # 지역별 통계
+    region_stats = {}
+    crawled_companies = [c for c in companies_db if c.get("source") == "naver_crawl"]
+    for c in crawled_companies:
+        regions = c.get("filters", {}).get("regions", [])
+        r = regions[0] if regions else "기타"
+        region_stats[r] = region_stats.get(r, 0) + 1
+
+    return templates.TemplateResponse("admin_crawl.html", {
+        "request": request,
+        "crawl_state": crawl_state,
+        "total_crawled": len(crawled_companies),
+        "total_registered": len([c for c in companies_db if c.get("source") != "naver_crawl"]),
+        "region_stats": dict(sorted(region_stats.items(), key=lambda x: -x[1])),
+    })
+
+
+@app.post("/admin/crawl/start")
+async def admin_crawl_start(request: Request):
+    """크롤링 수동 실행"""
+    admin = get_admin(request)
+    if not admin:
+        return JSONResponse({"error": "권한 없음"}, status_code=401)
+
+    if crawl_state["status"] == "running":
+        return JSONResponse({"error": "이미 크롤링이 진행 중입니다."}, status_code=400)
+
+    started = start_crawl_background()
+    if started:
+        return JSONResponse({"success": True, "message": "크롤링이 시작되었습니다."})
+    return JSONResponse({"error": "크롤링 시작 실패"}, status_code=500)
+
+
+@app.get("/admin/crawl/status")
+async def admin_crawl_status(request: Request):
+    """크롤링 상태 조회 (폴링용)"""
+    admin = get_admin(request)
+    if not admin:
+        return JSONResponse({"error": "권한 없음"}, status_code=401)
+
+    return JSONResponse({
+        "status": crawl_state["status"],
+        "progress": crawl_state["progress"],
+        "last_crawl_at": crawl_state["last_crawl_at"],
+        "last_count": crawl_state["last_count"],
+        "new_count": crawl_state["new_count"],
+        "log": crawl_state["log"][-20:],  # 최근 20줄
+        "next_scheduled": crawl_state["next_scheduled"],
+    })
 
 
 # ============================================================

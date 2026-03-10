@@ -122,8 +122,11 @@ async def apply(
     description: str = Form(""),
 ):
     """상담 신청 접수"""
-    if max_companies not in (3, 5, 7):
+    if max_companies not in (0, 3, 5, 7, 10):
         max_companies = 3
+    # 0 = 제한없음 → 큰 수로 처리
+    if max_companies == 0:
+        max_companies = 999
 
     application = {
         "id": str(uuid.uuid4()),

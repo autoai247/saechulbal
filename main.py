@@ -2,18 +2,20 @@
 새출발 - 회생/파산 상담 중개 플랫폼
 양방향 매칭: 신청인이 업체를 선택 → 업체가 열람(구매)
 
-# === 매우 보수적 수익 시뮬레이션 ===
-# 월 100건 신청 (광고 최소 집행 가정)
-# 평균 2곳 선택 (신청인이 보수적으로 선택)
-# 열람 전환율 70% (알림 받고 결제까지)
-# 평균 단가 3,600원 (할인 반영)
-# 월 수익 = 100 × 2 × 0.7 × 3,600 = 504,000원
+# === 매우 보수적 수익 시뮬레이션 (패키지 모델) ===
 #
-# 6개월 후 목표 (월 500건, 80개 업체)
-# 월 수익 = 500 × 2.5 × 0.75 × 3,500 = 3,281,250원
+# 초기 (월 100건 신청)
+#   입점 업체 20곳, 평균 "기본" 패키지 (30만원/10건)
+#   월 패키지 매출 = 20 × 300,000원 × 갱신율 50% = 300만원
+#   실 열람 건수 = 100건 × 2.5곳 선택 = 250건 소진
 #
-# 1년 후 목표 (월 1,500건, 200개 업체)
-# 월 수익 = 1,500 × 3 × 0.8 × 3,400 = 12,240,000원
+# 6개월 후 (월 500건 신청)
+#   입점 업체 50곳, 평균 "성장" 패키지 (50만원/20건)
+#   월 패키지 매출 = 50 × 500,000원 × 갱신율 60% = 1,500만원
+#
+# 1년 후 (월 1,500건 신청)
+#   입점 업체 150곳, 평균 "프로" 패키지 (100만원/45건)
+#   월 패키지 매출 = 150 × 1,000,000원 × 갱신율 70% = 10,500만원 (1억)
 """
 
 from fastapi import FastAPI, Request, Depends, HTTPException, Form, Response
@@ -42,13 +44,106 @@ SECRET_KEY = os.getenv("SECRET_KEY", "saechulbal-secret-key-change-in-prod")
 ADMIN_ID = os.getenv("ADMIN_ID", "admin")
 ADMIN_PW = os.getenv("ADMIN_PW", "admin")
 
-# 선택 업체 수에 따른 건당 가격
-PRICE_BY_SELECTION = {
-    1: 5000,   # 1곳만 선택 → 5,000원
-    2: 4000,   # 2곳 선택 → 4,000원
-    3: 3500,   # 3곳 선택 → 3,500원
-    4: 3000,   # 4곳 선택 → 3,000원
-    5: 2500,   # 5곳 선택 → 2,500원
+# ============================================================
+# 상품 패키지 (건수 기반 — 법적 리스크 제로)
+# ============================================================
+# 업체가 패키지를 구매하면 N건의 DB 열람권을 받음
+# 네이버 키워드 광고 대비 87~97% 비용 절감 (근거 데이터 하단 참조)
+PACKAGES = {
+    "trial":      {"label": "체험",         "price": 100000,  "leads": 3,   "per_lead": 33333, "validity_days": 30},
+    "basic":      {"label": "기본",         "price": 300000,  "leads": 10,  "per_lead": 30000, "validity_days": 90},
+    "growth":     {"label": "성장",         "price": 500000,  "leads": 20,  "per_lead": 25000, "validity_days": 180},
+    "pro":        {"label": "프로",         "price": 1000000, "leads": 45,  "per_lead": 22222, "validity_days": 365},
+    "enterprise": {"label": "엔터프라이즈",  "price": 2000000, "leads": 100, "per_lead": 20000, "validity_days": 365},
+}
+
+# ============================================================
+# 네이버 키워드 광고 단가 참조 데이터 (입점 제안서 근거)
+# ============================================================
+KEYWORD_CPC_DATA = {
+    "대표 키워드": {
+        "개인회생":        {"cpc_range": "7~10만원", "intent": "대표, 최고 경쟁"},
+        "개인파산":        {"cpc_range": "5~8만원",  "intent": "대표"},
+        "개인회생 신청":    {"cpc_range": "6~10만원", "intent": "즉시 행동"},
+        "개인파산 신청":    {"cpc_range": "5~8만원",  "intent": "즉시 행동"},
+        "개인회생 변호사":  {"cpc_range": "7~10만원", "intent": "업체 탐색"},
+        "개인회생 법무사":  {"cpc_range": "5~8만원",  "intent": "업체 탐색"},
+        "채무조정":        {"cpc_range": "3~5만원",  "intent": "비교 단계"},
+    },
+    "롱테일 키워드": {
+        "개인회생 비용":    {"cpc_range": "3~6만원",  "intent": "가격 비교"},
+        "개인회생 자격":    {"cpc_range": "3~5만원",  "intent": "자격 확인"},
+        "개인회생 자격조건": {"cpc_range": "3~5만원",  "intent": "자격 확인"},
+        "개인회생 수임료":  {"cpc_range": "4~7만원",  "intent": "전환 근접"},
+        "개인회생 절차":    {"cpc_range": "2~4만원",  "intent": "정보 수집"},
+        "개인회생 기간":    {"cpc_range": "1~3만원",  "intent": "정보 수집"},
+        "개인파산 비용":    {"cpc_range": "3~5만원",  "intent": "가격 비교"},
+        "개인파산 자격":    {"cpc_range": "2~4만원",  "intent": "자격 확인"},
+        "개인파산 면책":    {"cpc_range": "2~4만원",  "intent": "정보 수집"},
+        "파산 면책 기간":   {"cpc_range": "1~3만원",  "intent": "정보 수집"},
+    },
+    "지역 조합 키워드": {
+        "{지역} 개인회생":       {"cpc_range": "3~8만원",  "intent": "지역 탐색"},
+        "{지역} 개인회생 변호사": {"cpc_range": "3~7만원",  "intent": "지역+업체"},
+        "{지역} 개인파산":       {"cpc_range": "2~5만원",  "intent": "지역 탐색"},
+        "{지역} 회생 법무사":    {"cpc_range": "2~5만원",  "intent": "지역+업체"},
+    },
+    "고민형 키워드": {
+        "빚 갚는 방법":     {"cpc_range": "1~2만원", "intent": "초기 고민"},
+        "빚 탕감":         {"cpc_range": "2~4만원", "intent": "해결 의향"},
+        "채무 면제":       {"cpc_range": "2~3만원", "intent": "해결 의향"},
+        "신용회복":        {"cpc_range": "1~3만원", "intent": "회복 단계"},
+        "워크아웃":        {"cpc_range": "1~3만원", "intent": "비교"},
+        "급여 압류 해제":   {"cpc_range": "2~4만원", "intent": "긴급"},
+        "카드빚 갚는법":   {"cpc_range": "1~2만원", "intent": "초기 고민"},
+        "사채 빚 해결":    {"cpc_range": "2~3만원", "intent": "긴급"},
+        "대출 연체 해결":   {"cpc_range": "1~3만원", "intent": "긴급"},
+        "채무통합":        {"cpc_range": "1~2만원", "intent": "비교"},
+        "개인워크아웃":    {"cpc_range": "1~3만원", "intent": "비교"},
+        "회생 파산 차이":   {"cpc_range": "1~2만원", "intent": "정보"},
+    },
+    # === 다중 검증된 전환율 데이터 (입점 제안서 핵심 근거) ===
+    "전환율_퍼널": {
+        "클릭→상담문의": {
+            "법률 전체 평균": "7% (LocaliQ 2024, WordStream 2024)",
+            "회생/파산 특화": "8~13.56% (LocaliQ: 13.56%, Practice Proof: 8.56%)",
+            "보수적 채택": "10%",
+            "출처": ["LocaliQ 2024", "WordStream 2024", "Practice Proof 2025", "First Page Sage 2025"],
+        },
+        "상담문의→상담진행": {
+            "무료상담 시": "60~80% (Rocket Clicks 사례)",
+            "보수적 채택": "70%",
+            "no_show_rate": "약 15%",
+        },
+        "상담→수임계약": {
+            "유료상담 사무소": "40~50%",
+            "업계 평균": "30~50% (National Law Review)",
+            "한국 변호사중개센터": "3~5% (극히 낮음, 무료상담 한정)",
+            "보수적 채택": "25~35%",
+            "회생파산_특화": "상위 (긴급성 높아 결정 빠름)",
+        },
+        "새출발_DB_특성": "클릭→상담 단계 이미 완료. 업체는 상담진행→수임만 하면 됨",
+    },
+    "업체_네이버_직접광고_현실": {
+        "CPC": "대표키워드 7~10만원, 롱테일 1~5만원",
+        "월_광고비": "평균 1,500~3,500만원 (법률신문·서울경제 보도)",
+        "월_확보_DB": "약 20~30건 (CPC 7만원 × 285클릭 × 전환 10%)",
+        "DB당_비용": "약 50~70만원",
+        "수임_전환율": "DB→수임 약 21~25% (상담진행 70% × 계약 30%)",
+        "월_수임건수": "약 5~8건",
+        "수임료_평균": "200~300만원 (개인회생 기준)",
+        "월_수임매출": "약 1,000~2,400만원",
+        "ROI": "0.9~1.4배 (흑자이나 효율 낮음)",
+    },
+    "새출발_비교": {
+        "DB_건당_단가": "2~3.3만원 (패키지에 따라)",
+        "DB_품질": "이미 상담 신청 완료 + 업체 직접 선택 = 네이버 클릭보다 높은 의향",
+        "수임까지_필요DB": "4~5건 (업계 동일)",
+        "수임_1건_비용": "10~16.5만원",
+        "네이버_대비_절감": "95~97%",
+        "ROI": "12~27배",
+        "영업_핵심_멘트": "네이버에 2,000만원 쓰면 28건, 새출발에 50만원 쓰면 20건. 같은 품질 DB를 40분의 1 비용으로.",
+    },
 }
 
 # ============================================================
@@ -59,14 +154,6 @@ DEBT_TYPES = {
     "personal_bankruptcy": "개인파산",
     "corporate_recovery": "기업회생",
     "corporate_bankruptcy": "기업파산",
-}
-
-# 업체 등급 시스템 — 할인 전용 (리스팅 우선순위 아님)
-COMPANY_TIERS = {
-    "free":    {"label": "무료",      "monthly_fee": 0,      "badge": "",         "discount": 0},
-    "premium": {"label": "프리미엄",  "monthly_fee": 30000,  "badge": "인증 업체",  "discount": 0.10},
-    "vip":     {"label": "VIP",       "monthly_fee": 50000,  "badge": "우수 업체",  "discount": 0.20},
-    "diamond": {"label": "다이아몬드", "monthly_fee": 100000, "badge": "최우수 업체", "discount": 0.30},
 }
 
 REGIONS = [
@@ -95,9 +182,11 @@ company_users_db: list[dict] = []     # 업체 계정
 distributions_db: list[dict] = []     # 중개 기록 (신청인이 선택한 업체)
 purchases_db: list[dict] = []         # 열람(구매) 기록
 inquiries_db: list[dict] = []        # 업체 입점 문의
-transactions_db: list[dict] = []     # 포인트 거래 내역
-point_requests_db: list[dict] = []   # 포인트 충전 요청
+transactions_db: list[dict] = []     # 패키지 구매/열람/환불 내역
+package_requests_db: list[dict] = [] # 패키지 구매 요청
 refund_requests_db: list[dict] = []  # 환불 요청
+
+# transaction types: package_purchase, lead_view, refund, admin_grant
 
 
 # ============================================================
@@ -120,7 +209,11 @@ if _os.path.exists(_crawled_path):
         _name = _c.get("name", "")
         _name = _re.sub(r"(톡톡|쿠폰|법률사무소$|법무사사무소$)", "", _name).strip()
         _c["name"] = _name
-        _c["tier"] = "free"
+        _c["package"] = "none"
+        _c["package_name"] = None
+        _c["remaining_leads"] = 0
+        _c["package_expires_at"] = None
+        _c["total_leads_used"] = 0
         _c["verified"] = False
         _c["status"] = "listed"
         _c["response_rate"] = 0.0  # 응답률 (0~1)
@@ -136,8 +229,6 @@ if _os.path.exists(_crawled_path):
             _c["experience_years"] = ""
         if not _c.get("min_fee"):
             _c["min_fee"] = ""
-        if not _c.get("balance"):
-            _c["balance"] = 0
     companies_db.extend(_crawled)
     print(f"[새출발] 크롤링 업체 {len(_crawled)}개 로드됨")
 else:
@@ -149,29 +240,24 @@ else:
 # ============================================================
 def _company_sort_score(company: dict) -> float:
     """
-    리스팅 순서: rating(40%) + response_rate(30%) + tier(30%)
-    Free tier도 평점/응답률이 좋으면 상위에 올 수 있음
+    리스팅 순서: rating(50%) + response_rate(50%)
+    순수 품질 기반 — pay-to-win 없음
     """
     rating = company.get("rating", 0.0)
     response_rate = company.get("response_rate", 0.0)
-    tier = company.get("tier", "free")
-    tier_scores = {"free": 0, "premium": 0.33, "vip": 0.67, "diamond": 1.0}
-    tier_score = tier_scores.get(tier, 0)
 
     # rating: 0~5 → 0~1 정규화
     norm_rating = min(rating / 5.0, 1.0) if rating else 0
     norm_response = min(response_rate, 1.0)
 
-    return norm_rating * 0.4 + norm_response * 0.3 + tier_score * 0.3
+    return norm_rating * 0.5 + norm_response * 0.5
 
 
-def _get_lead_price(num_selected: int, company: dict) -> int:
-    """선택 업체 수 기반 가격 + 등급 할인 적용"""
-    base_price = PRICE_BY_SELECTION.get(num_selected, PRICE_BY_SELECTION[5])
-    tier = company.get("tier", "free")
-    discount = COMPANY_TIERS.get(tier, COMPANY_TIERS["free"])["discount"]
-    discounted = int(base_price * (1 - discount))
-    return discounted
+def _get_package_badge(package: str) -> str:
+    """패키지에 따른 배지"""
+    if package == "none" or package not in PACKAGES:
+        return ""
+    return PACKAGES[package]["label"]
 
 
 # ============================================================
@@ -211,7 +297,7 @@ def get_company_user(request: Request) -> dict | None:
 # ============================================================
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    # 정렬: sort_score (rating 40% + response_rate 30% + tier 30%)
+    # 정렬: sort_score (rating 50% + response_rate 50%)
     top_companies = sorted(
         [c for c in companies_db if c["status"] in ("active", "listed")],
         key=_company_sort_score,
@@ -229,7 +315,7 @@ async def home(request: Request):
         "regions": REGIONS,
         "debt_ranges": DEBT_RANGES,
         "companies": top_companies,
-        "tiers": COMPANY_TIERS,
+        "packages": PACKAGES,
         "stats": stats,
     })
 
@@ -331,21 +417,15 @@ async def apply_select_companies(request: Request, app_id: str):
 
         matching.append(company)
 
-    # 정렬: sort_score (rating 40% + response_rate 30% + tier 30%)
+    # 정렬: sort_score (rating 50% + response_rate 50%)
     matching.sort(key=_company_sort_score, reverse=True)
-
-    # 가격 정보 계산 (1~5곳 선택 시 각각의 가격)
-    price_info = {}
-    for n in range(1, 6):
-        price_info[n] = PRICE_BY_SELECTION[n]
 
     return templates.TemplateResponse("apply_select.html", {
         "request": request,
         "application": app_data,
         "companies": matching,
-        "tiers": COMPANY_TIERS,
+        "packages": PACKAGES,
         "debt_types": DEBT_TYPES,
-        "price_info": price_info,
         "max_select": 5,
     })
 
@@ -400,7 +480,6 @@ async def apply_confirm_selection(
             "application_id": app_data["id"],
             "company_id": cid,
             "status": "notified",  # notified → viewed → purchased → contacted
-            "price": _get_lead_price(len(valid_ids), next(c for c in companies_db if c["id"] == cid)),
             "created_at": datetime.now().isoformat(),
         }
         distributions_db.append(distribution)
@@ -427,7 +506,7 @@ async def apply_direct(
     description: str = Form(""),
     privacy_consent: bool = Form(False),
 ):
-    """특정 업체에 직접 상담 신청 (1곳 선택 = 가장 높은 단가)"""
+    """특정 업체에 직접 상담 신청"""
     if not privacy_consent:
         return RedirectResponse(f"/companies/{company_id}", status_code=303)
 
@@ -456,13 +535,12 @@ async def apply_direct(
     }
     applications_db.append(application)
 
-    # 직접 선택 → 바로 배분 생성 (1곳이므로 5,000원)
+    # 직접 선택 → 바로 배분 생성
     distribution = {
         "id": str(uuid.uuid4()),
         "application_id": application["id"],
         "company_id": company_id,
         "status": "notified",
-        "price": _get_lead_price(1, target_company),
         "created_at": datetime.now().isoformat(),
     }
     distributions_db.append(distribution)
@@ -503,7 +581,7 @@ async def company_list(
     elif sort == "recent":
         filtered.sort(key=lambda c: c.get("created_at", ""), reverse=True)
     else:
-        # 기본: 종합점수 (rating 40% + response_rate 30% + tier 30%)
+        # 기본: 종합점수 (rating 50% + response_rate 50%)
         filtered.sort(key=_company_sort_score, reverse=True)
 
     return templates.TemplateResponse("company_list.html", {
@@ -511,7 +589,7 @@ async def company_list(
         "companies": filtered,
         "debt_types": DEBT_TYPES,
         "regions": REGIONS,
-        "tiers": COMPANY_TIERS,
+        "packages": PACKAGES,
         "selected_region": region,
         "selected_debt_type": debt_type,
         "selected_sort": sort,
@@ -530,11 +608,12 @@ async def company_detail(request: Request, company_id: str):
     specialty_labels = [DEBT_TYPES[dt] for dt in company.get("filters", {}).get("debt_types", []) if dt in DEBT_TYPES]
     region_labels = company.get("filters", {}).get("regions", [])
 
-    tier = COMPANY_TIERS.get(company.get("tier", "free"), COMPANY_TIERS["free"])
+    package = company.get("package", "none")
+    badge = _get_package_badge(package)
     return templates.TemplateResponse("company_detail.html", {
         "request": request,
         "company": company,
-        "tier": tier,
+        "badge": badge,
         "specialty_labels": specialty_labels,
         "region_labels": region_labels,
         "debt_types": DEBT_TYPES,
@@ -638,7 +717,11 @@ async def company_register(
         "contact_name": contact_name,
         "contact_phone": contact_phone,
         "status": "pending",  # pending → active → suspended
-        "tier": "free",
+        "package": "none",              # none, trial, basic, growth, pro, enterprise
+        "package_name": None,           # 패키지 표시명
+        "remaining_leads": 0,           # 잔여 열람 건수
+        "package_expires_at": None,     # 패키지 만료일 ISO string
+        "total_leads_used": 0,          # 누적 사용 건수
         "filters": {
             "debt_types": debt_types if debt_types else [],
             "regions": regions if regions else [],
@@ -650,7 +733,6 @@ async def company_register(
         "rating": 0.0,            # 평점
         "review_count": 0,        # 리뷰 수
         "response_rate": 0.0,     # 응답률
-        "balance": 0,             # 포인트 잔액 (원)
         "created_at": datetime.now().isoformat(),
     }
     companies_db.append(company)
@@ -682,7 +764,18 @@ async def company_dashboard(request: Request):
     if not company:
         return RedirectResponse("/company/login")
 
-    tier_info = COMPANY_TIERS.get(company.get("tier", "free"), COMPANY_TIERS["free"])
+    package = company.get("package", "none")
+    package_info = PACKAGES.get(package) if package != "none" else None
+    badge = _get_package_badge(package)
+
+    # 패키지 만료 확인
+    package_expired = False
+    if company.get("package_expires_at"):
+        try:
+            expires = datetime.fromisoformat(company["package_expires_at"])
+            package_expired = datetime.now() > expires
+        except (ValueError, TypeError):
+            package_expired = False
 
     # 이 업체에 배분된 신청건 목록
     my_distributions = [d for d in distributions_db if d["company_id"] == company["id"]]
@@ -693,14 +786,11 @@ async def company_dashboard(request: Request):
             purchased = any(
                 p["distribution_id"] == dist["id"] for p in purchases_db
             )
-            # 이 건의 가격 (배분 시 계산된 가격)
-            lead_price = dist.get("price", PRICE_BY_SELECTION.get(app_data.get("num_selected", 1), 5000))
             leads.append({
                 **app_data,
                 "distribution_id": dist["id"],
                 "purchased": purchased,
                 "dist_status": dist["status"],
-                "lead_price": lead_price,
             })
 
     # 최근 거래 내역
@@ -709,26 +799,32 @@ async def company_dashboard(request: Request):
         key=lambda t: t["created_at"], reverse=True,
     )[:5]
 
-    # 대기 중인 충전 요청
-    pending_point = any(d["company_id"] == company["id"] and d["status"] == "pending" for d in point_requests_db)
+    # 대기 중인 패키지 요청
+    pending_package = any(d["company_id"] == company["id"] and d["status"] == "pending" for d in package_requests_db)
+
+    # 템플릿용 패키지 표시명 추가
+    company["package_name"] = package_info["label"] if package_info else None
+    company["total_leads"] = package_info["leads"] if package_info else 0
 
     return templates.TemplateResponse("company_dashboard.html", {
         "request": request,
         "company": company,
-        "tier_info": tier_info,
+        "package_info": package_info,
+        "badge": badge,
+        "package_expired": package_expired,
         "leads": leads,
         "recent_transactions": recent_transactions,
-        "pending_point": pending_point,
-        "price_by_selection": PRICE_BY_SELECTION,
+        "pending_package": pending_package,
+        "packages": PACKAGES,
     })
 
 
 # ============================================================
-# 업체: DB 열람 구매
+# 업체: DB 열람 구매 (1건 차감)
 # ============================================================
 @app.post("/company/purchase/{distribution_id}")
 async def purchase_lead(request: Request, distribution_id: str):
-    """DB 열람 구매 (개인정보 공개)"""
+    """DB 열람 (1건 차감)"""
     user = get_company_user(request)
     if not user:
         return JSONResponse({"error": "로그인 필요"}, status_code=401)
@@ -740,27 +836,33 @@ async def purchase_lead(request: Request, distribution_id: str):
 
     # 이미 구매했는지 확인
     if any(p["distribution_id"] == distribution_id for p in purchases_db):
-        return JSONResponse({"error": "이미 구매한 건입니다."}, status_code=400)
+        return JSONResponse({"error": "이미 열람한 건입니다."}, status_code=400)
 
     app_data = next((a for a in applications_db if a["id"] == dist["application_id"]), None)
     if not app_data:
         return JSONResponse({"error": "신청 정보를 찾을 수 없습니다."}, status_code=404)
 
-    # 가격 계산 (배분 시 저장된 가격 사용)
-    lead_price = dist.get("price", _get_lead_price(app_data.get("num_selected", 1), company))
+    # 패키지 만료 확인
+    if company.get("package_expires_at"):
+        try:
+            expires = datetime.fromisoformat(company["package_expires_at"])
+            if datetime.now() > expires:
+                return JSONResponse({"error": "패키지가 만료되었습니다. 새 패키지를 구매해주세요."}, status_code=400)
+        except (ValueError, TypeError):
+            pass
 
-    # 잔액 확인
-    if company["balance"] < lead_price:
-        return JSONResponse({"error": f"포인트가 부족합니다. (현재: {company['balance']:,}원, 필요: {lead_price:,}원)"}, status_code=400)
+    # 잔여 건수 확인
+    if company.get("remaining_leads", 0) <= 0:
+        return JSONResponse({"error": "잔여 열람 건수가 없습니다. 패키지를 구매해주세요."}, status_code=400)
 
-    # 차감 & 구매 기록
-    company["balance"] -= lead_price
+    # 1건 차감 & 구매 기록
+    company["remaining_leads"] -= 1
+    company["total_leads_used"] = company.get("total_leads_used", 0) + 1
     purchase = {
         "id": str(uuid.uuid4()),
         "distribution_id": distribution_id,
         "company_id": company["id"],
         "application_id": dist["application_id"],
-        "price": lead_price,
         "status": "active",  # active → refunded
         "created_at": datetime.now().isoformat(),
     }
@@ -769,7 +871,7 @@ async def purchase_lead(request: Request, distribution_id: str):
 
     # 거래 내역 기록
     _record_transaction(
-        company["id"], "purchase", -lead_price,
+        company["id"], "lead_view", -1,
         f"DB 열람 - {app_data.get('debt_type_label', '')} ({app_data.get('region', '')})",
         ref_id=purchase["id"],
     )
@@ -780,6 +882,7 @@ async def purchase_lead(request: Request, distribution_id: str):
         "name": app_data["name"],
         "phone": app_data["phone"],
         "description": app_data["description"],
+        "remaining_leads": company["remaining_leads"],
     })
 
 
@@ -791,27 +894,28 @@ async def company_logout():
 
 
 # ============================================================
-# 포인트 시스템 (구 예치금)
+# 패키지 시스템
 # ============================================================
 def _record_transaction(company_id: str, tx_type: str, amount: int, description: str, ref_id: str = ""):
     """거래 내역 기록"""
+    company = next((c for c in companies_db if c["id"] == company_id), None)
     tx = {
         "id": str(uuid.uuid4()),
         "company_id": company_id,
-        "type": tx_type,  # deposit, purchase, refund, admin_charge
-        "amount": amount,  # 양수: 충전, 음수: 차감
+        "type": tx_type,  # package_purchase, lead_view, refund, admin_grant
+        "amount": amount,  # 양수: 건수 추가, 음수: 건수 차감
         "description": description,
         "ref_id": ref_id,
-        "balance_after": next((c["balance"] for c in companies_db if c["id"] == company_id), 0),
+        "remaining_after": company.get("remaining_leads", 0) if company else 0,
         "created_at": datetime.now().isoformat(),
     }
     transactions_db.append(tx)
     return tx
 
 
-@app.get("/company/points", response_class=HTMLResponse)
-async def company_points_page(request: Request):
-    """포인트 관리 페이지"""
+@app.get("/company/package", response_class=HTMLResponse)
+async def company_package_page(request: Request):
+    """패키지 관리 페이지"""
     user = get_company_user(request)
     if not user:
         return RedirectResponse("/company/login")
@@ -820,7 +924,18 @@ async def company_points_page(request: Request):
     if not company:
         return RedirectResponse("/company/login")
 
-    tier_info = COMPANY_TIERS.get(company.get("tier", "free"), COMPANY_TIERS["free"])
+    package = company.get("package", "none")
+    package_info = PACKAGES.get(package) if package != "none" else None
+    badge = _get_package_badge(package)
+
+    # 패키지 만료 확인
+    package_expired = False
+    if company.get("package_expires_at"):
+        try:
+            expires = datetime.fromisoformat(company["package_expires_at"])
+            package_expired = datetime.now() > expires
+        except (ValueError, TypeError):
+            package_expired = False
 
     # 이 업체의 거래 내역
     my_transactions = sorted(
@@ -828,40 +943,41 @@ async def company_points_page(request: Request):
         key=lambda t: t["created_at"], reverse=True,
     )
 
-    # 이 업체의 충전 요청
-    my_points = sorted(
-        [d for d in point_requests_db if d["company_id"] == company["id"]],
+    # 이 업체의 패키지 요청
+    my_requests = sorted(
+        [d for d in package_requests_db if d["company_id"] == company["id"]],
         key=lambda d: d["created_at"], reverse=True,
     )
 
     # 통계
-    total_charged = sum(t["amount"] for t in transactions_db if t["company_id"] == company["id"] and t["type"] in ("deposit", "admin_charge"))
-    total_spent = abs(sum(t["amount"] for t in transactions_db if t["company_id"] == company["id"] and t["type"] == "purchase"))
+    total_leads_used = company.get("total_leads_used", 0)
+    total_purchased_packages = sum(1 for t in transactions_db if t["company_id"] == company["id"] and t["type"] == "package_purchase")
 
-    return templates.TemplateResponse("company_points.html", {
+    # 템플릿용 패키지 표시명 추가
+    company["package_name"] = package_info["label"] if package_info else None
+    company["total_leads"] = package_info["leads"] if package_info else 0
+
+    return templates.TemplateResponse("company_package.html", {
         "request": request,
         "company": company,
-        "tier_info": tier_info,
+        "package_info": package_info,
+        "badge": badge,
+        "package_expired": package_expired,
+        "packages": PACKAGES,
         "transactions": my_transactions[:50],
-        "point_requests": my_points[:10],
-        "total_charged": total_charged,
-        "total_spent": total_spent,
+        "package_requests": my_requests[:10],
+        "total_leads_used": total_leads_used,
+        "total_purchased_packages": total_purchased_packages,
     })
 
 
-# 하위호환: /company/deposit → /company/points 리다이렉트
-@app.get("/company/deposit", response_class=HTMLResponse)
-async def company_deposit_redirect(request: Request):
-    return RedirectResponse("/company/points", status_code=301)
-
-
-@app.post("/company/points/request")
-async def company_point_request(
+@app.post("/company/package/request")
+async def company_package_request(
     request: Request,
-    amount: int = Form(...),
+    package_type: str = Form(...),
     depositor_name: str = Form(...),
 ):
-    """포인트 충전 요청"""
+    """패키지 구매 요청"""
     user = get_company_user(request)
     if not user:
         return JSONResponse({"error": "로그인 필요"}, status_code=401)
@@ -870,39 +986,36 @@ async def company_point_request(
     if not company:
         return JSONResponse({"error": "업체 없음"}, status_code=404)
 
-    if amount < 10000:
-        return JSONResponse({"error": "최소 충전 금액은 10,000원입니다."}, status_code=400)
+    if package_type not in PACKAGES:
+        return JSONResponse({"error": "유효하지 않은 패키지입니다."}, status_code=400)
 
-    if amount > 1000000:
-        return JSONResponse({"error": "최대 충전 금액은 1,000,000원입니다."}, status_code=400)
+    pkg = PACKAGES[package_type]
 
-    # 포인트 유효기간: 충전일로부터 1년
-    expiry_date = (datetime.now() + timedelta(days=365)).isoformat()
+    # 이미 대기 중인 요청이 있는지 확인
+    pending = next((r for r in package_requests_db if r["company_id"] == company["id"] and r["status"] == "pending"), None)
+    if pending:
+        return JSONResponse({"error": "이미 대기 중인 패키지 요청이 있습니다."}, status_code=400)
 
-    point_req = {
+    pkg_req = {
         "id": str(uuid.uuid4()),
         "company_id": company["id"],
         "company_name": company["name"],
-        "amount": amount,
+        "package_type": package_type,
+        "package_label": pkg["label"],
+        "price": pkg["price"],
+        "leads": pkg["leads"],
+        "validity_days": pkg["validity_days"],
         "depositor_name": depositor_name,
-        "expiry_date": expiry_date,
         "status": "pending",  # pending → approved → rejected
         "created_at": datetime.now().isoformat(),
         "processed_at": None,
     }
-    point_requests_db.append(point_req)
+    package_requests_db.append(pkg_req)
 
-    return JSONResponse({"success": True, "message": f"{amount:,}원 포인트 충전 요청이 접수되었습니다. 관리자 확인 후 처리됩니다."})
-
-
-# 하위호환: /company/deposit/request → /company/points/request
-@app.post("/company/deposit/request")
-async def company_deposit_request_redirect(
-    request: Request,
-    amount: int = Form(...),
-    depositor_name: str = Form(...),
-):
-    return await company_point_request(request, amount=amount, depositor_name=depositor_name)
+    return JSONResponse({
+        "success": True,
+        "message": f"{pkg['label']} 패키지 ({pkg['price']:,}원 / {pkg['leads']}건) 구매 요청이 접수되었습니다. 입금 확인 후 처리됩니다.",
+    })
 
 
 # ============================================================
@@ -933,7 +1046,7 @@ async def request_refund(
     reason: str = Form(...),
     evidence: str = Form(""),
 ):
-    """환불 요청"""
+    """환불 요청 (1건 복원)"""
     user = get_company_user(request)
     if not user:
         return JSONResponse({"error": "로그인 필요"}, status_code=401)
@@ -975,7 +1088,6 @@ async def request_refund(
         "purchase_id": purchase_id,
         "company_id": company["id"],
         "company_name": company["name"],
-        "amount": purchase["price"],
         "reason": reason,
         "reason_label": REFUND_REASONS.get(reason, reason),
         "evidence": evidence,
@@ -988,17 +1100,18 @@ async def request_refund(
 
     # 자동 승인: 사유가 자동 승인 대상이고 월간 한도 초과가 아닌 경우
     if reason in AUTO_REFUND_REASONS and not over_cap:
-        # 자동 환불 처리
+        # 자동 환불 처리: 1건 복원
         refund_req["status"] = "approved"
         refund_req["processed_at"] = datetime.now().isoformat()
         purchase["status"] = "refunded"
-        company["balance"] += purchase["price"]
+        company["remaining_leads"] = company.get("remaining_leads", 0) + 1
+        company["total_leads_used"] = max(0, company.get("total_leads_used", 0) - 1)
         _record_transaction(
-            company["id"], "refund", purchase["price"],
-            f"환불 - {refund_req['reason_label']}",
+            company["id"], "refund", 1,
+            f"환불 - {refund_req['reason_label']} (1건 복원)",
             ref_id=refund_req["id"],
         )
-        return JSONResponse({"success": True, "message": f"환불이 자동 승인되었습니다. {purchase['price']:,}원이 포인트로 반환됩니다.", "auto_approved": True})
+        return JSONResponse({"success": True, "message": "환불이 자동 승인되었습니다. 1건이 복원됩니다.", "auto_approved": True})
 
     # 수동 검토 필요
     return JSONResponse({"success": True, "message": "환불 요청이 접수되었습니다. 관리자 검토 후 처리됩니다.", "auto_approved": False})
@@ -1045,11 +1158,11 @@ async def admin_dashboard(request: Request):
     total_apps = len(applications_db)
     total_companies = len(companies_db)
     total_purchases = len(purchases_db)
-    total_revenue = sum(p["price"] for p in purchases_db if p.get("status") != "refunded")
-    total_refunds = sum(r["amount"] for r in refund_requests_db if r["status"] == "approved")
+    total_leads_viewed = sum(c.get("total_leads_used", 0) for c in companies_db)
+    total_refunds = len([r for r in refund_requests_db if r["status"] == "approved"])
 
     crawled_count = len([c for c in companies_db if c.get("source") == "naver_crawl"])
-    pending_points = [d for d in point_requests_db if d["status"] == "pending"]
+    pending_packages = [d for d in package_requests_db if d["status"] == "pending"]
     pending_refunds = [r for r in refund_requests_db if r["status"] == "pending"]
 
     return templates.TemplateResponse("admin_dashboard.html", {
@@ -1058,17 +1171,18 @@ async def admin_dashboard(request: Request):
             "total_apps": total_apps,
             "total_companies": total_companies,
             "total_purchases": total_purchases,
-            "total_revenue": total_revenue,
+            "total_leads_viewed": total_leads_viewed,
             "total_refunds": total_refunds,
             "crawled_count": crawled_count,
-            "pending_points": len(pending_points),
+            "total_revenue": sum(d.get("price", 0) for d in package_requests_db if d["status"] == "approved"),
+            "pending_package_requests": len(pending_packages),
             "pending_refunds": len(pending_refunds),
         },
         "crawl_state": crawl_state,
         "applications": applications_db[-20:],
         "companies": companies_db,
         "inquiries": inquiries_db[-10:],
-        "pending_points": pending_points,
+        "pending_package_requests": pending_packages,
         "pending_refunds": pending_refunds,
     })
 
@@ -1087,9 +1201,9 @@ async def approve_company(request: Request, company_id: str):
     return JSONResponse({"success": True})
 
 
-@app.post("/admin/company/{company_id}/charge")
-async def charge_company(request: Request, company_id: str, amount: int = Form(...)):
-    """업체 포인트 충전 (관리자)"""
+@app.post("/admin/company/{company_id}/grant-leads")
+async def grant_company_leads(request: Request, company_id: str, leads: int = Form(...)):
+    """업체 열람 건수 수동 부여 (관리자)"""
     admin = get_admin(request)
     if not admin:
         return JSONResponse({"error": "권한 없음"}, status_code=401)
@@ -1098,27 +1212,9 @@ async def charge_company(request: Request, company_id: str, amount: int = Form(.
     if not company:
         return JSONResponse({"error": "업체를 찾을 수 없습니다."}, status_code=404)
 
-    company["balance"] += amount
-    _record_transaction(company["id"], "admin_charge", amount, "관리자 수동 충전")
-    return JSONResponse({"success": True, "new_balance": company["balance"]})
-
-
-@app.post("/admin/company/{company_id}/tier")
-async def change_company_tier(request: Request, company_id: str, tier: str = Form(...)):
-    """업체 등급 변경 (관리자)"""
-    admin = get_admin(request)
-    if not admin:
-        return JSONResponse({"error": "권한 없음"}, status_code=401)
-
-    if tier not in COMPANY_TIERS:
-        return JSONResponse({"error": "유효하지 않은 등급입니다."}, status_code=400)
-
-    company = next((c for c in companies_db if c["id"] == company_id), None)
-    if not company:
-        return JSONResponse({"error": "업체를 찾을 수 없습니다."}, status_code=404)
-
-    company["tier"] = tier
-    return JSONResponse({"success": True, "tier": tier, "label": COMPANY_TIERS[tier]["label"]})
+    company["remaining_leads"] = company.get("remaining_leads", 0) + leads
+    _record_transaction(company["id"], "admin_grant", leads, f"관리자 수동 부여 ({leads}건)")
+    return JSONResponse({"success": True, "remaining_leads": company["remaining_leads"]})
 
 
 @app.post("/admin/application/{app_id}/approve")
@@ -1155,96 +1251,90 @@ async def admin_reject_application(request: Request, app_id: str):
 
 
 # ============================================================
-# 관리자: 포인트 충전 요청 관리
+# 관리자: 패키지 구매 요청 관리
 # ============================================================
-@app.get("/admin/points", response_class=HTMLResponse)
-async def admin_points_page(request: Request):
-    """포인트 충전 요청 관리"""
+@app.get("/admin/packages", response_class=HTMLResponse)
+async def admin_packages_page(request: Request):
+    """패키지 구매 요청 관리"""
     admin = get_admin(request)
     if not admin:
         return RedirectResponse("/admin/login")
 
-    pending = [d for d in point_requests_db if d["status"] == "pending"]
+    pending = [d for d in package_requests_db if d["status"] == "pending"]
     processed = sorted(
-        [d for d in point_requests_db if d["status"] != "pending"],
+        [d for d in package_requests_db if d["status"] != "pending"],
         key=lambda d: d.get("processed_at", ""), reverse=True,
     )[:30]
 
-    return templates.TemplateResponse("admin_points.html", {
+    return templates.TemplateResponse("admin_packages.html", {
         "request": request,
-        "pending_points": pending,
-        "processed_points": processed,
+        "pending_packages": pending,
+        "processed_packages": processed,
+        "packages": PACKAGES,
     })
 
 
-# 하위호환: /admin/deposits → /admin/points
-@app.get("/admin/deposits", response_class=HTMLResponse)
-async def admin_deposits_redirect(request: Request):
-    return RedirectResponse("/admin/points", status_code=301)
-
-
-@app.post("/admin/point/{point_id}/approve")
-async def admin_approve_point(request: Request, point_id: str):
-    """포인트 충전 요청 승인 → 잔액 추가"""
+@app.post("/admin/package/{package_id}/approve")
+async def admin_approve_package(request: Request, package_id: str):
+    """패키지 구매 요청 승인 → 열람 건수 추가 + 만료일 설정"""
     admin = get_admin(request)
     if not admin:
         return JSONResponse({"error": "권한 없음"}, status_code=401)
 
-    dep = next((d for d in point_requests_db if d["id"] == point_id), None)
-    if not dep:
+    pkg_req = next((d for d in package_requests_db if d["id"] == package_id), None)
+    if not pkg_req:
         return JSONResponse({"error": "요청을 찾을 수 없습니다."}, status_code=404)
 
-    if dep["status"] != "pending":
+    if pkg_req["status"] != "pending":
         return JSONResponse({"error": "이미 처리된 요청입니다."}, status_code=400)
 
-    company = next((c for c in companies_db if c["id"] == dep["company_id"]), None)
+    company = next((c for c in companies_db if c["id"] == pkg_req["company_id"]), None)
     if not company:
         return JSONResponse({"error": "업체를 찾을 수 없습니다."}, status_code=404)
 
-    # 잔액 추가
-    company["balance"] += dep["amount"]
-    dep["status"] = "approved"
-    dep["processed_at"] = datetime.now().isoformat()
+    # 패키지 적용
+    pkg_type = pkg_req["package_type"]
+    pkg = PACKAGES[pkg_type]
+
+    company["package"] = pkg_type
+    company["package_name"] = pkg["label"]
+    company["remaining_leads"] = company.get("remaining_leads", 0) + pkg_req["leads"]
+    company["package_expires_at"] = (datetime.now() + timedelta(days=pkg_req["validity_days"])).isoformat()
+
+    pkg_req["status"] = "approved"
+    pkg_req["processed_at"] = datetime.now().isoformat()
 
     # 거래 내역 기록
     _record_transaction(
-        company["id"], "deposit", dep["amount"],
-        f"포인트 충전 (입금자: {dep['depositor_name']})",
-        ref_id=dep["id"],
+        company["id"], "package_purchase", pkg_req["leads"],
+        f"패키지 구매 - {pkg_req['package_label']} ({pkg_req['leads']}건, 입금자: {pkg_req['depositor_name']})",
+        ref_id=pkg_req["id"],
     )
 
-    return JSONResponse({"success": True, "message": f"{dep['amount']:,}원 포인트 충전 승인 완료"})
+    return JSONResponse({
+        "success": True,
+        "message": f"{pkg_req['package_label']} 패키지 승인 완료 ({pkg_req['leads']}건 추가, 만료: {company['package_expires_at'][:10]})",
+    })
 
 
-@app.post("/admin/point/{point_id}/reject")
-async def admin_reject_point(request: Request, point_id: str):
-    """포인트 충전 요청 반려"""
+@app.post("/admin/package/{package_id}/reject")
+async def admin_reject_package(request: Request, package_id: str):
+    """패키지 구매 요청 반려"""
     admin = get_admin(request)
     if not admin:
         return JSONResponse({"error": "권한 없음"}, status_code=401)
 
-    dep = next((d for d in point_requests_db if d["id"] == point_id), None)
-    if not dep:
+    pkg_req = next((d for d in package_requests_db if d["id"] == package_id), None)
+    if not pkg_req:
         return JSONResponse({"error": "요청을 찾을 수 없습니다."}, status_code=404)
 
-    if dep["status"] != "pending":
+    if pkg_req["status"] != "pending":
         return JSONResponse({"error": "이미 처리된 요청입니다."}, status_code=400)
 
-    dep["status"] = "rejected"
-    dep["processed_at"] = datetime.now().isoformat()
+    pkg_req["status"] = "rejected"
+    pkg_req["processed_at"] = datetime.now().isoformat()
 
     return JSONResponse({"success": True})
-
-
-# 하위호환: /admin/deposit/{id}/approve → /admin/point/{id}/approve
-@app.post("/admin/deposit/{deposit_id}/approve")
-async def admin_approve_deposit_compat(request: Request, deposit_id: str):
-    return await admin_approve_point(request, deposit_id)
-
-
-@app.post("/admin/deposit/{deposit_id}/reject")
-async def admin_reject_deposit_compat(request: Request, deposit_id: str):
-    return await admin_reject_point(request, deposit_id)
 
 
 # ============================================================
@@ -1273,7 +1363,7 @@ async def admin_refunds_page(request: Request):
 
 @app.post("/admin/refund/{refund_id}/approve")
 async def admin_approve_refund(request: Request, refund_id: str):
-    """환불 요청 수동 승인"""
+    """환불 요청 수동 승인 (1건 복원)"""
     admin = get_admin(request)
     if not admin:
         return JSONResponse({"error": "권한 없음"}, status_code=401)
@@ -1293,19 +1383,20 @@ async def admin_approve_refund(request: Request, refund_id: str):
     if not company:
         return JSONResponse({"error": "업체를 찾을 수 없습니다."}, status_code=404)
 
-    # 환불 처리
+    # 환불 처리: 1건 복원
     refund["status"] = "approved"
     refund["processed_at"] = datetime.now().isoformat()
     purchase["status"] = "refunded"
-    company["balance"] += refund["amount"]
+    company["remaining_leads"] = company.get("remaining_leads", 0) + 1
+    company["total_leads_used"] = max(0, company.get("total_leads_used", 0) - 1)
 
     _record_transaction(
-        company["id"], "refund", refund["amount"],
-        f"환불 승인 (관리자) - {refund['reason_label']}",
+        company["id"], "refund", 1,
+        f"환불 승인 (관리자) - {refund['reason_label']} (1건 복원)",
         ref_id=refund["id"],
     )
 
-    return JSONResponse({"success": True, "message": f"{refund['amount']:,}원 환불 승인 완료"})
+    return JSONResponse({"success": True, "message": "환불 승인 완료 (1건 복원)"})
 
 
 @app.post("/admin/refund/{refund_id}/reject")
@@ -1390,12 +1481,15 @@ def _run_crawl_sync():
             _name = _c.get("name", "")
             _name = _re.sub(r"(톡톡|쿠폰|법률사무소$|법무사사무소$)", "", _name).strip()
             _c["name"] = _name
-            _c["tier"] = "free"
+            _c["package"] = "none"
+            _c["remaining_leads"] = 0
+            _c["package_expires_at"] = None
+            _c["total_leads_used"] = 0
             _c["verified"] = False
             _c["status"] = "listed"
             _c["response_rate"] = 0.0
             for field, default in [("description", ""), ("rating", 0.0), ("review_count", 0),
-                                   ("success_count", 0), ("experience_years", ""), ("min_fee", ""), ("balance", 0)]:
+                                   ("success_count", 0), ("experience_years", ""), ("min_fee", "")]:
                 if not _c.get(field):
                     _c[field] = default
         companies_db.extend(new_companies)
@@ -1719,3 +1813,12 @@ async def faq_page(request: Request):
 @app.get("/api/health")
 async def health():
     return {"status": "ok", "service": "새출발", "timestamp": datetime.now().isoformat()}
+
+
+@app.get("/api/keyword-data")
+async def keyword_data(request: Request):
+    """키워드 CPC 데이터 (입점 제안서용)"""
+    admin = get_admin(request)
+    if not admin:
+        return JSONResponse({"error": "권한 없음"}, status_code=401)
+    return JSONResponse(KEYWORD_CPC_DATA)

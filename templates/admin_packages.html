@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}포인트 관리{% endblock %}
+{% block title %}패키지 관리{% endblock %}
 
 {% block body %}
 <nav class="bg-gray-800 text-white">
@@ -7,7 +7,7 @@
         <span class="text-lg font-bold">새출발 관리자</span>
         <div class="space-x-4 text-sm">
             <a href="/admin/dashboard" class="text-gray-300 hover:text-white">대시보드</a>
-            <a href="/admin/points" class="text-white font-medium">포인트 관리</a>
+            <a href="/admin/packages" class="text-white font-medium">패키지 관리</a>
             <a href="/admin/crawl" class="text-gray-300 hover:text-white">크롤링 관리</a>
             <form action="/admin/logout" method="POST" class="inline">
                 <button class="text-gray-300 hover:text-white">로그아웃</button>
@@ -17,39 +17,43 @@
 </nav>
 
 <div class="max-w-6xl mx-auto px-4 py-8">
-    <h1 class="text-2xl font-bold mb-6">포인트 충전 요청 관리</h1>
+    <h1 class="text-2xl font-bold mb-6">패키지 구매 요청 관리</h1>
 
     <!-- 대기 중인 요청 -->
     <div class="mb-8">
         <h2 class="text-lg font-bold mb-4">
             대기 중인 요청
-            {% if pending_deposits %}
-            <span class="ml-2 bg-yellow-100 text-yellow-700 text-sm px-2 py-0.5 rounded">{{ pending_deposits|length }}건</span>
+            {% if pending_packages %}
+            <span class="ml-2 bg-yellow-100 text-yellow-700 text-sm px-2 py-0.5 rounded">{{ pending_packages|length }}건</span>
             {% endif %}
         </h2>
         <div class="bg-white rounded-xl shadow overflow-hidden">
-            {% if pending_deposits %}
+            {% if pending_packages %}
             <table class="w-full text-sm">
                 <thead class="bg-gray-50">
                     <tr>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">요청일</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">업체명</th>
-                        <th class="px-4 py-3 text-left text-xs text-gray-500">입금자명</th>
+                        <th class="px-4 py-3 text-left text-xs text-gray-500">패키지</th>
                         <th class="px-4 py-3 text-right text-xs text-gray-500">금액</th>
+                        <th class="px-4 py-3 text-left text-xs text-gray-500">입금자명</th>
                         <th class="px-4 py-3 text-center text-xs text-gray-500">관리</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y">
-                    {% for dep in pending_deposits %}
-                    <tr id="dep-{{ dep.id }}">
-                        <td class="px-4 py-3 text-gray-500">{{ dep.created_at[:16].replace('T', ' ') }}</td>
-                        <td class="px-4 py-3 font-medium">{{ dep.company_name }}</td>
-                        <td class="px-4 py-3">{{ dep.depositor_name }}</td>
-                        <td class="px-4 py-3 text-right font-bold text-primary">{{ "{:,}".format(dep.amount) }}원</td>
+                    {% for req in pending_packages %}
+                    <tr id="req-{{ req.id }}">
+                        <td class="px-4 py-3 text-gray-500">{{ req.created_at[:16].replace('T', ' ') }}</td>
+                        <td class="px-4 py-3 font-medium">{{ req.company_name }}</td>
+                        <td class="px-4 py-3">
+                            <span class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-700 font-medium">{{ req.package_name }}</span>
+                        </td>
+                        <td class="px-4 py-3 text-right font-bold text-primary">{{ "{:,}".format(req.amount) }}원</td>
+                        <td class="px-4 py-3">{{ req.depositor_name }}</td>
                         <td class="px-4 py-3 text-center space-x-2">
-                            <button onclick="approveDeposit('{{ dep.id }}')"
+                            <button onclick="approveRequest('{{ req.id }}')"
                                 class="bg-accent text-white text-xs px-3 py-1.5 rounded hover:bg-emerald-600">승인</button>
-                            <button onclick="rejectDeposit('{{ dep.id }}')"
+                            <button onclick="rejectRequest('{{ req.id }}')"
                                 class="bg-red-500 text-white text-xs px-3 py-1.5 rounded hover:bg-red-600">반려</button>
                         </td>
                     </tr>
@@ -57,13 +61,13 @@
                 </tbody>
             </table>
             {% else %}
-            <p class="p-6 text-center text-gray-400">대기 중인 충전 요청이 없습니다.</p>
+            <p class="p-6 text-center text-gray-400">대기 중인 구매 요청이 없습니다.</p>
             {% endif %}
         </div>
     </div>
 
     <!-- 처리 완료 -->
-    {% if processed_deposits %}
+    {% if processed_packages %}
     <div>
         <h2 class="text-lg font-bold mb-4">처리 완료</h2>
         <div class="bg-white rounded-xl shadow overflow-hidden">
@@ -72,26 +76,30 @@
                     <tr>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">요청일</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">업체명</th>
-                        <th class="px-4 py-3 text-left text-xs text-gray-500">입금자명</th>
+                        <th class="px-4 py-3 text-left text-xs text-gray-500">패키지</th>
                         <th class="px-4 py-3 text-right text-xs text-gray-500">금액</th>
+                        <th class="px-4 py-3 text-left text-xs text-gray-500">입금자명</th>
                         <th class="px-4 py-3 text-center text-xs text-gray-500">상태</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">처리일</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y">
-                    {% for dep in processed_deposits %}
+                    {% for req in processed_packages %}
                     <tr>
-                        <td class="px-4 py-3 text-gray-500">{{ dep.created_at[:16].replace('T', ' ') }}</td>
-                        <td class="px-4 py-3 font-medium">{{ dep.company_name }}</td>
-                        <td class="px-4 py-3">{{ dep.depositor_name }}</td>
-                        <td class="px-4 py-3 text-right font-medium">{{ "{:,}".format(dep.amount) }}원</td>
+                        <td class="px-4 py-3 text-gray-500">{{ req.created_at[:16].replace('T', ' ') }}</td>
+                        <td class="px-4 py-3 font-medium">{{ req.company_name }}</td>
+                        <td class="px-4 py-3">
+                            <span class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-700 font-medium">{{ req.package_name }}</span>
+                        </td>
+                        <td class="px-4 py-3 text-right font-medium">{{ "{:,}".format(req.amount) }}원</td>
+                        <td class="px-4 py-3">{{ req.depositor_name }}</td>
                         <td class="px-4 py-3 text-center">
                             <span class="text-xs px-2 py-0.5 rounded
-                                {% if dep.status == 'approved' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
-                                {% if dep.status == 'approved' %}승인{% else %}반려{% endif %}
+                                {% if req.status == 'approved' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
+                                {% if req.status == 'approved' %}승인{% else %}반려{% endif %}
                             </span>
                         </td>
-                        <td class="px-4 py-3 text-gray-400 text-xs">{{ (dep.processed_at or '')[:16].replace('T', ' ') }}</td>
+                        <td class="px-4 py-3 text-gray-400 text-xs">{{ (req.processed_at or '')[:16].replace('T', ' ') }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -102,21 +110,21 @@
 </div>
 
 <script>
-async function approveDeposit(id) {
-    if (!confirm('이 충전 요청을 승인하시겠습니까? (포인트에 반영됩니다)')) return;
-    const res = await fetch(`/admin/deposit/${id}/approve`, { method: 'POST' });
+async function approveRequest(id) {
+    if (!confirm('이 패키지 구매 요청을 승인하시겠습니까? (패키지가 활성화됩니다)')) return;
+    const res = await fetch(`/admin/package/${id}/approve`, { method: 'POST' });
     const data = await res.json();
     if (data.success) {
-        alert(data.message);
+        alert(data.message || '패키지가 활성화되었습니다.');
         location.reload();
     } else {
         alert(data.error);
     }
 }
 
-async function rejectDeposit(id) {
-    if (!confirm('이 충전 요청을 반려하시겠습니까?')) return;
-    const res = await fetch(`/admin/deposit/${id}/reject`, { method: 'POST' });
+async function rejectRequest(id) {
+    if (!confirm('이 구매 요청을 반려하시겠습니까?')) return;
+    const res = await fetch(`/admin/package/${id}/reject`, { method: 'POST' });
     if ((await res.json()).success) location.reload();
 }
 </script>

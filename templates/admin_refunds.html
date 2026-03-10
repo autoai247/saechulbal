@@ -7,7 +7,7 @@
         <span class="text-lg font-bold">새출발 관리자</span>
         <div class="space-x-4 text-sm">
             <a href="/admin/dashboard" class="text-gray-300 hover:text-white">대시보드</a>
-            <a href="/admin/points" class="text-gray-300 hover:text-white">포인트 관리</a>
+            <a href="/admin/packages" class="text-gray-300 hover:text-white">패키지 관리</a>
             <a href="/admin/refunds" class="text-white font-medium">환불 관리</a>
             <a href="/admin/crawl" class="text-gray-300 hover:text-white">크롤링 관리</a>
             <form action="/admin/logout" method="POST" class="inline">
@@ -37,11 +37,11 @@
                 <ul class="list-disc ml-4 text-xs mt-1">
                     <li>통화 연결 후 수임 실패</li>
                     <li>타 업체에서 수임 완료</li>
-                    <li>구매 후 7일 경과</li>
+                    <li>열람 후 7일 경과</li>
                 </ul>
             </div>
         </div>
-        <p class="text-xs text-blue-600 mt-2">* 월간 환불 비율 20% 초과 시 수동 검토 대상</p>
+        <p class="text-xs text-blue-600 mt-2">* 환불 승인 시 1건이 복원됩니다</p>
     </div>
 
     <!-- 대기 중인 환불 요청 -->
@@ -60,7 +60,6 @@
                         <th class="px-4 py-3 text-left text-xs text-gray-500">요청일</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">업체명</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">사유</th>
-                        <th class="px-4 py-3 text-right text-xs text-gray-500">환불 금액</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">증빙</th>
                         <th class="px-4 py-3 text-center text-xs text-gray-500">관리</th>
                     </tr>
@@ -79,11 +78,10 @@
                                 {{ refund_reasons.get(ref.reason, ref.reason) }}
                             </span>
                         </td>
-                        <td class="px-4 py-3 text-right font-bold text-red-600">{{ "{:,}".format(ref.amount) }}원</td>
                         <td class="px-4 py-3 text-xs text-gray-500 max-w-xs truncate">{{ ref.evidence or '-' }}</td>
                         <td class="px-4 py-3 text-center space-x-2">
                             <button onclick="approveRefund('{{ ref.id }}')"
-                                class="bg-accent text-white text-xs px-3 py-1.5 rounded hover:bg-emerald-600">승인</button>
+                                class="bg-accent text-white text-xs px-3 py-1.5 rounded hover:bg-emerald-600">승인 (1건 복원)</button>
                             <button onclick="rejectRefund('{{ ref.id }}')"
                                 class="bg-red-500 text-white text-xs px-3 py-1.5 rounded hover:bg-red-600">거절</button>
                         </td>
@@ -108,7 +106,6 @@
                         <th class="px-4 py-3 text-left text-xs text-gray-500">요청일</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">업체명</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">사유</th>
-                        <th class="px-4 py-3 text-right text-xs text-gray-500">금액</th>
                         <th class="px-4 py-3 text-center text-xs text-gray-500">결과</th>
                         <th class="px-4 py-3 text-left text-xs text-gray-500">처리일</th>
                     </tr>
@@ -123,12 +120,11 @@
                                 {{ refund_reasons.get(ref.reason, ref.reason) }}
                             </span>
                         </td>
-                        <td class="px-4 py-3 text-right font-medium">{{ "{:,}".format(ref.amount) }}원</td>
                         <td class="px-4 py-3 text-center">
                             <span class="text-xs px-2 py-0.5 rounded
                                 {% if ref.status == 'approved' %}bg-green-100 text-green-700
                                 {% else %}bg-red-100 text-red-700{% endif %}">
-                                {% if ref.status == 'approved' %}승인{% else %}거절{% endif %}
+                                {% if ref.status == 'approved' %}승인 (1건 복원){% else %}거절{% endif %}
                             </span>
                         </td>
                         <td class="px-4 py-3 text-gray-400 text-xs">{{ (ref.processed_at or '')[:16].replace('T', ' ') }}</td>
@@ -143,11 +139,11 @@
 
 <script>
 async function approveRefund(id) {
-    if (!confirm('이 환불 요청을 승인하시겠습니까? (포인트가 복원됩니다)')) return;
+    if (!confirm('이 환불 요청을 승인하시겠습니까? (1건이 복원됩니다)')) return;
     const res = await fetch(`/admin/refund/${id}/approve`, { method: 'POST' });
     const data = await res.json();
     if (data.success) {
-        alert(data.message || '환불 승인 완료');
+        alert(data.message || '환불 승인 완료 (1건 복원)');
         location.reload();
     } else {
         alert(data.error);

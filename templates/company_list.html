@@ -49,7 +49,6 @@
             <select name="sort" onchange="this.form.submit()"
                 class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
                 <option value="rating" {% if selected_sort == 'rating' %}selected{% endif %}>평점순</option>
-                <option value="review" {% if selected_sort == 'review' %}selected{% endif %}>리뷰 많은순</option>
                 <option value="response" {% if selected_sort == 'response' %}selected{% endif %}>응답률순</option>
                 <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>최근 등록순</option>
             </select>
@@ -64,25 +63,21 @@
     {% if companies %}
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {% for company in companies %}
-        {% set tier = tiers.get(company.get('tier', 'free'), tiers.free) %}
         <a href="/companies/{{ company.id }}" class="block rounded-xl shadow hover:shadow-lg transition group relative
-            {% if company.tier == 'diamond' %}bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-amber-300 hover:border-amber-400
-            {% elif company.tier == 'vip' %}bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-300 hover:border-purple-400
-            {% elif company.tier == 'premium' %}bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300 hover:border-blue-400
+            {% if company.package_name == '프로' or company.package_name == '엔터프라이즈' %}bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300 hover:border-blue-400
+            {% elif company.package_name == '성장' %}bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 hover:border-green-400
             {% else %}bg-white{% endif %}">
-            {% if tier.badge %}
+            {% if company.package_name and company.package_name in ['성장', '프로', '엔터프라이즈'] %}
             <div class="absolute top-0 left-0 right-0 text-center">
                 <span class="inline-block text-xs font-bold px-3 py-0.5 rounded-b-lg
-                    {% if company.tier == 'diamond' %}bg-amber-400 text-white
-                    {% elif company.tier == 'vip' %}bg-purple-500 text-white
-                    {% elif company.tier == 'premium' %}bg-blue-500 text-white{% endif %}">
-                    {% if company.tier == 'diamond' %}인증된 최우수 업체
-                    {% elif company.tier == 'vip' %}검증된 우수 업체
-                    {% elif company.tier == 'premium' %}인증 업체{% endif %}
+                    {% if company.package_name == '엔터프라이즈' %}bg-purple-500 text-white
+                    {% elif company.package_name == '프로' %}bg-blue-500 text-white
+                    {% elif company.package_name == '성장' %}bg-green-500 text-white{% endif %}">
+                    {{ company.package_name }}
                 </span>
             </div>
             {% endif %}
-            <div class="p-6 {% if tier.badge %}pt-8{% endif %}">
+            <div class="p-6 {% if company.package_name and company.package_name in ['성장', '프로', '엔터프라이즈'] %}pt-8{% endif %}">
                 <!-- 업체명 & 평점 -->
                 <div class="flex justify-between items-start mb-3">
                     <h3 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">{{ company.name }}</h3>

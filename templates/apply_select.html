@@ -76,7 +76,6 @@
     <p class="text-sm text-gray-500 mb-4">조건에 맞는 <strong class="text-primary">{{ companies|length }}개</strong> 업체가 있습니다</p>
     <div class="grid md:grid-cols-2 gap-4" id="company-grid">
         {% for company in companies %}
-        {% set tier = tiers.get(company.get('tier', 'free'), tiers.free) %}
         <div class="company-select-card relative bg-white rounded-xl shadow hover:shadow-md border-2 border-transparent cursor-pointer p-5 transition"
              data-company-id="{{ company.id }}"
              onclick="toggleCompany(this, '{{ company.id }}')">
@@ -95,14 +94,12 @@
             <div class="pr-10">
                 <div class="flex items-center gap-2 mb-2">
                     <h3 class="font-bold text-lg text-gray-900">{{ company.name }}</h3>
-                    {% if tier.badge %}
+                    {% if company.package_name and company.package_name in ['성장', '프로', '엔터프라이즈'] %}
                     <span class="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full
-                        {% if company.tier == 'diamond' %}bg-amber-100 text-amber-700
-                        {% elif company.tier == 'vip' %}bg-purple-100 text-purple-700
-                        {% elif company.tier == 'premium' %}bg-blue-100 text-blue-700{% endif %}">
-                        {% if company.tier == 'diamond' %}최우수 업체
-                        {% elif company.tier == 'vip' %}우수 업체
-                        {% elif company.tier == 'premium' %}인증 업체{% endif %}
+                        {% if company.package_name == '엔터프라이즈' %}bg-purple-100 text-purple-700
+                        {% elif company.package_name == '프로' %}bg-blue-100 text-blue-700
+                        {% elif company.package_name == '성장' %}bg-green-100 text-green-700{% endif %}">
+                        {{ company.package_name }}
                     </span>
                     {% endif %}
                 </div>

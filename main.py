@@ -50,11 +50,11 @@ ADMIN_PW = os.getenv("ADMIN_PW", "admin")
 # 업체가 패키지를 구매하면 N건의 DB 열람권을 받음
 # 네이버 키워드 광고 대비 87~97% 비용 절감 (근거 데이터 하단 참조)
 PACKAGES = {
-    "trial":      {"label": "체험",         "price": 100000,  "leads": 3,   "per_lead": 33333, "validity_days": 30},
-    "basic":      {"label": "기본",         "price": 300000,  "leads": 10,  "per_lead": 30000, "validity_days": 90},
-    "growth":     {"label": "성장",         "price": 500000,  "leads": 20,  "per_lead": 25000, "validity_days": 180},
-    "pro":        {"label": "프로",         "price": 1000000, "leads": 45,  "per_lead": 22222, "validity_days": 365},
-    "enterprise": {"label": "엔터프라이즈",  "price": 2000000, "leads": 100, "per_lead": 20000, "validity_days": 365},
+    "starter":    {"label": "스타터",       "price": 300000,  "leads": 10,  "per_lead": 30000, "validity_days": 60},
+    "basic":      {"label": "기본",         "price": 500000,  "leads": 20,  "per_lead": 25000, "validity_days": 90},
+    "growth":     {"label": "성장",         "price": 900000,  "leads": 40,  "per_lead": 22500, "validity_days": 180},
+    "pro":        {"label": "프로",         "price": 1500000, "leads": 70,  "per_lead": 21429, "validity_days": 365},
+    "enterprise": {"label": "엔터프라이즈",  "price": 2500000, "leads": 130, "per_lead": 19231, "validity_days": 365},
 }
 
 # ============================================================
@@ -136,7 +136,7 @@ KEYWORD_CPC_DATA = {
         "ROI": "0.9~1.4배 (흑자이나 효율 낮음)",
     },
     "새출발_비교": {
-        "DB_건당_단가": "2~3.3만원 (패키지에 따라)",
+        "DB_건당_단가": "1.9~3만원 (패키지에 따라)",
         "DB_품질": "이미 상담 신청 완료 + 업체 직접 선택 = 네이버 클릭보다 높은 의향",
         "수임까지_필요DB": "4~5건 (업계 동일)",
         "수임_1건_비용": "10~16.5만원",
@@ -717,7 +717,7 @@ async def company_register(
         "contact_name": contact_name,
         "contact_phone": contact_phone,
         "status": "pending",  # pending → active → suspended
-        "package": "none",              # none, trial, basic, growth, pro, enterprise
+        "package": "none",              # none, starter, basic, growth, pro, enterprise
         "package_name": None,           # 패키지 표시명
         "remaining_leads": 0,           # 잔여 열람 건수
         "package_expires_at": None,     # 패키지 만료일 ISO string
